@@ -1,7 +1,7 @@
+import 'package:derbyjo/screens/categories.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-import 'package:derbyjo/data/data.dart';
 import '../../utils/constants.dart';
 
 class Home extends StatefulWidget {
@@ -13,7 +13,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
-  final Data _data = Data();
 
   @override
   Widget build(BuildContext context) {
@@ -96,7 +95,13 @@ class _HomeState extends State<Home> {
                           foregroundColor: mRedColor,
                           textStyle: const TextStyle(fontSize: 17),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Categories()),
+                          );
+                        },
                         child: const Text(seeAll),
                       ),
                     ),
@@ -104,9 +109,8 @@ class _HomeState extends State<Home> {
                 ),
                 //Category
                 Container(
-                  height: 150,
+                  height: 100,
                   width: double.infinity,
-                  padding: const EdgeInsets.fromLTRB(10, 15, 5, 5),
                   decoration: BoxDecoration(
                     color: mBackgroundColor,
                     borderRadius: BorderRadius.circular(12),
@@ -128,17 +132,19 @@ class _HomeState extends State<Home> {
                       GestureDetector(
                         onTap: null,
                         child: Image.asset('images/basketball.png'),
-                      ),GestureDetector(
+                      ),
+                      GestureDetector(
                         onTap: null,
                         child: Image.asset('images/tennis.png'),
-                      ),GestureDetector(
+                      ),
+                      GestureDetector(
                         onTap: null,
-                        child: Image.asset('images/padel.png'),
-                      ),GestureDetector(
+                        child: Image.asset('images/paddel.png'),
+                      ),
+                      GestureDetector(
                         onTap: null,
                         child: Image.asset('images/swimmingg.png'),
                       ),
-
                     ],
                   ),
                 ),
