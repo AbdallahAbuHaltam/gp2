@@ -1,4 +1,5 @@
 import 'package:derbyjo/screens/categories.dart';
+import 'package:derbyjo/screens/profile.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -30,9 +31,20 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.only(right: 20),
                   child: Row(
                     children: [
-                      const CircleAvatar(
-                        backgroundImage: AssetImage('images/pro.png'),
+                       CircleAvatar(
                         radius: 25,
+                        child: ElevatedButton(
+                          onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Profile()),
+                          );
+                        },
+                          child: const Image(
+                            image: AssetImage('images/pro.png'),
+                          ),
+                        ),
                       ),
                       //Search
                       Padding(
