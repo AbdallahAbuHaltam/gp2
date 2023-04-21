@@ -11,7 +11,8 @@ final shadowColor = const Color(0xFFB7B7B7).withOpacity(.15);
 const boxColor=Color(0xFF91A2BA);
 
 
-
+//
+final accent = const Color.fromARGB(255, 237, 53, 53).withOpacity(.1);
 
 //Text 
 const category='Category';
