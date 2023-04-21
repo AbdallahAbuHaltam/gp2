@@ -13,9 +13,11 @@ class _CategoriesState extends State<Categories> {
     return Scaffold(
       body: Column(children: [
         const Text('Categories'),
-        TextButton(onPressed: () {
-  Navigator.pop(context);
-} , child: const Text('bACK'))
+        TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('bACK'))
       ]),
     );
   }
