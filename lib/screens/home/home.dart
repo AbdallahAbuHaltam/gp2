@@ -1,7 +1,7 @@
 import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
-
+import 'package:derbyjo/data/data.dart';
 import '../../utils/constants.dart';
 
 class Home extends StatefulWidget {
@@ -13,6 +13,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final AuthService _auth = AuthService();
+  final Data _data = Data();
 
   @override
   Widget build(BuildContext context) {
@@ -120,13 +121,24 @@ class _HomeState extends State<Home> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextButton.icon(
-                        label: const Text('Logout'),
-                        icon: const Icon(Icons.person),
-                        onPressed: () async {
-                          await _auth.signout();
-                        },
+                      GestureDetector(
+                        onTap: null,
+                        child: Image.asset('images/football.png'),
                       ),
+                      GestureDetector(
+                        onTap: null,
+                        child: Image.asset('images/basketball.png'),
+                      ),GestureDetector(
+                        onTap: null,
+                        child: Image.asset('images/tennis.png'),
+                      ),GestureDetector(
+                        onTap: null,
+                        child: Image.asset('images/padel.png'),
+                      ),GestureDetector(
+                        onTap: null,
+                        child: Image.asset('images/swimmingg.png'),
+                      ),
+
                     ],
                   ),
                 ),
