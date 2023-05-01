@@ -31,16 +31,16 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.only(right: 20),
                   child: Row(
                     children: [
-                       CircleAvatar(
+                      CircleAvatar(
                         radius: 25,
                         child: ElevatedButton(
                           onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Profile()),
-                          );
-                        },
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Profile()),
+                            );
+                          },
                           child: const Image(
                             image: AssetImage('images/pro.png'),
                           ),
@@ -96,7 +96,8 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.only(top: 15.0),
                       child: Text(
                         category,
-                        style: TextStyle(fontSize: 17),
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w600),
                       ),
                     ),
                     const Spacer(),
@@ -105,7 +106,7 @@ class _HomeState extends State<Home> {
                       child: TextButton(
                         style: TextButton.styleFrom(
                           foregroundColor: mRedColor,
-                          textStyle: const TextStyle(fontSize: 17),
+                          textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -121,7 +122,7 @@ class _HomeState extends State<Home> {
                 ),
                 //Category
                 Container(
-                  height: 100,
+                  height: 134,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: mBackgroundColor,
@@ -134,30 +135,102 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: null,
-                        child: Image.asset('images/football.png'),
-                      ),
-                      GestureDetector(
-                        onTap: null,
-                        child: Image.asset('images/basketball.png'),
-                      ),
-                      GestureDetector(
-                        onTap: null,
-                        child: Image.asset('images/tennis.png'),
-                      ),
-                      GestureDetector(
-                        onTap: null,
-                        child: Image.asset('images/paddel.png'),
-                      ),
-                      GestureDetector(
-                        onTap: null,
-                        child: Image.asset('images/swimmingg.png'),
-                      ),
-                    ],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: null,
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset('images/football.png'),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8),
+                                child: Text(
+                                  'Football',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 15),
+                        GestureDetector(
+                          onTap: null,
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset('images/basketball.png'),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8),
+                                child: Text(
+                                  'Basketball',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 15),
+                        GestureDetector(
+                          onTap: null,
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset('images/tennis.png'),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8),
+                                child: Text(
+                                  'Tennis',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 15),
+                        GestureDetector(
+                          onTap: null,
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset('images/paddel.png'),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8),
+                                child: Text(
+                                  'Padel',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 15),
+                        GestureDetector(
+                          onTap: null,
+                          child: Column(
+                            children: <Widget>[
+                              Image.asset('images/swimmingg.png'),
+                              const Padding(
+                                padding: EdgeInsets.only(top: 8),
+                                child: Text(
+                                  'Swimming',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],

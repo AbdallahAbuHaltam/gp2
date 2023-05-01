@@ -14,7 +14,9 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+              Navigator.pop(context);
+          },
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: const Text("Profile"),
