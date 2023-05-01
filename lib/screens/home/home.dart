@@ -106,7 +106,8 @@ class _HomeState extends State<Home> {
                       child: TextButton(
                         style: TextButton.styleFrom(
                           foregroundColor: mRedColor,
-                          textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                          textStyle: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
                         ),
                         onPressed: () {
                           Navigator.push(
@@ -230,6 +231,65 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ],
+                    ),
+                  ),
+                ),
+                //Suggested
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.only(top: 10.0),
+                      child: Text(
+                        suggested,
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15.0, right: 5),
+                      child: TextButton(
+                        style: TextButton.styleFrom(
+                          foregroundColor: mRedColor,
+                          textStyle: const TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.w600),
+                        ),
+                        onPressed: () {},
+                        child: const Text(seeAll),
+                      ),
+                    ),
+                  ],
+                ),
+                // List Card
+                Container(
+                  height: 360,
+                  width: double.infinity,
+                  alignment: Alignment.centerLeft,
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.only(top: 6, bottom: 30, right: 20),
+                    separatorBuilder: (context, index) => const SizedBox(width: 20),
+                    itemCount: 4,
+                    itemBuilder: (_, index) => Container(
+                      width: 358,
+                      height: 258,
+                      decoration: BoxDecoration(
+                        color: mBackgroundColor,
+                        borderRadius: BorderRadius.circular(22),
+                        boxShadow: const [
+                          BoxShadow(
+                            offset: Offset(0, 10),
+                            blurRadius: 30,
+                            color: Color.fromARGB(214, 232, 236, 238),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          
+                        ],
+                      ),
                     ),
                   ),
                 ),
