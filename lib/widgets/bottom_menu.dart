@@ -33,14 +33,20 @@ class _BottomMenuState extends State<BottomMenu> {
               width: MediaQuery.of(context).size.width / 2 - 40.0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const <Widget>[
-                  Icon(
-                    Icons.home,
-                    color: mRedColor,
+                children:  <Widget>[
+                  GestureDetector(
+                    child:   Icon(
+                      Icons.home,
+                      color: mRedColor,
+                    ),
+                    onTap: null,
                   ),
-                  Icon(
-                    Icons.search,
-                    color: mRedColor,
+                  GestureDetector(
+                    child: Icon(
+                      Icons.search,
+                      color: mRedColor,
+                    ),
+                    onTap: null,
                   )
                 ],
               ),
@@ -50,15 +56,21 @@ class _BottomMenuState extends State<BottomMenu> {
               width: MediaQuery.of(context).size.width / 2 - 40.0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const <Widget>[
-                  Icon(
-                    Icons.history,
-                    color: mRedColor,
+                children:  <Widget>[
+                  GestureDetector(
+                    child: Icon(
+                      Icons.history,
+                      color: mRedColor,
+                    ),
+                    onTap: null,
                   ),
-                  Icon(
-                    Icons.person,
-                    color: mRedColor,
-                  )
+                  GestureDetector(
+                    child: Icon(
+                      Icons.person,
+                      color: mRedColor,
+                    ),
+                    onTap: null,
+                  ),
                 ],
               ),
             ),
