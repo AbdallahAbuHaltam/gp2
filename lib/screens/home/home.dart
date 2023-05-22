@@ -4,6 +4,7 @@ import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import '../../utils/constants.dart';
+import '../../widgets/bottom_menu.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -261,43 +262,18 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 // List Card
-                Container(
-                  height: 360,
-                  width: double.infinity,
-                  alignment: Alignment.centerLeft,
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.only(top: 6, bottom: 30, right: 20),
-                    separatorBuilder: (context, index) => const SizedBox(width: 20),
-                    itemCount: 4,
-                    itemBuilder: (_, index) => Container(
-                      width: 358,
-                      height: 258,
-                      decoration: BoxDecoration(
-                        color: mBackgroundColor,
-                        borderRadius: BorderRadius.circular(22),
-                        boxShadow: const [
-                          BoxShadow(
-                            offset: Offset(0, 10),
-                            blurRadius: 30,
-                            color: Color.fromARGB(214, 232, 236, 238),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
               ],
             ),
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: mRedColor,
+        child: const Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar:  BottomMenu(),
     );
   }
 }
