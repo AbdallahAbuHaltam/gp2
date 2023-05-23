@@ -16,6 +16,7 @@ final accent = const Color.fromARGB(255, 237, 53, 53).withOpacity(.1);
 
 //Text 
 const suggested='Suggested';
+const book='Book Now!';
 const category='Category';
 const seeAll='See All';
 

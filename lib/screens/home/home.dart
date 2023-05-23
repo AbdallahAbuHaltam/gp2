@@ -3,6 +3,7 @@ import 'package:derbyjo/screens/profile.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../../utils/constants.dart';
 import '../../widgets/bottom_menu.dart';
 
@@ -263,14 +264,14 @@ class _HomeState extends State<Home> {
                 ),
                 // List Card
                 Container(
-                  height: 360,
+                  height: 410,
                   width: double.infinity,
                   alignment: Alignment.centerLeft,
                   child: Container(
                     child: ListView.separated(
                       itemBuilder: (_, index) => Container(
                         width: 358,
-                        height: 258,
+                        height: 278,
                         decoration: BoxDecoration(
                           color: mBackgroundColor,
                           borderRadius: BorderRadius.circular(22),
@@ -285,7 +286,7 @@ class _HomeState extends State<Home> {
                         child: Column(
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(12),
+                              padding: const EdgeInsets.only(top: 0),
                               child: Stack(
                                 children: [
                                   Container(
@@ -293,8 +294,12 @@ class _HomeState extends State<Home> {
                                     height: 184,
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(12),
-                                      child:  Image.asset('images/playground1.png',width: 174,height: 124,fit: BoxFit.cover,),
-                                      
+                                      child: Image.asset(
+                                        'images/playground.jpg',
+                                        width: 174,
+                                        height: 124,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                   Positioned(
@@ -308,16 +313,120 @@ class _HomeState extends State<Home> {
                                         color: mBackgroundColor,
                                         borderRadius: BorderRadius.circular(12),
                                       ),
-                                      child: const Text('Start from: \$ 20JD'),
+                                      child: const Text(
+                                        'Start from: \$ 20JD',
+                                        style: TextStyle(
+                                          color: Color.fromARGB(255, 6, 53, 94),
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ],
                               ),
                             ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
+                              child: Row(
+                                children: const [
+                                  Text(
+                                    'Football',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 50, 91, 213),
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Spacer(),
+                                  Icon(LineAwesomeIcons.bookmark),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 6,
+                            ),
+                            const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 16),
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'ملعب القوات المسلحة',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 10,
+                                vertical: 25,
+                              ),
+                              child: Row(
+                                children:const [
+                                  Icon(
+                                    Icons.location_on,
+                                    color: mRedColor,
+                                  ),
+                                  SizedBox(width: 7),
+                                  Text(
+                                    '20km',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 220.0),
+                                    child: Text('4.7'),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(left: 0.0),
+                                    child: Icon(
+                                      Icons.star,
+                                      size: 20,
+                                      color: Colors.amber,
+                                    ),
+                                  ),
+                                        
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom:8.0),
+                              child: SizedBox(
+                                                      height: 35,
+                                                      width: 140,
+                                                      child: ElevatedButton(
+                              style: ButtonStyle(
+                                foregroundColor: MaterialStateProperty.all<Color>(
+                                    Colors.white),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(Colors.red),
+                                shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                ),
+                              ),
+                              onPressed: null,
+                              child: const Text(
+                                book,
+                                style: TextStyle(fontSize: 16),
+                              ),
+                                                      )),
+                            ),
+                            
                           ],
                         ),
                       ),
-                      separatorBuilder: (context, index) => SizedBox(width: 20),
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(width: 20),
                       itemCount: 3,
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
@@ -325,7 +434,7 @@ class _HomeState extends State<Home> {
                           const EdgeInsets.only(top: 6, bottom: 30, right: 20),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ),
