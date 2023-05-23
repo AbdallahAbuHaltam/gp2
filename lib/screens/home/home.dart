@@ -270,8 +270,8 @@ class _HomeState extends State<Home> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        backgroundColor: mRedColor,
-        child: const Icon(Icons.add),
+        backgroundColor: mBackgroundColor,
+        child: const Icon(Icons.add,color: mRedColor,),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomMenu(),

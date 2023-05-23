@@ -23,7 +23,7 @@ class _BottomMenuState extends State<BottomMenu> {
             topLeft: Radius.circular(25.0),
             topRight: Radius.circular(25.0),
           ),
-          color: mBackgroundColor,
+          color: mRedColor,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,14 +37,14 @@ class _BottomMenuState extends State<BottomMenu> {
                   GestureDetector(
                     child:   Icon(
                       Icons.home,
-                      color: mRedColor,
+                      color: mBackgroundColor,
                     ),
                     onTap: null,
                   ),
                   GestureDetector(
                     child: Icon(
                       Icons.search,
-                      color: mRedColor,
+                      color: mBackgroundColor,
                     ),
                     onTap: null,
                   )
@@ -60,14 +60,14 @@ class _BottomMenuState extends State<BottomMenu> {
                   GestureDetector(
                     child: Icon(
                       Icons.history,
-                      color: mRedColor,
+                      color: mBackgroundColor,
                     ),
                     onTap: null,
                   ),
                   GestureDetector(
                     child: Icon(
                       Icons.person,
-                      color: mRedColor,
+                      color: mBackgroundColor,
                     ),
                     onTap: null,
                   ),
