@@ -262,7 +262,70 @@ class _HomeState extends State<Home> {
                   ],
                 ),
                 // List Card
-              
+                Container(
+                  height: 360,
+                  width: double.infinity,
+                  alignment: Alignment.centerLeft,
+                  child: Container(
+                    child: ListView.separated(
+                      itemBuilder: (_, index) => Container(
+                        width: 358,
+                        height: 258,
+                        decoration: BoxDecoration(
+                          color: mBackgroundColor,
+                          borderRadius: BorderRadius.circular(22),
+                          boxShadow: const [
+                            BoxShadow(
+                              offset: Offset(0, 10),
+                              blurRadius: 30,
+                              color: Color.fromARGB(214, 232, 236, 238),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(12),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: 324,
+                                    height: 184,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child:  Image.asset('images/playground1.png',width: 174,height: 124,fit: BoxFit.cover,),
+                                      
+                                    ),
+                                  ),
+                                  Positioned(
+                                    left: 12,
+                                    bottom: 12,
+                                    child: Container(
+                                      width: 108,
+                                      height: 35,
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                        color: mBackgroundColor,
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      child: const Text('Start from: \$ 20JD'),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      separatorBuilder: (context, index) => SizedBox(width: 20),
+                      itemCount: 3,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      padding:
+                          const EdgeInsets.only(top: 6, bottom: 30, right: 20),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
@@ -271,7 +334,10 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: mBackgroundColor,
-        child: const Icon(Icons.add,color: mRedColor,),
+        child: const Icon(
+          Icons.add,
+          color: mRedColor,
+        ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomMenu(),
