@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../utils/constants.dart';
+import '../screens/home/home.dart';
+import '../screens/profile.dart';
 
 class BottomMenu extends StatefulWidget {
   const BottomMenu({super.key});
@@ -33,13 +35,18 @@ class _BottomMenuState extends State<BottomMenu> {
               width: MediaQuery.of(context).size.width / 2 - 40.0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children:  <Widget>[
+                children: <Widget>[
                   GestureDetector(
-                    child:   Icon(
+                    child: const Icon(
                       Icons.home,
                       color: mBackgroundColor,
                     ),
-                    onTap: null,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Home()),
+                      );
+                    },
                   ),
                   GestureDetector(
                     child: Icon(
@@ -56,20 +63,26 @@ class _BottomMenuState extends State<BottomMenu> {
               width: MediaQuery.of(context).size.width / 2 - 40.0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children:  <Widget>[
+                children: <Widget>[
                   GestureDetector(
-                    child: Icon(
+                    child: const Icon(
                       Icons.history,
                       color: mBackgroundColor,
                     ),
                     onTap: null,
                   ),
                   GestureDetector(
-                    child: Icon(
+                    child: const Icon(
                       Icons.person,
                       color: mBackgroundColor,
                     ),
-                    onTap: null,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Profile()),
+                      );
+                    },
                   ),
                 ],
               ),
