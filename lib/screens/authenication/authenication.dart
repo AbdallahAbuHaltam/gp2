@@ -1,6 +1,9 @@
 import 'package:derbyjo/screens/authenication/login.dart';
 import 'package:derbyjo/screens/authenication/signup.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+final _firebase = FirebaseAuth.instance;
 
 class Authenicate extends StatefulWidget {
   const Authenicate({super.key});
@@ -10,21 +13,22 @@ class Authenicate extends StatefulWidget {
 }
 
 class _AuthenicateState extends State<Authenicate> {
-  bool showSignin=true;
+  bool _showSignin = true;
 
-  void toggleview(){
+  void _toggleview() {
     setState(() {
-      showSignin= !showSignin;
+      _showSignin = !_showSignin;
     });
   }
+
+  
+
   @override
   Widget build(BuildContext context) {
-
-    if(showSignin){
-      return  Login(toggleview: toggleview);
-    }
-    else{
-      return  Signup(toggleview: toggleview);
+    if (_showSignin) {
+      return Login(toggleview: _toggleview,);
+    } else {
+      return Signup(toggleview: _toggleview,);
     }
   }
 }

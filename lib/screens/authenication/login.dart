@@ -1,9 +1,13 @@
 import 'package:derbyjo/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
   final toggleview;
-  const Login({super.key, required void Function() this.toggleview});
+  const Login(
+      {super.key,
+      required void Function() this.toggleview,
+      });
 
   @override
   State<Login> createState() => _LoginState();
@@ -12,14 +16,6 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-
-  void _submit() {
-    final isValid = _formKey.currentState!.validate();
-    if (!isValid) {
-      return;
-    }
-    _formKey.currentState!.save();
-  }
 
   String _email = '';
   String _password = '';
@@ -171,7 +167,9 @@ class _LoginState extends State<Login> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          dynamic result = await _auth.login(_email, _password);
+                          _formKey.currentState!.save();
+
+                          dynamic result = await _auth.login(_email, _password,context);
                           if (result == null) {
                             setState(() {
                               error = 'Please supply a valid email';

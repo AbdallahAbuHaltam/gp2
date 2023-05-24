@@ -1,9 +1,11 @@
 import 'package:derbyjo/services/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
 
 class Signup extends StatefulWidget {
   final toggleview;
-  const Signup({super.key, required void Function() this.toggleview});
+  const Signup({super.key, required void Function() this.toggleview, });
 
   @override
   State<Signup> createState() => _SignupState();
@@ -17,9 +19,8 @@ class _SignupState extends State<Signup> {
   String username = '';
   String mobile = '';
   String password = '';
-  String error='';
+  String error = '';
 
-  
   bool _isObsecure = true;
 
   @override
@@ -158,7 +159,7 @@ class _SignupState extends State<Signup> {
                       keyboardType: TextInputType.emailAddress,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: (value) =>
-                          value!.length < 10? "Must be 10 length " : null,
+                          value!.length < 10 ? "Must be 10 length " : null,
                       onChanged: (val) {
                         mobile = val;
                       },
@@ -178,7 +179,7 @@ class _SignupState extends State<Signup> {
                     ),
                     TextFormField(
                       validator: (value) =>
-                          value!.length < 8? "Must be 8 length " : null,
+                          value!.length < 8 ? "Must be 8 length " : null,
                       obscureText: _isObsecure,
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(
@@ -238,7 +239,7 @@ class _SignupState extends State<Signup> {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.visiblePassword,
                       validator: (value) =>
-                          value!.length < 8? "Must be 8 length " : null,
+                          value!.length < 8 ? "Must be 8 length " : null,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: 18.0),
@@ -260,13 +261,17 @@ class _SignupState extends State<Signup> {
                             ),
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
-                                dynamic result= await _auth.registerW(email, password);
-                                if(result==null){
+                                _formKey.currentState!.save();
+
+                                dynamic result =
+                                    await _auth.registerW(email, password,context);
+                                if (result == null) {
                                   setState(() {
-                                    error='Please supply a valid email';
+                                    error = 'Please supply a valid email';
                                   });
                                 }
                               }
+                              
                             },
                             child: const Text(
                               'SignUp',
@@ -275,9 +280,7 @@ class _SignupState extends State<Signup> {
                           )),
                     ),
                   ],
-                  
                 ),
-                
                 Padding(
                   padding: const EdgeInsets.fromLTRB(160, 0, 0, 12),
                   child: Row(
@@ -307,7 +310,7 @@ class _SignupState extends State<Signup> {
                 ),
                 Text(
                   error,
-                  style: const TextStyle(color: Colors.red,fontSize: 12),
+                  style: const TextStyle(color: Colors.red, fontSize: 12),
                 ),
               ],
             ),
