@@ -25,11 +25,11 @@ class ProfileMenu extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(100),
-          color: accent,
+          color: Colors.grey.withOpacity(0.1),
         ),
         child: Icon(
           icon,
-          color: accent,
+          color: mRedColor,
         ),
       ),
       title: Text(title),
@@ -44,7 +44,7 @@ class ProfileMenu extends StatelessWidget {
               child: const Icon(
                 LineAwesomeIcons.angle_right,
                 size: 18,
-                color: Colors.grey,
+                color: mRedColor,
               ),
             )
           : null,

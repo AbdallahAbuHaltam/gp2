@@ -15,11 +15,12 @@ class Profile extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
-              Navigator.pop(context);
+            Navigator.pop(context);
           },
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: const Text("Profile"),
+        backgroundColor: mRedColor,
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -46,12 +47,12 @@ class Profile extends StatelessWidget {
                       height: 35,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
-                        color: mRedColor,
+                        color: mRedColor.withOpacity(0.8),
                       ),
                       child: const Icon(
                         LineAwesomeIcons.alternate_pencil,
                         size: 20,
-                        color: Colors.black,
+                        color: mBackgroundColor,
                       ),
                     ),
                   )
@@ -60,27 +61,36 @@ class Profile extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              const Text('Abdullah Abuhaltam'),
-              const Text('@UserName'),
+              const Text(
+                'Abdullah Abuhaltam',
+                style: TextStyle(fontWeight: FontWeight.w500),
+              ),
+              const Text(
+                '@UserName',
+                style: TextStyle(fontWeight: FontWeight.w400),
+              ),
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
               SizedBox(
                 width: 200,
                 child: ElevatedButton(
                   onPressed: () {},
-                  child: Text(
-                    'Edit Profile',
-                    style: TextStyle(color: Color.fromARGB(137, 23, 22, 22)),
-                  ),
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: mRedColor,
-                      side: BorderSide.none,
-                      shape: const StadiumBorder()),
+                    backgroundColor: mRedColor,
+                    side: BorderSide.none,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                  child: const Text(
+                    'Edit Profile',
+                    style: TextStyle(color: mBackgroundColor),
+                  ),
                 ),
               ),
               const SizedBox(
-                height: 30,
+                height: 40,
               ),
               const Divider(),
               const SizedBox(
@@ -91,11 +101,7 @@ class Profile extends StatelessWidget {
                 icon: LineAwesomeIcons.cog,
                 onpress: () {},
               ),
-              ProfileMenu(
-                title: "Billing Details",
-                icon: LineAwesomeIcons.wallet,
-                onpress: () {},
-              ),
+             
               ProfileMenu(
                 title: "User Management",
                 icon: LineAwesomeIcons.user_check,
@@ -125,5 +131,3 @@ class Profile extends StatelessWidget {
     );
   }
 }
-
-
