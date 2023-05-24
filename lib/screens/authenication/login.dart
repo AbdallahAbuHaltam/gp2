@@ -1,7 +1,6 @@
 import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 
-
 class Login extends StatefulWidget {
   final toggleview;
   const Login({super.key, required void Function() this.toggleview});
@@ -14,8 +13,16 @@ class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
-  String email = '';
-  String password = '';
+  void _submit() {
+    final isValid = _formKey.currentState!.validate();
+    if (!isValid) {
+      return;
+    }
+    _formKey.currentState!.save();
+  }
+
+  String _email = '';
+  String _password = '';
   String error = '';
 
   bool _isObsecure = true;
@@ -40,58 +47,80 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 350,
                 child: TextFormField(
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                      ),
-                      labelText: 'Enter Email',
-                      isDense: true,
-                      prefixIcon: Icon(Icons.email_outlined),
-                      hintText: 'Enter your email'),
-                  keyboardType: TextInputType.emailAddress,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  onChanged: (val) {
-                    setState(() {
-                      email = val;
-                    });
-                  },
-                  validator: (value) =>
-                      value!.isEmpty ? "Enter an Email! " : null,
-                ),
+                    decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        ),
+                        labelText: 'Enter Email',
+                        isDense: true,
+                        prefixIcon: Icon(Icons.email_outlined),
+                        hintText: 'Enter your email'),
+                    keyboardType: TextInputType.emailAddress,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    autocorrect: false,
+                    textCapitalization: TextCapitalization.none,
+                    onChanged: (val) {
+                      setState(() {
+                        _email = val;
+                      });
+                    },
+                    onSaved: (value) {
+                      _email = value!;
+                    },
+                    validator: (value) {
+                      if (value == null ||
+                          value.trim().isEmpty ||
+                          !value.contains('@')) {
+                        return "Please Enter a valid Email address";
+                      }
+                      return null;
+                    } //(value) =>
+                    //value!.isEmpty ? "Enter an Email! " : null,
+
+                    ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: SizedBox(
                   width: 350,
                   child: TextFormField(
-                    obscureText: _isObsecure,
-                    decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
-                        labelText: 'Enter Password ',
-                        isDense: true,
-                        prefixIcon: const Icon(Icons.key_rounded),
-                        suffixIcon: IconButton(
-                            onPressed: () {
-                              setState(() {
-                                _isObsecure = !_isObsecure;
-                              });
-                            },
-                            icon: Icon(_isObsecure
-                                ? Icons.visibility
-                                : Icons.visibility_off)),
-                        hintText: 'Enter your password'),
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    keyboardType: TextInputType.visiblePassword,
-                    onChanged: (val) {
-                      setState(() {
-                        password = val;
-                      });
-                    },
-                    validator: (value) =>
-                        value!.length < 8 ? "Must be 8 length " : null,
-                  ),
+                      obscureText: _isObsecure,
+                      decoration: InputDecoration(
+                          border: const OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15.0)),
+                          ),
+                          labelText: 'Enter Password ',
+                          isDense: true,
+                          prefixIcon: const Icon(Icons.key_rounded),
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _isObsecure = !_isObsecure;
+                                });
+                              },
+                              icon: Icon(_isObsecure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off)),
+                          hintText: 'Enter your password'),
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      keyboardType: TextInputType.visiblePassword,
+                      onChanged: (val) {
+                        setState(() {
+                          _password = val;
+                        });
+                      },
+                      onSaved: (value) {
+                        _password = value!;
+                      },
+                      validator: (value) {
+                        if (value == null || value.trim().length < 8) {
+                          return "Password must be 8 char long";
+                        }
+                        return null;
+                      } //(value) =>
+                      //value!.length < 8 ? "Must be 8 length " : null,
+                      ),
                 ),
               ),
               Padding(
@@ -142,7 +171,7 @@ class _LoginState extends State<Login> {
                       ),
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          dynamic result = await _auth.login(email, password);
+                          dynamic result = await _auth.login(_email, _password);
                           if (result == null) {
                             setState(() {
                               error = 'Please supply a valid email';
@@ -156,7 +185,6 @@ class _LoginState extends State<Login> {
                       ),
                     )),
               ),
-             
               Padding(
                 padding: const EdgeInsets.only(left: 330),
                 child: Row(
@@ -176,7 +204,6 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-              
               const Padding(
                 padding: EdgeInsets.only(top: 7, bottom: 7),
                 child: Text(
@@ -199,9 +226,7 @@ class _LoginState extends State<Login> {
                     child: Column(
                       children: [
                         Image.asset('images/Google.png'),
-                        
                       ],
-                      
                     ),
                   ),
                   Padding(
@@ -214,11 +239,8 @@ class _LoginState extends State<Login> {
                   ),
                 ],
               ),
-               
             ],
-            
           ),
-          
         ),
       ),
     );

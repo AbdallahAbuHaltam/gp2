@@ -19,6 +19,19 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
+ /* Widget build(BuildContext context) {
+   return StreamProvider<MyUser?>.value(
+      catchError: (User,user){
+        return null;
+      },
+      initialData: null,
+      value: AuthService().user,
+      child: const MaterialApp(
+        home: Wrapper(),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
+  }*/
   Widget build(BuildContext context) {
    return StreamProvider<MyUser?>.value(
       catchError: (User,user){

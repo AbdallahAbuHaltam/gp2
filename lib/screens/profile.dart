@@ -1,13 +1,22 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+import '../services/auth.dart';
 import '../utils/constants.dart';
 import '../widgets/profile_menu.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
   const Profile({
     super.key,
   });
+
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  final AuthService _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +131,10 @@ class Profile extends StatelessWidget {
                 title: "Logout",
                 icon: LineAwesomeIcons.alternate_sign_out,
                 endIcon: false,
-                onpress: () {},
+                onpress: () async {
+                  dynamic signout= await _auth.signout();
+
+                },
               ),
             ],
           ),

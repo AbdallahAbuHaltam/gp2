@@ -6,7 +6,7 @@ import 'screens/home/home.dart';
 
 class Wrapper extends StatelessWidget {
   const Wrapper({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     final user =Provider.of<MyUser?>(context);
