@@ -367,7 +367,7 @@ class _HomeState extends State<Home> {
                                 vertical: 25,
                               ),
                               child: Row(
-                                children:const [
+                                children: const [
                                   Icon(
                                     Icons.location_on,
                                     color: mRedColor,
@@ -392,36 +392,37 @@ class _HomeState extends State<Home> {
                                       color: Colors.amber,
                                     ),
                                   ),
-                                        
                                 ],
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(bottom:8.0),
+                              padding: const EdgeInsets.only(bottom: 8.0),
                               child: SizedBox(
-                                                      height: 35,
-                                                      width: 140,
-                                                      child: ElevatedButton(
-                              style: ButtonStyle(
-                                foregroundColor: MaterialStateProperty.all<Color>(
-                                    Colors.white),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(Colors.red),
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                ),
-                              ),
-                              onPressed: null,
-                              child: const Text(
-                                book,
-                                style: TextStyle(fontSize: 16),
-                              ),
-                                                      )),
+                                  height: 35,
+                                  width: 140,
+                                  child: ElevatedButton(
+                                    style: ButtonStyle(
+                                      foregroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.white),
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.red),
+                                      shape: MaterialStateProperty.all<
+                                          RoundedRectangleBorder>(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
+                                        ),
+                                      ),
+                                    ),
+                                    onPressed: null,
+                                    child: const Text(
+                                      book,
+                                      style: TextStyle(fontSize: 16),
+                                    ),
+                                  )),
                             ),
-                            
                           ],
                         ),
                       ),
@@ -433,6 +434,145 @@ class _HomeState extends State<Home> {
                       padding:
                           const EdgeInsets.only(top: 6, bottom: 30, right: 20),
                     ),
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: mBackgroundColor,
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            height: 140,
+                            width: 170,
+                            clipBehavior: Clip.antiAlias,
+                            child: Image.asset(
+                              'images/basketball.png',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            right: 0,
+                            child: ElevatedButton.icon(
+                              onPressed: null,
+                              icon: const Icon(
+                                Icons.person,
+                                color: Colors.black,
+                              ),
+                              label: const Text(
+                                '7/10',
+                                style: TextStyle(
+                                    color: Colors.black, fontSize: 10),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(84, 9),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                'Today from 10-11pm',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children:const  [
+                                   Text(
+                                    'ملعب القوات المسلحة',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 18,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width: 25,
+                                  ),
+                                  Icon(
+                                    Icons.sports_football,
+                                    color: Colors.green,
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 10,
+                              ),
+                              Row(
+                                children: const[
+                                  Icon(Icons.star, color: Colors.orange),
+                                  Icon(Icons.star, color: Colors.orange),
+                                  Icon(Icons.star, color: Colors.orange),
+                                  Icon(Icons.star_border, color: Colors.orange),
+                                  Icon(Icons.star_border, color: Colors.orange),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.location_on,
+                                        color: mRedColor,
+                                      ),
+                                      Text(
+                                        '2.1 km',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    child: ElevatedButton(
+                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                        fixedSize: const Size(100, 40),
+                                        primary: Colors.red,
+                                        onPrimary: Colors.white,
+                                      ),
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: const [
+                                          Text(book),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
