@@ -132,8 +132,8 @@ class _ProfileState extends State<Profile> {
                 icon: LineAwesomeIcons.alternate_sign_out,
                 endIcon: false,
                 onpress: () async {
-                  dynamic signout= await _auth.signout();
-
+                  await AuthService().signOut();
+                  Navigator.pop(context);
                 },
               ),
             ],

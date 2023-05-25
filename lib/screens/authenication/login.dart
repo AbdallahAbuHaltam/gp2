@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
-  final toggleview;
+  final Function toggleview;
   const Login(
       {super.key,
       required void Function() this.toggleview,
@@ -169,7 +169,7 @@ class _LoginState extends State<Login> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
 
-                          dynamic result = await _auth.login(_email, _password,context);
+                          dynamic result = await _auth.login(_email, _password);
                           if (result == null) {
                             setState(() {
                               error = 'Please supply a valid email';
@@ -211,28 +211,43 @@ class _LoginState extends State<Login> {
               ),
               Row(
                 children: [
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 95, right: 8),
-                        child: Image.asset('images/Facebook.png'),
-                      ),
-                    ],
-                  ),
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Image.asset('images/Google.png'),
-                      ],
+                    padding: const EdgeInsets.only(left: 95, right: 8),
+                    child: GestureDetector(
+                      child: Column(
+                        children: [
+                          Image.asset('images/Facebook.png')
+                        ],
+                      ),
+                      onTap: ()async{
+
+                      },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Image.asset('images/Apple Logo.png'),
-                      ],
+                    child: GestureDetector(
+                      onTap: ()async {
+                        await _auth.signInWithGoogle();
+                      },
+                      child: Column(
+                        children: [
+                          Image.asset('images/Google.png'),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        
+                      },
+                      child: Column(
+                        children: [
+                          Image.asset('images/Apple Logo.png'),
+                        ],
+                      ),
                     ),
                   ),
                 ],

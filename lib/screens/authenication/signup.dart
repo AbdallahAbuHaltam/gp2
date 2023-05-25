@@ -1,11 +1,14 @@
+import 'package:derbyjo/screens/home/home.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-
 class Signup extends StatefulWidget {
-  final toggleview;
-  const Signup({super.key, required void Function() this.toggleview, });
+  final Function toggleview;
+  const Signup({
+    super.key,
+    required void Function() this.toggleview,
+  });
 
   @override
   State<Signup> createState() => _SignupState();
@@ -103,6 +106,9 @@ class _SignupState extends State<Signup> {
                       onChanged: (val) {
                         email = val;
                       },
+                      onSaved: (value) {
+                        email = value!;
+                      },
                     ),
                     const SizedBox(
                       height: 10,
@@ -133,6 +139,9 @@ class _SignupState extends State<Signup> {
                       onChanged: (val) {
                         username = val;
                       },
+                      onSaved: (value) {
+                        username = value!;
+                      },
                     ),
                     const SizedBox(
                       height: 10,
@@ -162,6 +171,9 @@ class _SignupState extends State<Signup> {
                           value!.length < 10 ? "Must be 10 length " : null,
                       onChanged: (val) {
                         mobile = val;
+                      },
+                      onSaved: (value) {
+                        mobile = value!;
                       },
                     ),
                     const SizedBox(
@@ -202,6 +214,9 @@ class _SignupState extends State<Signup> {
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (val) {
                         password = val;
+                      },
+                      onSaved: (value) {
+                        password = value!;
                       },
                     ),
                     const SizedBox(
@@ -263,15 +278,16 @@ class _SignupState extends State<Signup> {
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
 
-                                dynamic result =
-                                    await _auth.registerW(email, password,context);
+                                dynamic result = await _auth.registerW(
+                                    email, password);
                                 if (result == null) {
                                   setState(() {
                                     error = 'Please supply a valid email';
                                   });
+                                } else {
+                                  
                                 }
                               }
-                              
                             },
                             child: const Text(
                               'SignUp',
