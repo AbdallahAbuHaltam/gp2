@@ -1,10 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
+import '../models/player.dart';
 import '../services/auth.dart';
 import '../utils/constants.dart';
 import '../widgets/profile_menu.dart';
+import '../firestore/database.dart';
+import 'package:provider/provider.dart';
+
+import 'authenication/signup.dart';
 
 class Profile extends StatefulWidget {
   const Profile({
@@ -16,10 +20,9 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  final AuthService _auth = AuthService();
-
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -74,8 +77,8 @@ class _ProfileState extends State<Profile> {
                 'Abdullah Abuhaltam',
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
-              const Text(
-                '@UserName',
+               Text(
+                player.username,
                 style: TextStyle(fontWeight: FontWeight.w400),
               ),
               const SizedBox(
@@ -110,7 +113,6 @@ class _ProfileState extends State<Profile> {
                 icon: LineAwesomeIcons.cog,
                 onpress: () {},
               ),
-             
               ProfileMenu(
                 title: "User Management",
                 icon: LineAwesomeIcons.user_check,

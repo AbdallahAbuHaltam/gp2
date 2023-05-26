@@ -1,7 +1,12 @@
-import 'package:derbyjo/screens/home/home.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/services/auth.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+
+import '../../models/player.dart';
+
+
+
+ Players player=Players(email: "", password: "", phoneNo: "", username: "",);
 
 class Signup extends StatefulWidget {
   final Function toggleview;
@@ -17,12 +22,8 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+    String error = '';
 
-  String email = '';
-  String username = '';
-  String mobile = '';
-  String password = '';
-  String error = '';
 
   bool _isObsecure = true;
 
@@ -104,10 +105,10 @@ class _SignupState extends State<Signup> {
                       keyboardType: TextInputType.emailAddress,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       onChanged: (val) {
-                        email = val;
+                        player.email = val;
                       },
                       onSaved: (value) {
-                        email = value!;
+                        player.email = value!;
                       },
                     ),
                     const SizedBox(
@@ -137,10 +138,10 @@ class _SignupState extends State<Signup> {
                       validator: (value) =>
                           value!.isEmpty ? "Enter UserName! " : null,
                       onChanged: (val) {
-                        username = val;
+                        player.username = val;
                       },
                       onSaved: (value) {
-                        username = value!;
+                        player.username = value!;
                       },
                     ),
                     const SizedBox(
@@ -170,10 +171,10 @@ class _SignupState extends State<Signup> {
                       validator: (value) =>
                           value!.length < 10 ? "Must be 10 length " : null,
                       onChanged: (val) {
-                        mobile = val;
+                        player.phoneNo = val;
                       },
                       onSaved: (value) {
-                        mobile = value!;
+                        player.phoneNo = value!;
                       },
                     ),
                     const SizedBox(
@@ -213,10 +214,10 @@ class _SignupState extends State<Signup> {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (val) {
-                        password = val;
+                        player.password = val;
                       },
                       onSaved: (value) {
-                        password = value!;
+                        player.password = value!;
                       },
                     ),
                     const SizedBox(
@@ -278,15 +279,22 @@ class _SignupState extends State<Signup> {
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
 
-                                dynamic result = await _auth.registerW(
-                                    email, password);
+                                dynamic result =
+                                    await _auth.registerW(player.email, player.password);
                                 if (result == null) {
                                   setState(() {
                                     error = 'Please supply a valid email';
                                   });
-                                } else {
-                                  
                                 }
+                                /*players
+                                    .add({
+                                      'username': username,
+                                      "email": email,
+                                      "Phone Number": mobile,
+                                      "Password": password
+                                    })
+                                    .then((value) => print('User is added'))
+                                    .catchError((e) => print(e));*/
                               }
                             },
                             child: const Text(

@@ -13,9 +13,11 @@ class DataBaseServices{
       "Password": password,
     });
   }
+  
 
   //get user stream
   Stream<QuerySnapshot> get users{
     return userCollection.snapshots();
   }
 }
+
