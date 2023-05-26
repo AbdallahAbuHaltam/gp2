@@ -1,3 +1,4 @@
+import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Reviews extends StatefulWidget {
@@ -16,7 +17,7 @@ class _ReviewsState extends State<Reviews> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
             child: Container(
-              color: Color.fromARGB(255, 241, 206, 203),
+              color: const Color.fromARGB(255, 241, 206, 203),
               child: Column(
                 children: [
                   Row(
@@ -32,13 +33,13 @@ class _ReviewsState extends State<Reviews> {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: Text(
                           "Mohammad Bader",
                           style: TextStyle(
                               fontSize: 15,
-                              color: Colors.black,
+                              color: mBlackColor,
                               fontWeight: FontWeight.bold),
                         ),
                       )
@@ -47,7 +48,7 @@ class _ReviewsState extends State<Reviews> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
                     child: Row(
-                      children: [
+                      children: const [
                         Text("It's very good stadium hahahahaha"),
                       ],
                     ),
@@ -58,13 +59,13 @@ class _ReviewsState extends State<Reviews> {
                       children: const [
                         Icon(
                           Icons.star_outline_rounded,
-                          color: Colors.amber,
+                          color: mYellow,
                         ),
                         Text(
                           "5.0",
                           style: TextStyle(
                             fontSize: 10,
-                            color: Colors.black,
+                            color: mBlackColor,
                             decoration: TextDecoration.none,
                           ),
                         )
@@ -76,7 +77,7 @@ class _ReviewsState extends State<Reviews> {
             ),
           ),
           Container(
-            color: Color.fromARGB(255, 236, 229, 228),
+            color: const Color.fromARGB(255, 236, 229, 228),
             child: Column(
               children: [
                 Row(
@@ -92,8 +93,8 @@ class _ReviewsState extends State<Reviews> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                       child: Text(
                         "Mohammad Alsaadi",
                         style: TextStyle(
@@ -107,7 +108,7 @@ class _ReviewsState extends State<Reviews> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
                   child: Row(
-                    children: [
+                    children: const [
                       Text("It's very baaaaaaaaaaaaaaaad stadium lol"),
                     ],
                   ),
@@ -118,13 +119,13 @@ class _ReviewsState extends State<Reviews> {
                     children: const [
                       Icon(
                         Icons.star_outline_rounded,
-                        color: Colors.amber,
+                        color: mYellow,
                       ),
                       Text(
                         "2.0",
                         style: TextStyle(
                           fontSize: 10,
-                          color: Colors.black,
+                          color: mBlackColor,
                           decoration: TextDecoration.none,
                         ),
                       )
@@ -135,7 +136,7 @@ class _ReviewsState extends State<Reviews> {
             ),
           ),
           Container(
-            color: Color.fromARGB(255, 241, 206, 203),
+            color: const Color.fromARGB(255, 241, 206, 203),
             child: Column(
               children: [
                 Row(
@@ -151,13 +152,13 @@ class _ReviewsState extends State<Reviews> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                       child: Text(
                         "water",
                         style: TextStyle(
                             fontSize: 15,
-                            color: Colors.black,
+                            color: mBlackColor,
                             fontWeight: FontWeight.bold),
                       ),
                     )
@@ -166,7 +167,7 @@ class _ReviewsState extends State<Reviews> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
                   child: Row(
-                    children: [
+                    children: const [
                       Text("iam water please help me heheehehehhehehehe"),
                     ],
                   ),
@@ -177,13 +178,13 @@ class _ReviewsState extends State<Reviews> {
                     children: const [
                       Icon(
                         Icons.star_outline_rounded,
-                        color: Colors.amber,
+                        color: mYellow,
                       ),
                       Text(
                         "4.5",
                         style: TextStyle(
                           fontSize: 10,
-                          color: Colors.black,
+                          color: mBlackColor,
                           decoration: TextDecoration.none,
                         ),
                       )
@@ -194,7 +195,7 @@ class _ReviewsState extends State<Reviews> {
             ),
           ),
           Container(
-            color: Color.fromARGB(255, 236, 229, 228),
+            color: const Color.fromARGB(255, 236, 229, 228),
             child: Column(
               children: [
                 Row(
@@ -210,13 +211,13 @@ class _ReviewsState extends State<Reviews> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    const Padding(
+                      padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
                       child: Text(
                         "gatoo",
                         style: TextStyle(
                             fontSize: 15,
-                            color: Colors.black,
+                            color: mBlackColor,
                             fontWeight: FontWeight.bold),
                       ),
                     )
@@ -225,7 +226,7 @@ class _ReviewsState extends State<Reviews> {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(100, 0, 0, 0),
                   child: Row(
-                    children: [
+                    children: const [
                       Text("nkbndklbnslknklsnl;m;lsnms"),
                     ],
                   ),
@@ -236,13 +237,13 @@ class _ReviewsState extends State<Reviews> {
                     children: const [
                       Icon(
                         Icons.star_outline_rounded,
-                        color: Colors.amber,
+                        color: mYellow,
                       ),
                       Text(
                         "4.5",
                         style: TextStyle(
                           fontSize: 10,
-                          color: Colors.black,
+                          color: mBlackColor,
                           decoration: TextDecoration.none,
                         ),
                       )

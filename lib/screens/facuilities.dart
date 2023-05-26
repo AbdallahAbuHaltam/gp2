@@ -1,3 +1,4 @@
+import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Facuilities extends StatefulWidget {
@@ -50,7 +51,7 @@ class _FacuilitiesState extends State<Facuilities> {
                           children: const [
                             Icon(
                               Icons.local_offer_outlined,
-                              color: Colors.red,
+                              color: mRedColor,
                             ),
                             Text("15% Discount"),
                           ],
@@ -64,7 +65,7 @@ class _FacuilitiesState extends State<Facuilities> {
                       padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(3),
-                          color: Colors.redAccent),
+                          color: mRedColor),
                       child: Row(
                         children: [
                           InkWell(
@@ -75,7 +76,7 @@ class _FacuilitiesState extends State<Facuilities> {
                               },
                               child: const Icon(
                                 Icons.remove_outlined,
-                                color: Colors.white,
+                                color: mBackgroundColor,
                                 size: 20,
                               )),
                           Container(
@@ -84,11 +85,11 @@ class _FacuilitiesState extends State<Facuilities> {
                                 horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(3),
-                                color: Colors.white),
+                                color: mBackgroundColor),
                             child: Text(
-                              "${item}",
+                              "$item",
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 15),
+                                  const TextStyle(color: mBlackColor, fontSize: 15),
                             ),
                           ),
                           InkWell(
@@ -99,7 +100,7 @@ class _FacuilitiesState extends State<Facuilities> {
                               },
                               child: const Icon(
                                 Icons.add,
-                                color: Colors.white,
+                                color: mBackgroundColor,
                                 size: 20,
                               )),
                         ],
@@ -138,7 +139,7 @@ class _FacuilitiesState extends State<Facuilities> {
                           children: const [
                             Icon(
                               Icons.local_offer_outlined,
-                              color: Colors.red,
+                              color: mRedColor,
                             ),
                             Text("15% Discount")
                           ],
@@ -152,7 +153,7 @@ class _FacuilitiesState extends State<Facuilities> {
                       padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(3),
-                          color: Colors.redAccent),
+                          color: mRedColor),
                       child: Row(
                         children: [
                           InkWell(
@@ -163,7 +164,7 @@ class _FacuilitiesState extends State<Facuilities> {
                               },
                               child: const Icon(
                                 Icons.remove_outlined,
-                                color: Colors.white,
+                                color: mBackgroundColor,
                                 size: 20,
                               )),
                           Container(
@@ -172,11 +173,11 @@ class _FacuilitiesState extends State<Facuilities> {
                                 horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(3),
-                                color: Colors.white),
+                                color: mBackgroundColor),
                             child: Text(
-                              "${item2}",
+                              "$item2",
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 15),
+                                  const TextStyle(color: mBlackColor, fontSize: 15),
                             ),
                           ),
                           InkWell(
@@ -187,7 +188,7 @@ class _FacuilitiesState extends State<Facuilities> {
                               },
                               child: const Icon(
                                 Icons.add,
-                                color: Colors.white,
+                                color: mBackgroundColor,
                                 size: 20,
                               )),
                         ],
@@ -209,13 +210,13 @@ class _FacuilitiesState extends State<Facuilities> {
                   Padding(
                     padding: const EdgeInsets.all(40.0),
                     child: Column(
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           "Red Kit",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
-                        const Text(
+                        Text(
                           "Free",
                           style: TextStyle(
                               fontSize: 14,
@@ -231,7 +232,7 @@ class _FacuilitiesState extends State<Facuilities> {
                       padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(3),
-                          color: Colors.redAccent),
+                          color: mRedColor),
                       child: Row(
                         children: [
                           InkWell(
@@ -242,7 +243,7 @@ class _FacuilitiesState extends State<Facuilities> {
                               },
                               child: const Icon(
                                 Icons.remove_outlined,
-                                color: Colors.white,
+                                color: mBackgroundColor,
                                 size: 20,
                               )),
                           Container(
@@ -251,11 +252,11 @@ class _FacuilitiesState extends State<Facuilities> {
                                 horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(3),
-                                color: Colors.white),
+                                color: mBackgroundColor),
                             child: Text(
-                              "${item3}",
+                              "$item3",
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 15),
+                                  const TextStyle(color: mBlackColor, fontSize: 15),
                             ),
                           ),
                           InkWell(
@@ -266,7 +267,7 @@ class _FacuilitiesState extends State<Facuilities> {
                               },
                               child: const Icon(
                                 Icons.add,
-                                color: Colors.white,
+                                color: mBackgroundColor,
                                 size: 20,
                               )),
                         ],
@@ -288,13 +289,13 @@ class _FacuilitiesState extends State<Facuilities> {
                   Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
-                      children: [
-                        const Text(
+                      children: const [
+                        Text(
                           "Yollow cut",
                           style: TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 20),
                         ),
-                        const Text(
+                        Text(
                           "Free",
                           style: TextStyle(
                               fontSize: 14,
@@ -310,7 +311,7 @@ class _FacuilitiesState extends State<Facuilities> {
                       padding: const EdgeInsets.all(2),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(3),
-                          color: Colors.redAccent),
+                          color: mRedColor),
                       child: Row(
                         children: [
                           InkWell(
@@ -321,7 +322,7 @@ class _FacuilitiesState extends State<Facuilities> {
                               },
                               child: const Icon(
                                 Icons.remove_outlined,
-                                color: Colors.white,
+                                color: mBackgroundColor,
                                 size: 20,
                               )),
                           Container(
@@ -330,11 +331,11 @@ class _FacuilitiesState extends State<Facuilities> {
                                 horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(3),
-                                color: Colors.white),
+                                color: mBackgroundColor),
                             child: Text(
-                              "${item4}",
+                              "$item4",
                               style:
-                                  TextStyle(color: Colors.black, fontSize: 15),
+                                  const TextStyle(color: mBlackColor, fontSize: 15),
                             ),
                           ),
                           InkWell(
@@ -345,7 +346,7 @@ class _FacuilitiesState extends State<Facuilities> {
                               },
                               child: const Icon(
                                 Icons.add,
-                                color: Colors.white,
+                                color: mBackgroundColor,
                                 size: 20,
                               )),
                         ],

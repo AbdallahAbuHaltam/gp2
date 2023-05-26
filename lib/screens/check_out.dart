@@ -2,6 +2,7 @@
 import 'package:derbyjo/screens/facuilities.dart';
 import 'package:derbyjo/screens/info.dart';
 import 'package:derbyjo/screens/review.dart';
+import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 
@@ -35,7 +36,7 @@ class _CheckOutState extends State<CheckOut> {
           Container(
             width: 411,
             height: 200,
-            color: Colors.red,
+            color: mRedColor,
             child: Stack(
               fit: StackFit.expand,
               children: [
@@ -66,8 +67,8 @@ class _CheckOutState extends State<CheckOut> {
                       iconSize: 40,
                       isFavorite: true,
                       // iconDisabledColor: Colors.white,
-                      valueChanged: (_isFavorite) {
-                        print('Is Favorite : $_isFavorite');
+                      valueChanged: (isFavorite) {
+                        print('Is Favorite : $isFavorite');
                       },
                     ),
                   ),
@@ -79,7 +80,7 @@ class _CheckOutState extends State<CheckOut> {
             padding: const EdgeInsets.fromLTRB(0, 170, 0, 0),
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(17)),
+                  color: mBackgroundColor, borderRadius: BorderRadius.circular(17)),
               child: Column(children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(350, 0, 0, 0),
@@ -89,13 +90,13 @@ class _CheckOutState extends State<CheckOut> {
                       children: const [
                         Icon(
                           Icons.star_outline_rounded,
-                          color: Colors.amber,
+                          color: mYellow,
                         ),
                         Text(
                           "5.0",
                           style: TextStyle(
                             fontSize: 10,
-                            color: Colors.black,
+                            color: mBlackColor,
                             decoration: TextDecoration.none,
                           ),
                         )
@@ -111,7 +112,7 @@ class _CheckOutState extends State<CheckOut> {
                         style: TextStyle(
                             fontSize: 25,
                             decoration: TextDecoration.none,
-                            color: Colors.black,
+                            color: mBlackColor,
                             fontWeight: FontWeight.bold)),
                   ),
                 ),
@@ -120,14 +121,14 @@ class _CheckOutState extends State<CheckOut> {
                   child: Row(children: const [
                     Icon(
                       Icons.location_on_outlined,
-                      color: Color.fromARGB(255, 0, 0, 0),
+                      color: mBlackColor,
                     ),
                     Text(
                       "Amman-Jordan",
                       style: TextStyle(
                           fontSize: 12,
                           decoration: TextDecoration.none,
-                          color: Colors.black),
+                          color: mBlackColor),
                     ),
                   ]),
                 ),
@@ -139,7 +140,7 @@ class _CheckOutState extends State<CheckOut> {
                       style: TextStyle(
                           fontSize: 12,
                           decoration: TextDecoration.none,
-                          color: Colors.black),
+                          color: mBlackColor),
                     ),
                   ]),
                 ),
@@ -210,7 +211,7 @@ class _CheckOutState extends State<CheckOut> {
             child: MaterialButton(
               minWidth: 0,
               onPressed: () {},
-              color: Color.fromARGB(255, 218, 44, 93),
+              color: mRedColor,
               elevation: 10,
               height: 50,
               shape: RoundedRectangleBorder(
@@ -222,7 +223,7 @@ class _CheckOutState extends State<CheckOut> {
                     "1 item",
                     style: TextStyle(
                       fontSize: 15,
-                      color: Colors.white,
+                      color: mBackgroundColor,
                     ),
                   ),
                   Padding(
@@ -231,7 +232,7 @@ class _CheckOutState extends State<CheckOut> {
                       "checkout",
                       style: TextStyle(
                           fontSize: 18,
-                          color: Colors.white,
+                          color: mBackgroundColor,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -241,7 +242,7 @@ class _CheckOutState extends State<CheckOut> {
                       "37.00JD",
                       style: TextStyle(
                         fontSize: 15,
-                        color: Colors.white,
+                        color: mBackgroundColor,
                       ),
                     ),
                   ),

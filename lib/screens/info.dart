@@ -17,7 +17,7 @@ class _InfoState extends State<Info> {
           children: <Widget>[
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+              children: const <Widget>[
                 CircleAvatar(
                   backgroundImage: AssetImage('images/gatoo.jpeg'),
                   radius: 40,
@@ -29,12 +29,12 @@ class _InfoState extends State<Info> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
                 width:
                     20), // Add a SizedBox between the first and second Column
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+              children: const <Widget>[
                 CircleAvatar(
                   backgroundImage: AssetImage('images/waterr.jpeg'),
                   radius: 40,
@@ -46,12 +46,12 @@ class _InfoState extends State<Info> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
                 width:
                     20), // Add a SizedBox between the second and third Column
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+              children: const <Widget>[
                 CircleAvatar(
                   backgroundImage: AssetImage('images/park.jpeg'),
                   radius: 40,
@@ -63,12 +63,12 @@ class _InfoState extends State<Info> {
                 )
               ],
             ),
-            SizedBox(
+            const SizedBox(
                 width:
                     20), // Add a SizedBox between the third and fourth Column
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
+              children: const <Widget>[
                 CircleAvatar(
                   backgroundImage: AssetImage('images/kut.png'),
                   radius: 40,
