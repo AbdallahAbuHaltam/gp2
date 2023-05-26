@@ -113,7 +113,7 @@ class _CategoriesState extends State<Categories> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 30, 0, 8.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 175,
                             height: 250,
                             child: Stack(
@@ -158,8 +158,8 @@ class _CategoriesState extends State<Categories> {
                                                   padding: const EdgeInsets.fromLTRB(
                                                       10, 0, 0, 0),
                                                   child: Row(
-                                                    children: [
-                                                      const Text(
+                                                    children: const [
+                                                      Text(
                                                         "Explore ",
                                                         style: TextStyle(
                                                             fontSize: 15,
@@ -183,7 +183,7 @@ class _CategoriesState extends State<Categories> {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 30, 0, 8.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 175,
                             height: 250,
                             child: Stack(
@@ -201,7 +201,7 @@ class _CategoriesState extends State<Categories> {
                                     left: 0,
                                     child: Column(
                                       children: [
-                                        Text(
+                                        const Text(
                                           "Bsaketball",
                                           style: TextStyle(
                                               fontSize: 20,
@@ -225,10 +225,10 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.fromLTRB(
+                                                  padding: const EdgeInsets.fromLTRB(
                                                       10, 0, 0, 0),
                                                   child: Row(
-                                                    children: [
+                                                    children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
@@ -257,7 +257,7 @@ class _CategoriesState extends State<Categories> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 20, 0, 8.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 175,
                             height: 250,
                             child: Stack(
@@ -275,7 +275,7 @@ class _CategoriesState extends State<Categories> {
                                     left: 0,
                                     child: Column(
                                       children: [
-                                        Text(
+                                        const Text(
                                           "Volley",
                                           style: TextStyle(
                                               fontSize: 20,
@@ -299,10 +299,10 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.fromLTRB(
+                                                  padding: const EdgeInsets.fromLTRB(
                                                       10, 0, 0, 0),
                                                   child: Row(
-                                                    children: [
+                                                    children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
@@ -327,7 +327,7 @@ class _CategoriesState extends State<Categories> {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 20, 0, 8.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 175,
                             height: 250,
                             child: Stack(
@@ -345,7 +345,7 @@ class _CategoriesState extends State<Categories> {
                                     left: 0,
                                     child: Column(
                                       children: [
-                                        Text(
+                                        const Text(
                                           "Tennis",
                                           style: TextStyle(
                                               fontSize: 20,
@@ -369,10 +369,10 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.fromLTRB(
+                                                  padding: const EdgeInsets.fromLTRB(
                                                       10, 0, 0, 0),
                                                   child: Row(
-                                                    children: [
+                                                    children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
@@ -401,7 +401,7 @@ class _CategoriesState extends State<Categories> {
                       children: [
                         Padding(
                           padding: const EdgeInsets.fromLTRB(0, 20, 0, 8.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 175,
                             height: 250,
                             child: Stack(
@@ -419,7 +419,7 @@ class _CategoriesState extends State<Categories> {
                                     left: 0,
                                     child: Column(
                                       children: [
-                                        Text(
+                                        const Text(
                                           "Padel",
                                           style: TextStyle(
                                               fontSize: 20,
@@ -443,10 +443,10 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.fromLTRB(
+                                                  padding: const EdgeInsets.fromLTRB(
                                                       10, 0, 0, 0),
                                                   child: Row(
-                                                    children: [
+                                                    children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
@@ -471,7 +471,7 @@ class _CategoriesState extends State<Categories> {
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 20, 0, 8.0),
-                          child: Container(
+                          child: SizedBox(
                             width: 175,
                             height: 250,
                             child: Stack(
@@ -489,7 +489,7 @@ class _CategoriesState extends State<Categories> {
                                     left: 0,
                                     child: Column(
                                       children: [
-                                        Text(
+                                        const Text(
                                           "Table Tennis",
                                           style: TextStyle(
                                               fontSize: 20,
@@ -513,10 +513,10 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsets.fromLTRB(
+                                                  padding: const EdgeInsets.fromLTRB(
                                                       10, 0, 0, 0),
                                                   child: Row(
-                                                    children: [
+                                                    children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
@@ -557,7 +557,7 @@ class _CategoriesState extends State<Categories> {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomMenu(),
+      bottomNavigationBar: const BottomMenu(),
     );
   }
 }

@@ -56,6 +56,7 @@ class _BookingState extends State<Booking> {
                     isFavorite: true,
                     // iconDisabledColor: Colors.white,
                     valueChanged: (isFavorite) {
+                      // ignore: avoid_print
                       print('Is Favorite : $isFavorite');
                     },
                   ),
@@ -75,11 +76,11 @@ class _BookingState extends State<Booking> {
                   borderRadius: BorderRadius.circular(17)),
               child: Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                    child: Container(
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    child: SizedBox(
                       height: 30,
-                      child: const Text("ملعب القوات المسلحة",
+                      child: Text("ملعب القوات المسلحة",
                           style: TextStyle(
                               fontSize: 25,
                               decoration: TextDecoration.none,
@@ -302,98 +303,77 @@ class _BookingState extends State<Booking> {
                                 Padding(
                                   padding:
                                       const EdgeInsets.fromLTRB(15, 30, 0, 0),
-                                  child: Row(children: [
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              0, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/add3.png",
-                                              width: 600,
-                                              height: 300,
-                                              color: mBackgroundColor,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          )),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              6, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/add3.png",
-                                              width: 500,
-                                              height: 300,
-                                              color: mBackgroundColor,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          )),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              6, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/add3.png",
-                                              width: 500,
-                                              height: 300,
-                                              color: mBackgroundColor,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          )),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              6, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/add3.png",
-                                              width: 500,
-                                              height: 300,
-                                              color: mBackgroundColor,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          ),),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
+                                  child: Row(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                0, 0, 0, 0),
+                                            child: IconButton(
+                                              icon: Image.asset(
+                                                "images/add3.png",
+                                                width: 600,
+                                                height: 300,
+                                                color: mBackgroundColor,
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const AddPlayer()),
+                                                );
+                                              },
+                                            )),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                6, 0, 0, 0),
+                                            child: IconButton(
+                                              icon: Image.asset(
+                                                "images/add3.png",
+                                                width: 500,
+                                                height: 300,
+                                                color: mBackgroundColor,
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const AddPlayer()),
+                                                );
+                                              },
+                                            )),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                                6, 0, 0, 0),
+                                            child: IconButton(
+                                              icon: Image.asset(
+                                                "images/add3.png",
+                                                width: 500,
+                                                height: 300,
+                                                color: mBackgroundColor,
+                                              ),
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const AddPlayer()),
+                                                );
+                                              },
+                                            )),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
                                           padding: const EdgeInsets.fromLTRB(
                                               6, 0, 0, 0),
                                           child: IconButton(
@@ -411,11 +391,12 @@ class _BookingState extends State<Booking> {
                                                         const AddPlayer()),
                                               );
                                             },
-                                          ),),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
                                           padding: const EdgeInsets.fromLTRB(
                                               6, 0, 0, 0),
                                           child: IconButton(
@@ -430,12 +411,38 @@ class _BookingState extends State<Booking> {
                                                 context,
                                                 MaterialPageRoute(
                                                     builder: (context) =>
-                                                        const AddPlayer(),),
+                                                        const AddPlayer()),
                                               );
                                             },
-                                          ),),
-                                    ),
-                                  ],),
+                                          ),
+                                        ),
+                                      ),
+                                      Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              6, 0, 0, 0),
+                                          child: IconButton(
+                                            icon: Image.asset(
+                                              "images/add3.png",
+                                              width: 500,
+                                              height: 300,
+                                              color: mBackgroundColor,
+                                            ),
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const AddPlayer(),
+                                                ),
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -523,143 +530,139 @@ class _AddPlayerState extends State<AddPlayer> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(50, 130, 50, 130),
         child: Scaffold(
-          body: Container(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
-                  child: Column(
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 0, 225, 0),
+                      child: IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Image.asset(
+                            "images/left.png",
+                          )),
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                        ),
+                        labelText: 'User Name',
+                        isDense: true,
+                        prefixIcon: Icon(Icons.person),
+                      ),
+                      keyboardType: TextInputType.emailAddress,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(150, 10, 50, 60),
+                child: MaterialButton(
+                  minWidth: 0,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Booking()),
+                    );
+                  },
+                  color: mRedColor,
+                  elevation: 10,
+                  height: 50,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 225, 0),
-                        child: IconButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            icon: Image.asset(
-                              "images/left.png",
-                            )),
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                          labelText: 'User Name',
-                          isDense: true,
-                          prefixIcon: Icon(Icons.person),
+                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Row(
+                          children: const [
+                            Text(
+                              "find ",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: mBackgroundColor,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                        keyboardType: TextInputType.emailAddress,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
                       ),
                     ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(150, 10, 50, 60),
-                  child: MaterialButton(
-                    minWidth: 0,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Booking()),
-                      );
-                    },
-                    color: mRedColor,
-                    elevation: 10,
-                    height: 50,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                child: Align(
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Image.asset(
+                            "images/bader.jpg",
+                            width: 50,
+                            height: 50,
+                          ),
+                          const Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text(
+                              "Mohammad Bader",
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  color: mBlackColor,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(50, 50, 50, 20),
+                        child: MaterialButton(
+                          minWidth: 0,
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const Booking()),
+                            );
+                          },
+                          color: mRedColor,
+                          elevation: 10,
+                          height: 50,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           child: Row(
-                            children: const [
-                              Text(
-                                "find ",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: mBackgroundColor,
-                                    fontWeight: FontWeight.bold),
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(60, 0, 0, 0),
+                                child: Row(
+                                  children: const [
+                                    Text(
+                                      "Add ",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          color: mBackgroundColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                  child: Align(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Image.asset(
-                              "images/bader.jpg",
-                              width: 50,
-                              height: 50,
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.all(10.0),
-                              child: Text(
-                                "Mohammad Bader",
-                                style: TextStyle(
-                                    fontSize: 15,
-                                    color: mBlackColor,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            )
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(50, 50, 50, 20),
-                          child: MaterialButton(
-                            minWidth: 0,
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const Booking()),
-                              );
-                            },
-                            color: mRedColor,
-                            elevation: 10,
-                            height: 50,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Row(
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(60, 0, 0, 0),
-                                  child: Row(
-                                    children: const [
-                                      Text(
-                                        "Add ",
-                                        style: TextStyle(
-                                            fontSize: 15,
-                                            color: mBackgroundColor,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

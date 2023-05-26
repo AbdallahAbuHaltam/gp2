@@ -1,7 +1,6 @@
 import 'package:derbyjo/firestore/database.dart';
 import 'package:derbyjo/screens/categories.dart';
 import 'package:derbyjo/screens/profile.dart';
-import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -21,7 +20,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return StreamProvider.value(
-      initialData: [],
+      initialData: const [],
       value: DataBaseServices().users,
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -300,7 +299,7 @@ class _HomeState extends State<Home> {
                               padding: const EdgeInsets.only(top: 0),
                               child: Stack(
                                 children: [
-                                  Container(
+                                  SizedBox(
                                     width: 324,
                                     height: 184,
                                     child: ClipRRect(
@@ -571,9 +570,7 @@ class _HomeState extends State<Home> {
                                       child: ElevatedButton(
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
-                                          fixedSize: const Size(100, 40),
-                                          primary: Colors.red,
-                                          onPrimary: Colors.white,
+                                          foregroundColor: Colors.white, backgroundColor: Colors.red, fixedSize: const Size(100, 40),
                                           shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(15),
                                           )
@@ -610,7 +607,7 @@ class _HomeState extends State<Home> {
           ),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        bottomNavigationBar: BottomMenu(),
+        bottomNavigationBar: const BottomMenu(),
       ),
     );
   }

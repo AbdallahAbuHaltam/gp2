@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
-import '../models/player.dart';
 import '../services/auth.dart';
 import '../utils/constants.dart';
 import '../widgets/profile_menu.dart';
-import '../firestore/database.dart';
-import 'package:provider/provider.dart';
-
 import 'authenication/signup.dart';
 
 class Profile extends StatefulWidget {
@@ -22,7 +17,6 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -77,9 +71,9 @@ class _ProfileState extends State<Profile> {
                 'Abdullah Abuhaltam',
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
-               Text(
+              Text(
                 player.username,
-                style: TextStyle(fontWeight: FontWeight.w400),
+                style: const TextStyle(fontWeight: FontWeight.w400),
               ),
               const SizedBox(
                 height: 30,
@@ -135,6 +129,7 @@ class _ProfileState extends State<Profile> {
                 endIcon: false,
                 onpress: () async {
                   await AuthService().signOut();
+                  // ignore: use_build_context_synchronously
                   Navigator.pop(context);
                 },
               ),

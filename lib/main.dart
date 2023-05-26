@@ -1,7 +1,6 @@
 import 'package:derbyjo/screens/authenication/get_started.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
-import 'wrapper.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';

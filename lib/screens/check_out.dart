@@ -1,11 +1,8 @@
-
 import 'package:derbyjo/screens/facuilities.dart';
 import 'package:derbyjo/screens/info.dart';
 import 'package:derbyjo/screens/review.dart';
 import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
-
-
 import 'package:favorite_button/favorite_button.dart';
 
 class CheckOut extends StatefulWidget {
@@ -68,6 +65,7 @@ class _CheckOutState extends State<CheckOut> {
                       isFavorite: true,
                       // iconDisabledColor: Colors.white,
                       valueChanged: (isFavorite) {
+                        // ignore: avoid_print
                         print('Is Favorite : $isFavorite');
                       },
                     ),
@@ -80,11 +78,12 @@ class _CheckOutState extends State<CheckOut> {
             padding: const EdgeInsets.fromLTRB(0, 170, 0, 0),
             child: Container(
               decoration: BoxDecoration(
-                  color: mBackgroundColor, borderRadius: BorderRadius.circular(17)),
+                  color: mBackgroundColor,
+                  borderRadius: BorderRadius.circular(17)),
               child: Column(children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(350, 0, 0, 0),
-                  child: Container(
+                  child: SizedBox(
                     height: 25,
                     child: Row(
                       children: const [
@@ -104,11 +103,11 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: Container(
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: SizedBox(
                     height: 30,
-                    child: const Text("ملعب القوات المسلحة",
+                    child: Text("ملعب القوات المسلحة",
                         style: TextStyle(
                             fontSize: 25,
                             decoration: TextDecoration.none,
@@ -149,12 +148,12 @@ class _CheckOutState extends State<CheckOut> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 265, 0, 0),
-            child: Container(
+            child: SizedBox(
               height: 100,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                 child: Scaffold(
-                  backgroundColor: Color.fromARGB(255, 208, 208, 208),
+                  backgroundColor: const Color.fromARGB(255, 208, 208, 208),
                   body: NavigationBar(
                       elevation: 0,
                       height: 60,
@@ -190,17 +189,15 @@ class _CheckOutState extends State<CheckOut> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 345, 0, 0),
-            child: Container(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                child: Scaffold(
-                  backgroundColor: Color.fromARGB(255, 229, 229, 229),
-                  body: Center(
-                    child: SingleChildScrollView(
-                      child: Column(children: [
-                        pages[index],
-                      ]),
-                    ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Scaffold(
+                backgroundColor: const Color.fromARGB(255, 229, 229, 229),
+                body: Center(
+                  child: SingleChildScrollView(
+                    child: Column(children: [
+                      pages[index],
+                    ]),
                   ),
                 ),
               ),

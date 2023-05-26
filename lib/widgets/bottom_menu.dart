@@ -30,7 +30,7 @@ class _BottomMenuState extends State<BottomMenu> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
+            SizedBox(
               height: 50.0,
               width: MediaQuery.of(context).size.width / 2 - 40.0,
               child: Row(
@@ -49,27 +49,27 @@ class _BottomMenuState extends State<BottomMenu> {
                     },
                   ),
                   GestureDetector(
-                    child: Icon(
+                    onTap: null,
+                    child: const Icon(
                       Icons.search,
                       color: mBackgroundColor,
                     ),
-                    onTap: null,
                   )
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               height: 50.0,
               width: MediaQuery.of(context).size.width / 2 - 40.0,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   GestureDetector(
+                    onTap: null,
                     child: const Icon(
                       Icons.history,
                       color: mBackgroundColor,
                     ),
-                    onTap: null,
                   ),
                   GestureDetector(
                     child: const Icon(
