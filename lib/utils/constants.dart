@@ -6,6 +6,7 @@ const mBackgroundColor=Color(0xFFF5FAFF);
 //Main color
 const mRedColor=Color(0xFFFF5050);
 const mBlackColor=Colors.black;
+const mYellow=Colors.yellow;
 
 //Box color
 final shadowColor = const Color(0xFFB7B7B7).withOpacity(.15);
