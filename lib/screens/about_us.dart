@@ -28,8 +28,8 @@ class _AboutUsState extends State<AboutUs> {
               width: 50,
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
-              child: Image.asset("images/dj3.png"),
+              padding: const EdgeInsets.fromLTRB(11, 0, 0, 8),
+              child: Image.asset("images/dj2.png"),
             )
           ],
         ),

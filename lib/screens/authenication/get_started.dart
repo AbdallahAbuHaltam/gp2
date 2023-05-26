@@ -23,7 +23,7 @@ class _GetStartState extends State<GetStart> {
         Padding(
           padding: const EdgeInsets.fromLTRB(0, 80, 0, 0),
           child: Image.asset(
-            "images/djo.png",
+            "images/LogoD.jpeg",
           ),
         ),
         Padding(
@@ -69,9 +69,9 @@ class _GetStartState extends State<GetStart> {
             child: Row(
               children: const [
                 Padding(
-                  padding: EdgeInsets.fromLTRB(95, 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(105, 0, 0, 0),
                   child: Text(
-                    "Sign Up",
+                    "Login",
                     style: TextStyle(
                         fontSize: 20,
                         color: mBackgroundColor,
@@ -103,7 +103,7 @@ class _GetStartState extends State<GetStart> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(105, 0, 0, 0),
                   child: Text(
-                    "Login",
+                    "Signup",
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -119,7 +119,7 @@ class _GetStartState extends State<GetStart> {
           child: Row(
             children: [
               Text(
-                "learn more",
+                "Learn more",
                 style: TextStyle(
                     fontSize: 12,
                     color: Colors.black,
