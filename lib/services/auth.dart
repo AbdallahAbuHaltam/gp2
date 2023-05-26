@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:derbyjo/firestore/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:derbyjo/models/user.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,8 @@ class AuthService {
     try{
     UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
     User? user = result.user;
+    //create a new document for the user with the id
+    await DataBaseServices(uid: user!.uid).updateUserData("username", email, "phoneNo", password);
     if (!_auth.currentUser!.emailVerified) {
       await _auth.currentUser!.sendEmailVerification();
     }

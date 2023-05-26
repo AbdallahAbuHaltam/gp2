@@ -3,6 +3,7 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../utils/constants.dart';
+import '../widgets/bottom_menu.dart';
 
 
 class Categories extends StatefulWidget {
@@ -547,6 +548,16 @@ class _CategoriesState extends State<Categories> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: mBackgroundColor,
+        child: const Icon(
+          Icons.add,
+          color: mRedColor,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomMenu(),
     );
   }
 }
