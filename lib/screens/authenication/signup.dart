@@ -1,18 +1,21 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:derbyjo/screens/authenication/login.dart';
 import 'package:derbyjo/services/auth.dart';
+import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/player.dart';
 
-
-
- Players player=Players(email: "", password: "", phoneNo: "", username: "",);
+Players player = Players(
+  email: "",
+  password: "",
+  phoneNo: "",
+  username: "",
+);
 
 class Signup extends StatefulWidget {
-  final Function toggleview;
   const Signup({
     super.key,
-    required void Function() this.toggleview,
   });
 
   @override
@@ -22,8 +25,7 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-    String error = '';
-
+  String error = '';
 
   bool _isObsecure = true;
 
@@ -31,17 +33,17 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      backgroundColor: Colors.white,
+      backgroundColor: mBackgroundColor,
       appBar: AppBar(
         title: Row(
           children: <Widget>[
             const Padding(
               padding: EdgeInsets.fromLTRB(85, 0, 0, 0),
               child: Text(
-                "Sign Up",
+                signup,
                 style: TextStyle(
                     fontSize: 25,
-                    color: Colors.black,
+                    color: mBlackColor,
                     fontWeight: FontWeight.bold),
               ),
             ),
@@ -55,15 +57,15 @@ class _SignupState extends State<Signup> {
           ],
         ),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: mBackgroundColor,
         leading: IconButton(
           onPressed: () {
-            widget.toggleview();
+            Navigator.pop(context);
           },
           icon: const Icon(
             Icons.arrow_back_ios,
             size: 20,
-            color: Colors.black,
+            color: mBlackColor,
           ),
         ),
       ),
@@ -84,7 +86,7 @@ class _SignupState extends State<Signup> {
                     const Padding(
                       padding: EdgeInsets.fromLTRB(0, 0, 260, 10),
                       child: Text(
-                        "Email  Address",
+                        emailA,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -98,7 +100,7 @@ class _SignupState extends State<Signup> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        labelText: ' Email Address',
+                        labelText: emailA,
                         isDense: true,
                         prefixIcon: Icon(Icons.email_rounded),
                       ),
@@ -117,7 +119,7 @@ class _SignupState extends State<Signup> {
                     const Padding(
                       padding: EdgeInsets.fromLTRB(0, 0, 280, 10),
                       child: Text(
-                        "User Name",
+                        userN,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -129,7 +131,7 @@ class _SignupState extends State<Signup> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        labelText: 'User name',
+                        labelText: userN,
                         isDense: true,
                         prefixIcon: Icon(Icons.person_2_sharp),
                       ),
@@ -150,7 +152,7 @@ class _SignupState extends State<Signup> {
                     const Padding(
                       padding: EdgeInsets.fromLTRB(0, 0, 250, 10),
                       child: Text(
-                        "Mobile Number",
+                        mobileN,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -162,7 +164,7 @@ class _SignupState extends State<Signup> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        labelText: 'Phone number',
+                        labelText: mobileN,
                         isDense: true,
                         prefixIcon: Icon(Icons.phone),
                       ),
@@ -183,7 +185,7 @@ class _SignupState extends State<Signup> {
                     const Padding(
                       padding: EdgeInsets.fromLTRB(0, 0, 280, 10),
                       child: Text(
-                        "Password",
+                        pass,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -198,7 +200,7 @@ class _SignupState extends State<Signup> {
                         border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        labelText: ' Password ',
+                        labelText: pass,
                         isDense: true,
                         prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
@@ -226,7 +228,7 @@ class _SignupState extends State<Signup> {
                     const Padding(
                       padding: EdgeInsets.fromLTRB(0, 0, 220, 10),
                       child: Text(
-                        "Confirm Password",
+                        "Confirm $pass",
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -239,7 +241,7 @@ class _SignupState extends State<Signup> {
                         border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        labelText: ' Password ',
+                        labelText: pass,
                         isDense: true,
                         prefixIcon: const Icon(Icons.lock),
                         suffixIcon: IconButton(
@@ -265,9 +267,9 @@ class _SignupState extends State<Signup> {
                           child: ElevatedButton(
                             style: ButtonStyle(
                               foregroundColor: MaterialStateProperty.all<Color>(
-                                  Colors.white),
+                                  mBackgroundColor),
                               backgroundColor:
-                                  MaterialStateProperty.all<Color>(Colors.red),
+                                  MaterialStateProperty.all<Color>(mRedColor),
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
@@ -279,8 +281,8 @@ class _SignupState extends State<Signup> {
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
 
-                                dynamic result =
-                                    await _auth.registerW(player.email, player.password);
+                                dynamic result = await _auth.registerW(
+                                    player.email, player.password);
                                 if (result == null) {
                                   setState(() {
                                     error = 'Please supply a valid email';
@@ -298,7 +300,7 @@ class _SignupState extends State<Signup> {
                               }
                             },
                             child: const Text(
-                              'SignUp',
+                              signup,
                               style: TextStyle(fontSize: 20),
                             ),
                           )),
@@ -309,7 +311,7 @@ class _SignupState extends State<Signup> {
                   padding: const EdgeInsets.fromLTRB(160, 0, 0, 12),
                   child: Row(
                     children: [
-                      const Text("Have an account ? ",
+                      const Text(haveA,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
@@ -319,11 +321,15 @@ class _SignupState extends State<Signup> {
                           textStyle: const TextStyle(fontSize: 13),
                         ),
                         onPressed: () {
-                          widget.toggleview();
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()),
+                          );
                         },
                         child: const Text(
-                          'Sign in',
-                          style: TextStyle(color: Colors.red),
+                          signin,
+                          style: TextStyle(color: mRedColor),
                         ),
                       ),
                     ],
@@ -334,7 +340,7 @@ class _SignupState extends State<Signup> {
                 ),
                 Text(
                   error,
-                  style: const TextStyle(color: Colors.red, fontSize: 12),
+                  style: const TextStyle(color: mRedColor, fontSize: 12),
                 ),
               ],
             ),

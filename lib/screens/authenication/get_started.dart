@@ -5,9 +5,7 @@ import '../../utils/constants.dart';
 import '../../wrapper.dart';
 import '../about_us.dart';
 
-
 class GetStart extends StatefulWidget {
-  
   const GetStart({super.key});
 
   @override
@@ -26,10 +24,10 @@ class _GetStartState extends State<GetStart> {
             "images/LogoD.jpeg",
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(50, 80, 35, 0),
+        const Padding(
+          padding: EdgeInsets.fromLTRB(50, 80, 35, 0),
           child: Text(
-            "Can't you play because you \n       don't have a team? ",
+            get,
             style: TextStyle(
                 fontSize: 25,
                 color: mRedColor,
@@ -38,13 +36,13 @@ class _GetStartState extends State<GetStart> {
                 fontFamily: AutofillHints.addressCity),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(50, 20, 35, 0),
+        const Padding(
+          padding:  EdgeInsets.fromLTRB(50, 20, 35, 0),
           child: Text(
-            "Welcome to Derby Jo  ",
+            welcome,
             style: TextStyle(
                 fontSize: 25,
-                color: Colors.black,
+                color: mBlackColor,
                 decoration: TextDecoration.none,
                 fontWeight: FontWeight.bold,
                 fontFamily: AutofillHints.addressCity),
@@ -71,7 +69,7 @@ class _GetStartState extends State<GetStart> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(105, 0, 0, 0),
                   child: Text(
-                    "Login",
+                    login,
                     style: TextStyle(
                         fontSize: 20,
                         color: mBackgroundColor,
@@ -91,6 +89,9 @@ class _GetStartState extends State<GetStart> {
                 context,
                 MaterialPageRoute(builder: (context) => const Wrapper()),
               );
+              setState(() {
+                showSignin = !showSignin;
+              });
             },
             color: mBackgroundColor,
             elevation: 10,
@@ -103,10 +104,10 @@ class _GetStartState extends State<GetStart> {
                 Padding(
                   padding: EdgeInsets.fromLTRB(105, 0, 0, 0),
                   child: Text(
-                    "Signup",
+                    signup,
                     style: TextStyle(
                         fontSize: 20,
-                        color: Colors.black,
+                        color: mBlackColor,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -118,11 +119,11 @@ class _GetStartState extends State<GetStart> {
           padding: const EdgeInsets.fromLTRB(270, 20, 0, 0),
           child: Row(
             children: [
-              Text(
-                "Learn more",
+              const Text(
+                learn,
                 style: TextStyle(
                     fontSize: 12,
-                    color: Colors.black,
+                    color: mBlackColor,
                     decoration: TextDecoration.none,
                     fontFamily: AutofillHints.addressCity),
               ),
@@ -133,8 +134,8 @@ class _GetStartState extends State<GetStart> {
                       MaterialPageRoute(builder: (context) => const AboutUs()),
                     );
                   },
-                  child: Text(
-                    "About us",
+                  child: const Text(
+                    about,
                     style: TextStyle(
                         fontSize: 12,
                         color: mRedColor,

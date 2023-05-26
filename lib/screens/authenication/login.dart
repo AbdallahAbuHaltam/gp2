@@ -1,13 +1,15 @@
+import 'package:derbyjo/screens/authenication/authenication.dart';
+import 'package:derbyjo/screens/authenication/signup.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+import '../../utils/constants.dart';
+
 class Login extends StatefulWidget {
-  final Function toggleview;
-  const Login(
-      {super.key,
-      required void Function() this.toggleview,
-      });
+  const Login({
+    super.key,
+  });
 
   @override
   State<Login> createState() => _LoginState();
@@ -32,11 +34,11 @@ class _LoginState extends State<Login> {
           child: Column(
             children: [
               Image.asset('images/Rectangle 1.png'),
-              const Text('Sign in'),
+              const Text(signin),
               const Padding(
                 padding: EdgeInsets.all(20.0),
                 child: Text(
-                  'with',
+                  withh,
                   style: TextStyle(fontSize: 12),
                 ),
               ),
@@ -47,10 +49,10 @@ class _LoginState extends State<Login> {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
-                        labelText: 'Enter Email',
+                        labelText: eEmail,
                         isDense: true,
                         prefixIcon: Icon(Icons.email_outlined),
-                        hintText: 'Enter your email'),
+                        hintText: hEmail),
                     keyboardType: TextInputType.emailAddress,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     autocorrect: false,
@@ -86,7 +88,7 @@ class _LoginState extends State<Login> {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(15.0)),
                           ),
-                          labelText: 'Enter Password ',
+                          labelText: ePassword,
                           isDense: true,
                           prefixIcon: const Icon(Icons.key_rounded),
                           suffixIcon: IconButton(
@@ -98,7 +100,7 @@ class _LoginState extends State<Login> {
                               icon: Icon(_isObsecure
                                   ? Icons.visibility
                                   : Icons.visibility_off)),
-                          hintText: 'Enter your password'),
+                          hintText: hPassword),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (val) {
@@ -124,8 +126,8 @@ class _LoginState extends State<Login> {
                 child: Row(
                   children: [
                     Checkbox(
-                      checkColor: const Color.fromARGB(255, 7, 136, 150),
-                      activeColor: Colors.cyan,
+                      checkColor:  mBackgroundColor,
+                      activeColor: mRedColor,
                       value: _valuefirst,
                       onChanged: (value) {
                         setState(() {
@@ -155,9 +157,9 @@ class _LoginState extends State<Login> {
                     child: ElevatedButton(
                       style: ButtonStyle(
                         foregroundColor:
-                            MaterialStateProperty.all<Color>(Colors.white),
+                            MaterialStateProperty.all<Color>(mBackgroundColor),
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(Colors.red),
+                            MaterialStateProperty.all<Color>(mRedColor),
                         shape:
                             MaterialStateProperty.all<RoundedRectangleBorder>(
                           RoundedRectangleBorder(
@@ -178,7 +180,7 @@ class _LoginState extends State<Login> {
                         }
                       },
                       child: const Text(
-                        'Login',
+                        login,
                         style: TextStyle(fontSize: 20),
                       ),
                     )),
@@ -192,12 +194,17 @@ class _LoginState extends State<Login> {
                         textStyle: const TextStyle(fontSize: 14),
                       ),
                       onPressed: () {
-                        widget.toggleview();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Signup()),
+                        );
                       },
                       child: const Text(
-                        'Sign up? ',
-                        style: TextStyle(color: Colors.red),
+                        "$signup?",
+                        style: TextStyle(color: mRedColor,
                       ),
+                    ),
                     ),
                   ],
                 ),
@@ -215,19 +222,15 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.only(left: 95, right: 8),
                     child: GestureDetector(
                       child: Column(
-                        children: [
-                          Image.asset('images/Facebook.png')
-                        ],
+                        children: [Image.asset('images/Facebook.png')],
                       ),
-                      onTap: ()async{
-
-                      },
+                      onTap: () async {},
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
-                      onTap: ()async {
+                      onTap: () async {
                         await _auth.signInWithGoogle();
                       },
                       child: Column(
@@ -240,9 +243,7 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: GestureDetector(
-                      onTap: () {
-                        
-                      },
+                      onTap: () {},
                       child: Column(
                         children: [
                           Image.asset('images/Apple Logo.png'),

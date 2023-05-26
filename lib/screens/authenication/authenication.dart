@@ -2,6 +2,8 @@ import 'package:derbyjo/screens/authenication/login.dart';
 import 'package:derbyjo/screens/authenication/signup.dart';
 import 'package:flutter/material.dart';
 
+bool showSignin = true;
+
 class Authenicate extends StatefulWidget {
   const Authenicate({super.key});
 
@@ -10,24 +12,12 @@ class Authenicate extends StatefulWidget {
 }
 
 class _AuthenicateState extends State<Authenicate> {
-  bool _showSignin = true;
-
-  void toggleview() {
-    setState(() {
-      _showSignin = !_showSignin;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    if (_showSignin) {
-      return Login(
-        toggleview: toggleview,
-      );
+    if (showSignin) {
+      return Login();
     } else {
-      return Signup(
-        toggleview: toggleview,
-      );
+      return Signup();
     }
   }
 }
