@@ -1,5 +1,6 @@
 import 'package:derbyjo/models/user.dart';
 import 'package:derbyjo/screens/authenication/authenication.dart';
+import 'package:derbyjo/screens/authenication/get_started.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'screens/home/home.dart';

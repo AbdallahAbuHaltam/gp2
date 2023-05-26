@@ -1,3 +1,4 @@
+import 'package:derbyjo/screens/authenication/get_started.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'wrapper.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
     value: AuthService().user,
      initialData: null,
      child: const MaterialApp(
-       home: Wrapper(),
+       home: GetStart(),
        debugShowCheckedModeBanner: false,
      ),
    );
