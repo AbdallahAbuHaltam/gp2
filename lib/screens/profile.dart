@@ -1,3 +1,4 @@
+import 'package:derbyjo/screens/update_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../services/auth.dart';
@@ -25,7 +26,13 @@ class _ProfileState extends State<Profile> {
           },
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
-        title: const Text("Profile"),
+        title: const Padding(
+          padding: EdgeInsets.only(left:100.0),
+          child: Text(
+            "Profile",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
         backgroundColor: mRedColor,
       ),
       body: SingleChildScrollView(
@@ -81,7 +88,14 @@ class _ProfileState extends State<Profile> {
               SizedBox(
                 width: 200,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UpdateProfile(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: mRedColor,
                     side: BorderSide.none,
