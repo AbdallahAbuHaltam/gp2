@@ -11,6 +11,7 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   MyUser? _userfromFirebase(User user) {
+    // ignore: unnecessary_null_comparison
     return user != null ? MyUser(uid: user.uid) : null;
   }
 

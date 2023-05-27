@@ -287,7 +287,9 @@ class _SignupState extends State<Signup> {
                                   setState(() {
                                     error = 'Please supply a valid email';
                                   });
+
                                 }
+                                Navigator.pop(context);
                                 /*players
                                     .add({
                                       'username': username,
