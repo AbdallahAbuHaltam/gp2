@@ -1,4 +1,3 @@
-
 import 'package:derbyjo/screens/authenication/login.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/utils/constants.dart';
@@ -287,8 +286,8 @@ class _SignupState extends State<Signup> {
                                   setState(() {
                                     error = 'Please supply a valid email';
                                   });
-
                                 }
+                                // ignore: use_build_context_synchronously
                                 Navigator.pop(context);
                                 /*players
                                     .add({
