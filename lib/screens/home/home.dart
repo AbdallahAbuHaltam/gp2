@@ -7,6 +7,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../utils/constants.dart';
 import '../../widgets/bottom_menu.dart';
+import '../book.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,7 +17,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   @override
   Widget build(BuildContext context) {
     return StreamProvider.value(
@@ -337,7 +337,8 @@ class _HomeState extends State<Home> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: Row(
                                 children: const [
                                   Text(
@@ -425,7 +426,14 @@ class _HomeState extends State<Home> {
                                         ),
                                       ),
                                     ),
-                                    onPressed: null,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const Booking()),
+                                      );
+                                    },
                                     child: const Text(
                                       book,
                                       style: TextStyle(fontSize: 16),
@@ -480,7 +488,7 @@ class _HomeState extends State<Home> {
                                     borderRadius: BorderRadius.circular(15),
                                   ),
                                   child: Row(
-                                    children:const  [
+                                    children: const [
                                       Icon(
                                         Icons.person,
                                         color: mRedColor,
@@ -542,8 +550,10 @@ class _HomeState extends State<Home> {
                                     Icon(Icons.star, color: Colors.orange),
                                     Icon(Icons.star, color: Colors.orange),
                                     Icon(Icons.star, color: Colors.orange),
-                                    Icon(Icons.star_border, color: Colors.orange),
-                                    Icon(Icons.star_border, color: Colors.orange),
+                                    Icon(Icons.star_border,
+                                        color: Colors.orange),
+                                    Icon(Icons.star_border,
+                                        color: Colors.orange),
                                   ],
                                 ),
                                 const SizedBox(height: 8),
@@ -570,11 +580,13 @@ class _HomeState extends State<Home> {
                                       child: ElevatedButton(
                                         onPressed: () {},
                                         style: ElevatedButton.styleFrom(
-                                          foregroundColor: Colors.white, backgroundColor: Colors.red, fixedSize: const Size(100, 40),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(15),
-                                          )
-                                        ),
+                                            foregroundColor: Colors.white,
+                                            backgroundColor: Colors.red,
+                                            fixedSize: const Size(100, 40),
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            )),
                                         child: Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
