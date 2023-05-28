@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../utils/constants.dart';
+import '../screens/activity.dart';
 import '../screens/home/home.dart';
 import '../screens/profile.dart';
 
@@ -65,7 +66,13 @@ class _BottomMenuState extends State<BottomMenu> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   GestureDetector(
-                    onTap: null,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Activity()),
+                      );
+                    },
                     child: const Icon(
                       Icons.history,
                       color: mBackgroundColor,

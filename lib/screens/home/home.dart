@@ -1,5 +1,7 @@
+import 'package:derbyjo/CreatGame.dart';
 import 'package:derbyjo/firestore/database.dart';
 import 'package:derbyjo/screens/categories.dart';
+import 'package:derbyjo/screens/footballCategories.dart';
 import 'package:derbyjo/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
@@ -155,7 +157,14 @@ class _HomeState extends State<Home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GestureDetector(
-                            onTap: null,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const FootballCategories()),
+                              );
+                            },
                             child: Column(
                               children: <Widget>[
                                 Image.asset('images/football.png'),
@@ -173,7 +182,13 @@ class _HomeState extends State<Home> {
                           ),
                           const SizedBox(width: 15),
                           GestureDetector(
-                            onTap: null,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Soon()),
+                              );
+                            },
                             child: Column(
                               children: <Widget>[
                                 Image.asset('images/basketball.png'),
@@ -191,7 +206,13 @@ class _HomeState extends State<Home> {
                           ),
                           const SizedBox(width: 15),
                           GestureDetector(
-                            onTap: null,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Soon()),
+                              );
+                            },
                             child: Column(
                               children: <Widget>[
                                 Image.asset('images/tennis.png'),
@@ -209,7 +230,13 @@ class _HomeState extends State<Home> {
                           ),
                           const SizedBox(width: 15),
                           GestureDetector(
-                            onTap: null,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Soon()),
+                              );
+                            },
                             child: Column(
                               children: <Widget>[
                                 Image.asset('images/paddel.png'),
@@ -227,7 +254,13 @@ class _HomeState extends State<Home> {
                           ),
                           const SizedBox(width: 15),
                           GestureDetector(
-                            onTap: null,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Soon()),
+                              );
+                            },
                             child: Column(
                               children: <Widget>[
                                 Image.asset('images/swimmingg.png'),
@@ -578,7 +611,14 @@ class _HomeState extends State<Home> {
                                     ),
                                     SizedBox(
                                       child: ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const Soon()),
+                                          );
+                                        },
                                         style: ElevatedButton.styleFrom(
                                             foregroundColor: Colors.white,
                                             backgroundColor: Colors.red,
@@ -611,7 +651,12 @@ class _HomeState extends State<Home> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const CreatGame()),
+            );
+          },
           backgroundColor: mBackgroundColor,
           child: const Icon(
             Icons.add,
@@ -620,6 +665,54 @@ class _HomeState extends State<Home> {
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: const BottomMenu(),
+      ),
+    );
+  }
+}
+
+class Soon extends StatefulWidget {
+  const Soon({super.key});
+
+  @override
+  State<Soon> createState() => _SoonState();
+}
+
+class _SoonState extends State<Soon> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        color: Colors.white,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+              child: Align(
+                alignment: Alignment.topLeft,
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Image.asset(
+                      "images/left.png",
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Image.asset("images/Coming-Soon.jpg"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(100.0),
+              child: Text("Coming Soon ..",
+                  style: TextStyle(
+                      fontSize: 25,
+                      decoration: TextDecoration.none,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold)),
+            ),
+          ],
+        ),
       ),
     );
   }

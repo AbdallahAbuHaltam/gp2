@@ -6,29 +6,26 @@ import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 import 'package:derbyjo/models/user.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
-);
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    
-   return StreamProvider<MyUser?>.value(
-    value: AuthService().user,
-     initialData: null,
-     child: const MaterialApp(
-       home: GetStart(),
-       debugShowCheckedModeBanner: false,
-     ),
-   );
+    return StreamProvider<MyUser?>.value(
+      value: AuthService().user,
+      initialData: null,
+      child: const MaterialApp(
+        home: GetStart(),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
   }
 }
-

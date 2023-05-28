@@ -3,6 +3,7 @@ import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
+import 'datePicker.dart';
 
 class Booking extends StatefulWidget {
   const Booking({super.key});
@@ -449,13 +450,34 @@ class _BookingState extends State<Booking> {
                           ],
                         )),
                   ),
-
-//#################    calender here    ######################
-
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 400, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "Pick Date",
+                          style: TextStyle(
+                            shadows: [
+                              Shadow(
+                                color: Color.fromARGB(255, 208, 208, 208),
+                                offset: Offset(1, 1),
+                                blurRadius: 10,
+                              ),
+                            ],
+                            color: Colors.red,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                        ),
+                        DateTimePickerDialog(),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
                     child: Container(
-                      color: mBackgroundColor,
+                      color: Colors.white,
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(52, 0, 40, 25),
                         child: MaterialButton(
@@ -467,7 +489,7 @@ class _BookingState extends State<Booking> {
                                   builder: (context) => const CheckOut()),
                             );
                           },
-                          color: mRedColor,
+                          color: Color.fromARGB(255, 241, 61, 61),
                           elevation: 10,
                           height: 50,
                           shape: RoundedRectangleBorder(
@@ -475,31 +497,14 @@ class _BookingState extends State<Booking> {
                           ),
                           child: Row(
                             children: const [
-                              Text(
-                                "1 item",
-                                style: TextStyle(
-                                  fontSize: 15,
-                                  color: mBackgroundColor,
-                                ),
-                              ),
                               Padding(
-                                padding: EdgeInsets.fromLTRB(30, 0, 0, 0),
+                                padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
                                 child: Text(
-                                  "checkout",
+                                  "Book a game",
                                   style: TextStyle(
                                       fontSize: 18,
-                                      color: mBackgroundColor,
+                                      color: Colors.white,
                                       fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
-                                child: Text(
-                                  "37.00JD",
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    color: mBackgroundColor,
-                                  ),
                                 ),
                               ),
                             ],
