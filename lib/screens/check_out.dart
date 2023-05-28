@@ -5,6 +5,8 @@ import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:favorite_button/favorite_button.dart';
 
+import 'submitPage.dart';
+
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key});
 
@@ -207,7 +209,12 @@ class _CheckOutState extends State<CheckOut> {
             padding: const EdgeInsets.fromLTRB(52, 620, 50, 0),
             child: MaterialButton(
               minWidth: 0,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const submitPage()),
+                );
+              },
               color: mRedColor,
               elevation: 10,
               height: 50,
