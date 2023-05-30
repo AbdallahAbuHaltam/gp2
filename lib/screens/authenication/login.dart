@@ -16,6 +16,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+late  TextEditingController _controllerEmail = TextEditingController();
+late TextEditingController _controllerPassword = TextEditingController();
+
 
   String _email = '';
   String _password = '';
@@ -43,6 +46,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 350,
                 child: TextFormField(
+                  controller: _controllerEmail,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -57,11 +61,11 @@ class _LoginState extends State<Login> {
                     textCapitalization: TextCapitalization.none,
                     onChanged: (val) {
                       setState(() {
-                        _email = val;
+                        _controllerEmail.text = val ;
                       });
                     },
                     onSaved: (value) {
-                      _email = value!;
+                      _controllerEmail.text = value!;
                     },
                     validator: (value) {
                       if (value == null ||
@@ -80,6 +84,7 @@ class _LoginState extends State<Login> {
                 child: SizedBox(
                   width: 350,
                   child: TextFormField(
+                    controller: _controllerPassword,
                       obscureText: _isObsecure,
                       decoration: InputDecoration(
                           border: const OutlineInputBorder(
@@ -103,11 +108,11 @@ class _LoginState extends State<Login> {
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (val) {
                         setState(() {
-                          _password = val;
+                          _controllerPassword.text = val;
                         });
                       },
                       onSaved: (value) {
-                        _password = value!;
+                        _controllerPassword.text = value!;
                       },
                       validator: (value) {
                         if (value == null || value.trim().length < 8) {
@@ -169,7 +174,7 @@ class _LoginState extends State<Login> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
 
-                          dynamic result = await _auth.login(_email, _password);
+                          dynamic result = await _auth.login(_controllerEmail.text, _controllerPassword.text);
                           if (result == null) {
                             setState(() {
                               error = 'Please supply a valid email';

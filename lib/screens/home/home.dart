@@ -23,7 +23,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return StreamProvider.value(
       initialData: const [],
-      value: DataBaseServices().users,
+      value: DataBaseServices().getStream(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         body: SafeArea(

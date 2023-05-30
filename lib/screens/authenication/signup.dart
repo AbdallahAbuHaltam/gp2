@@ -10,6 +10,9 @@ Players player = Players(
   password: "",
   phoneNo: "",
   username: "",
+  fullName: "",
+  age: 0,
+  gender: "male"
 );
 
 class Signup extends StatefulWidget {

@@ -27,7 +27,7 @@ class AuthService {
     UserCredential result = await _auth.createUserWithEmailAndPassword(email: email, password: password);
     User? user = result.user;
     //create a new document for the user with the id
-    await DataBaseServices(uid: user!.uid).updateUserData(player.username, player.email, player.phoneNo, player.password);
+    await DataBaseServices(uid: user!.uid).addData(player.username, player.email, player.phoneNo, player.password,player.fullName,player.age,player.gender);
     if (!_auth.currentUser!.emailVerified) {
       await _auth.currentUser!.sendEmailVerification();
     }
@@ -36,8 +36,12 @@ class AuthService {
     catch(e){
       return null;
     }
+
+    
     
   }
+
+  
   Future login(String email,String password) async{
     try{
     UserCredential result= await _auth.signInWithEmailAndPassword(email: email, password: password);
