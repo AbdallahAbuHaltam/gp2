@@ -16,10 +16,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
 
   final AuthService _auth = AuthService();
 
-    late  TextEditingController _emailcontroller = TextEditingController();
-    late  TextEditingController _usernamecontroller = TextEditingController();
-    late  TextEditingController _phonecontroller = TextEditingController();
-    late  TextEditingController _passwordcontroller = TextEditingController();
+    final  TextEditingController _emailcontroller = TextEditingController();
+    final  TextEditingController _usernamecontroller = TextEditingController();
+    final  TextEditingController _phonecontroller = TextEditingController();
+    final  TextEditingController _passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -92,10 +92,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                           prefixIcon: Icon(LineAwesomeIcons.user),
                         ),
                         onChanged: (value) {
-                          _usernamecontroller = value as TextEditingController;
+                          _usernamecontroller.text = value;
                         },
                         onSaved: (newValue) {
-                          _usernamecontroller = newValue! as TextEditingController;
+                          _usernamecontroller.text = newValue!;
                         },
                         onTap: () async {
                           
@@ -109,10 +109,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         prefixIcon: Icon(LineAwesomeIcons.envelope),
                       ),
                       onChanged: (value) {
-                          _emailcontroller = value as TextEditingController;
+                          _emailcontroller.text = value;
                         },
                         onSaved: (newValue) {
-                          _emailcontroller = newValue! as TextEditingController;
+                          _emailcontroller.text = newValue! ;
                         },
                     ),
                     const SizedBox(
@@ -124,10 +124,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         prefixIcon: Icon(LineAwesomeIcons.phone),
                       ),
                       onChanged: (value) {
-                          _phonecontroller = value as TextEditingController;
+                          _phonecontroller.text = value;
                         },
                         onSaved: (newValue) {
-                          _phonecontroller = newValue! as TextEditingController;
+                          _phonecontroller.text = newValue!;
                         },
                     ),
                     const SizedBox(
@@ -139,10 +139,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         prefixIcon: Icon(LineAwesomeIcons.fingerprint),
                       ),
                       onChanged: (value) {
-                          _passwordcontroller = value as TextEditingController;
+                          _passwordcontroller.text = value;
                         },
                         onSaved: (newValue) {
-                          _passwordcontroller = newValue! as TextEditingController;
+                          _passwordcontroller.text = newValue!;
                         },
                     ),
                     const SizedBox(
@@ -154,7 +154,7 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         onPressed: () async{
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
-
+                              _auth.edit(email: _emailcontroller.text, username: _usernamecontroller.text, password: _passwordcontroller.text, phoneNo: _phonecontroller.text);
                             //await data.up(player.fullName,player.email,player.phoneNo,player.password);
                           }
                         },

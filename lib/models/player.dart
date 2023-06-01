@@ -71,8 +71,6 @@ Players.formJson(Map<String, dynamic>? json) {
       'uId': uId,
     };
   }
-String toJsonString() {
-    return jsonEncode(toJson());
-  }
+
 }
 

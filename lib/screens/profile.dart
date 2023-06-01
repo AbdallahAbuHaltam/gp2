@@ -1,3 +1,5 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/screens/update_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -10,6 +12,7 @@ import '../widgets/profile_menu.dart';
 import 'authenication/get_started.dart';
 
 class Profile extends StatefulWidget {
+  
   const Profile({
     super.key,
   });
@@ -21,8 +24,8 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-      //final AuthService _auth = AuthService();
-      
+final AuthService _auth = AuthService();
+
     //final user = _auth.getData();
     return Scaffold(
       appBar: AppBar(
@@ -81,15 +84,20 @@ class _ProfileState extends State<Profile> {
                 height: 10,
               ),
               Text(
-        "${players.fullName}",
+        "${players.username}",
         style: const TextStyle(fontWeight: FontWeight.w400),
       ),
       Text(
         "${players.username}",
         style: const TextStyle(fontWeight: FontWeight.w400),
       ),
+      /*ElevatedButton(onPressed: (){
+
+        printData();
+        
+      }, child: Text("data")),
     
-              
+            */  
               const SizedBox(
                 height: 30,
               ),
@@ -168,18 +176,25 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-Widget _builderName(Players? player, context) {
-  
-  return Column(
-    children: [
-      Text(
-        "${player?.fullName}",
-        style: const TextStyle(fontWeight: FontWeight.w400),
-      ),
-      Text(
-        "${player?.username}",
-        style: const TextStyle(fontWeight: FontWeight.w400),
-      ),
-    ],
-  );
+/*Future<String?> getData()async{
+  DocumentSnapshot<Map<String,dynamic>> snapshot=await FirebaseFirestore.instance.collection('users').doc(players.uId).get();
+  if(snapshot.exists){ 
+    Map<String,dynamic>? playerData=snapshot.data();
+    String username=playerData!['username'];
+    String email=playerData['email'];
+    return username;
+
+   }
+return "username";
 }
+
+Future<String?> fetchData() async { // Simulating an asynchronous operation that returns a string return
+ Future.delayed(Duration(seconds: 2), () {
+  return getData();
+ }); }
+
+
+ void printData(){
+  fetchData().then((data) {print(data);});
+ }
+*/

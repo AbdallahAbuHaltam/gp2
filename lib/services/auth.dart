@@ -49,7 +49,7 @@ class AuthService {
       //User? user = value.user;
       userCollection
           .doc(value.user!.uid)
-          .set(model.toJson())
+          .set(model.toMap())
           .then((value) => print('success'))
           .catchError((e) {
         print(e.toString());
@@ -72,7 +72,14 @@ class AuthService {
           .get()
           .then((value) {
         final uid = value.data()?['uId'];
-        players.uId=uid;
+        players.uId = uid;
+        players.username = value.data()?['username'];
+        players.email = value.data()?['email'];
+        players.password = value.data()?['password'];
+        players.phoneNo = value.data()?['phoneNo'];
+        players.gender = value.data()?['gender'];
+        players.fullName = value.data()?['fullName'];
+
         if (uid != null) {
           print("Success Login");
         } else {
@@ -88,6 +95,38 @@ class AuthService {
     });
   }
 
+
+
+  Future edit({
+    required String email,
+     required String username,
+    required String password,
+    int? age,
+    String? gender,
+     required String phoneNo,
+    String? fullName,
+  }) async {
+    
+    
+      Players model = Players(
+          email: email,
+          username: username,
+          password: password,
+          fullName: fullName,
+          phoneNo: phoneNo,
+          age: age,
+          gender: gender,
+          uId: players.uId);
+     userCollection.doc(players.uId).update(model.toMap()).then((value) {
+       
+
+
+      print("Edited Success");
+    }).catchError((e){
+      print(e.toString());
+    });
+    players.username=model.username;
+  }
 /*Future getData({ String? uId,})async{
 FirebaseFirestore.instance.collection('users').doc(uId).get().then((value) {
 Players playerModel=Players.formJson(value.data());
@@ -97,7 +136,6 @@ print(playerModel.username);
   print(e.toString());
 });
 }*/
-  
 
   /*Future registerW(String email, String password) async {
     try {
@@ -158,5 +196,4 @@ print(playerModel.username);
     // Once signed in, return the UserCredential
     return await FirebaseAuth.instance.signInWithCredential(credential);
   }
-
 }

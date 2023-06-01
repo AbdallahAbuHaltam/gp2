@@ -280,10 +280,10 @@ class _SignupState extends State<Signup> {
                                 _auth.userSignup(
                                     username: _usernamecontroller.text,
                                     email: _emailcontroller.text,
-                                    password: _passwordcontroller.text);
-                               players.email=_emailcontroller.text;
-                               players.password=_passwordcontroller.text;
-                               players.username=_usernamecontroller.text;
+                                    password: _passwordcontroller.text,
+                                    phoneNo: _phonecontroller.text,
+                                    );
+                               
                                
                               }
                             },

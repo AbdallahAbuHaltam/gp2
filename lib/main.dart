@@ -1,5 +1,4 @@
-import 'dart:convert';
-import 'dart:io';
+
 
 import 'package:derbyjo/models/player.dart';
 import 'package:derbyjo/services/auth.dart';
@@ -9,10 +8,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 
-final File file=File('images/playersadi.json');
+/*final File file=File('images/playersadi.json');
   final String jsonString=file.readAsStringSync();
   final Map<String,dynamic> map=json.decode(jsonString);
-  final Players players = Players.formJson(map);
+  final Players players = Players.formJson(map);*/
+ final Players players =Players();
 void main() async {
   
   WidgetsFlutterBinding.ensureInitialized();
