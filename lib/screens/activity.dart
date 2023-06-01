@@ -143,7 +143,7 @@ class _ActivityState extends State<Activity> {
                                                     ),
                                                   ),
                                                   Row(
-                                                    children: [
+                                                    children: const [
                                                       Padding(
                                                         padding:
                                                             EdgeInsets.fromLTRB(
@@ -174,11 +174,11 @@ class _ActivityState extends State<Activity> {
                                                       child:  Row(
                                                         children: [
                                                           Padding(
-                                                            padding: EdgeInsets
+                                                            padding: const EdgeInsets
                                                                 .fromLTRB(10, 0,
                                                                     0, 0),
                                                             child: Row(
-                                                              children: [
+                                                              children: const [
                                                                 Text(
                                                                   "Today from \n 8pm - 10pm",
                                                                   style:
@@ -253,7 +253,7 @@ class _ActivityState extends State<Activity> {
                                                     ),
                                                   ),
                                                    Row(
-                                                    children: [
+                                                    children: const [
                                                       Padding(
                                                         padding:
                                                             EdgeInsets.fromLTRB(
@@ -284,7 +284,7 @@ class _ActivityState extends State<Activity> {
                                                       child:  Row(
                                                         children: [
                                                           Row(
-                                                            children: [
+                                                            children: const [
                                                               Text(
                                                                 "Today from \n 10pm - 12pm",
                                                                 style:
@@ -336,7 +336,7 @@ class _ActivityState extends State<Activity> {
                                       Column(
                                         children: [
                                            Row(
-                                            children: [
+                                            children: const [
                                               Padding(
                                                 padding: EdgeInsets.fromLTRB(
                                                     5, 5, 60, 0),
@@ -367,7 +367,7 @@ class _ActivityState extends State<Activity> {
                                             ),
                                           ),
                                            Row(
-                                            children: [
+                                            children: const [
                                               Padding(
                                                 padding: EdgeInsets.fromLTRB(
                                                     5, 0, 0, 0),
@@ -412,10 +412,10 @@ class _ActivityState extends State<Activity> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsets.fromLTRB(
+                                                        const EdgeInsets.fromLTRB(
                                                             0, 0, 0, 0),
                                                     child: Row(
-                                                      children: [
+                                                      children: const [
                                                         Text(
                                                           "Book now!",
                                                           style: TextStyle(
@@ -503,11 +503,11 @@ class _ActivityState extends State<Activity> {
                                               ),
                                             ),
                                              Padding(
-                                              padding: EdgeInsets.fromLTRB(
+                                              padding: const EdgeInsets.fromLTRB(
                                                   10, 0, 0, 0),
                                               child: Column(
                                                 children: [
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             10, 0, 0, 0),
@@ -523,9 +523,9 @@ class _ActivityState extends State<Activity> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
+                                                  const SizedBox(height: 10),
                                                   Row(
-                                                    children: [
+                                                    children: const [
                                                       Padding(
                                                         padding:
                                                             EdgeInsets.fromLTRB(
@@ -538,7 +538,7 @@ class _ActivityState extends State<Activity> {
                                                       Text('Amman, Jordan'),
                                                     ],
                                                   ),
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             25, 5, 0, 0),
@@ -588,11 +588,11 @@ class _ActivityState extends State<Activity> {
                                               ),
                                             ),
                                              Padding(
-                                              padding: EdgeInsets.fromLTRB(
+                                              padding: const EdgeInsets.fromLTRB(
                                                   5, 0, 0, 0),
                                               child: Column(
                                                 children: [
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             35, 0, 0, 0),
@@ -608,9 +608,9 @@ class _ActivityState extends State<Activity> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
+                                                  const SizedBox(height: 10),
                                                   Row(
-                                                    children: [
+                                                    children: const [
                                                       Padding(
                                                         padding:
                                                             EdgeInsets.fromLTRB(
@@ -623,7 +623,7 @@ class _ActivityState extends State<Activity> {
                                                       Text('Irbid, Jordan'),
                                                     ],
                                                   ),
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             40, 5, 0, 0),
@@ -673,11 +673,11 @@ class _ActivityState extends State<Activity> {
                                               ),
                                             ),
                                              Padding(
-                                              padding: EdgeInsets.fromLTRB(
+                                              padding: const EdgeInsets.fromLTRB(
                                                   5, 0, 0, 0),
                                               child: Column(
                                                 children: [
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             10, 0, 0, 0),
@@ -693,9 +693,9 @@ class _ActivityState extends State<Activity> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
+                                                  const SizedBox(height: 10),
                                                   Row(
-                                                    children: [
+                                                    children: const [
                                                       Padding(
                                                         padding:
                                                             EdgeInsets.fromLTRB(
@@ -708,7 +708,7 @@ class _ActivityState extends State<Activity> {
                                                       Text('Zarqa, Jordan'),
                                                     ],
                                                   ),
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             40, 5, 0, 0),
@@ -758,11 +758,11 @@ class _ActivityState extends State<Activity> {
                                               ),
                                             ),
                                              Padding(
-                                              padding: EdgeInsets.fromLTRB(
+                                              padding: const EdgeInsets.fromLTRB(
                                                   5, 0, 0, 0),
                                               child: Column(
                                                 children: [
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             35, 0, 0, 0),
@@ -778,9 +778,9 @@ class _ActivityState extends State<Activity> {
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(height: 10),
+                                                  const SizedBox(height: 10),
                                                   Row(
-                                                    children: [
+                                                    children: const [
                                                       Padding(
                                                         padding:
                                                             EdgeInsets.fromLTRB(
@@ -793,7 +793,7 @@ class _ActivityState extends State<Activity> {
                                                       Text('Amman, Jordan'),
                                                     ],
                                                   ),
-                                                  Padding(
+                                                  const Padding(
                                                     padding:
                                                         EdgeInsets.fromLTRB(
                                                             40, 5, 0, 0),

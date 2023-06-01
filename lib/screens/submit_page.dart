@@ -6,16 +6,16 @@ import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../creat_Game.dart';
 
-class submitPage extends StatefulWidget {
-  const submitPage({super.key});
+class SubmitPage extends StatefulWidget {
+  const SubmitPage({super.key});
 
   @override
-  State<submitPage> createState() => _submitPageState();
+  State<SubmitPage> createState() => _SubmitPageState();
 }
 
 enum Payment { visa, cash }
 
-class _submitPageState extends State<submitPage> {
+class _SubmitPageState extends State<SubmitPage> {
   dynamic item = 0;
   Payment? _payment = Payment.cash;
   @override

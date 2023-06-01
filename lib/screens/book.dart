@@ -455,7 +455,7 @@ class _BookingState extends State<Booking> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text(
+                        const Text(
                           "Pick Date",
                           style: TextStyle(
                             shadows: [
@@ -489,7 +489,7 @@ class _BookingState extends State<Booking> {
                                   builder: (context) => const CheckOut()),
                             );
                           },
-                          color: Color.fromARGB(255, 241, 61, 61),
+                          color: const Color.fromARGB(255, 241, 61, 61),
                           elevation: 10,
                           height: 50,
                           shape: RoundedRectangleBorder(

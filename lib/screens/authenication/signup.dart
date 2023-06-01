@@ -2,10 +2,6 @@ import 'package:derbyjo/screens/authenication/login.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../models/player.dart';
-import '../home/home.dart';
 
 class Signup extends StatefulWidget {
   const Signup({
@@ -19,10 +15,10 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-  late TextEditingController _emailcontroller = TextEditingController();
-  late TextEditingController _passwordcontroller = TextEditingController();
-  late TextEditingController _usernamecontroller = TextEditingController();
-  late TextEditingController _phonecontroller = TextEditingController();
+  final TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _passwordcontroller = TextEditingController();
+  final TextEditingController _usernamecontroller = TextEditingController();
+  final TextEditingController _phonecontroller = TextEditingController();
 
   String error = '';
 

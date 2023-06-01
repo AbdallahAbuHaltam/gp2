@@ -17,11 +17,9 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-    late  TextEditingController _emailcontroller = TextEditingController();
-    late  TextEditingController _passwordcontroller = TextEditingController();
+  final TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _passwordcontroller = TextEditingController();
 
-
- 
   String error = '';
 
   bool _isObsecure = true;
@@ -127,7 +125,7 @@ class _LoginState extends State<Login> {
                 child: Row(
                   children: [
                     Checkbox(
-                      checkColor:  mBackgroundColor,
+                      checkColor: mBackgroundColor,
                       activeColor: mRedColor,
                       value: _valuefirst,
                       onChanged: (value) {
@@ -171,12 +169,14 @@ class _LoginState extends State<Login> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          _auth.userLogin(email: _emailcontroller.text, password: _passwordcontroller.text);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const Home()),
-                        );
+                          _auth.userLogin(
+                              email: _emailcontroller.text,
+                              password: _passwordcontroller.text);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Home()),
+                          );
                         }
                       },
                       child: const Text(
@@ -202,9 +202,10 @@ class _LoginState extends State<Login> {
                       },
                       child: const Text(
                         "$signup?",
-                        style: TextStyle(color: mRedColor,
+                        style: TextStyle(
+                          color: mRedColor,
+                        ),
                       ),
-                    ),
                     ),
                   ],
                 ),
