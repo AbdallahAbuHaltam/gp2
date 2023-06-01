@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+import '../models/player.dart';
+
 
 /*
 class DataRepository {
@@ -25,14 +27,14 @@ class DataRepository {
 }*/
 
 class DataBaseServices {
-  final String? uid;
-  DataBaseServices({this.uid});
+  Players? player;
+  DataBaseServices({this.player});
   final CollectionReference userCollection =
       FirebaseFirestore.instance.collection("users");
 
   Future updateData(
        String email, String phoneNo, String password,String fullName) async {
-    return await userCollection.doc(uid).update({
+    return await userCollection.doc(player!.uId).update({
       "Email": email,
       "Phone Number": phoneNo,
       "Password": password,

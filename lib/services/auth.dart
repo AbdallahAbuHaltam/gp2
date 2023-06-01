@@ -47,7 +47,7 @@ class AuthService {
       //User? user = value.user;
       userCollection
           .doc(value.user!.uid)
-          .set(model.toMap())
+          .set(model.toJson())
           .then((value) => print('success'))
           .catchError((e) {
         print(e.toString());
@@ -75,6 +75,7 @@ class AuthService {
         } else {
           print("Falied Login");
         }
+        //getData(uId: uid);
         //_userfromFirebase(user!);
       }).catchError((e) {
         print(e.toString());
@@ -83,6 +84,17 @@ class AuthService {
       print(e.toString());
     });
   }
+
+/*Future getData({ String? uId,})async{
+FirebaseFirestore.instance.collection('users').doc(uId).get().then((value) {
+Players playerModel=Players.formJson(value.data());
+print(playerModel.username);
+
+}).catchError((e){
+  print(e.toString());
+});
+}*/
+  
 
   /*Future registerW(String email, String password) async {
     try {

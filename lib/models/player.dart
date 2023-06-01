@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 class Players {
    String? email;
   String? username;
@@ -30,6 +32,33 @@ Players.formJson(Map<String, dynamic>? json) {
     gender =json?['gender'];
     uId = json?['uId'];
   }
+
+    Map<String, dynamic> toJsonn() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['username'] = username;
+    data['email'] = email;
+    data['fullName'] = fullName;
+    data['phoneNo'] = phoneNo;
+    data['password'] = password;
+    data['age'] = age;
+    data['gender'] = gender;
+    data['uId'] = uId;
+    return data;
+  }
+
+   Map<String, dynamic> toJson() {
+    return {
+      'username': username,
+      'email': email,
+      'fullName': fullName,
+      'phoneNo': phoneNo,
+      'password': password,
+      'age': age,
+      'gender': gender,
+      'uId': uId,
+    };
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'username': username,
@@ -42,6 +71,8 @@ Players.formJson(Map<String, dynamic>? json) {
       'uId': uId,
     };
   }
-
+String toJsonString() {
+    return jsonEncode(toJson());
+  }
 }
 

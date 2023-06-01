@@ -2,6 +2,7 @@ import 'package:derbyjo/screens/update_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import '../main.dart';
 import '../models/player.dart';
 import '../services/auth.dart';
 import '../utils/constants.dart';
@@ -20,7 +21,9 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    Players? user = Provider.of<Players?>(context);
+      //final AuthService _auth = AuthService();
+      
+    //final user = _auth.getData();
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -77,11 +80,16 @@ class _ProfileState extends State<Profile> {
               const SizedBox(
                 height: 10,
               ),
-              const Text(
-                'Abdullah Abuhaltam',
-                style: TextStyle(fontWeight: FontWeight.w500),
-              ),
-              _builderName(user, context),
+              Text(
+        "${players.fullName}",
+        style: const TextStyle(fontWeight: FontWeight.w400),
+      ),
+      Text(
+        "${players.username}",
+        style: const TextStyle(fontWeight: FontWeight.w400),
+      ),
+    
+              
               const SizedBox(
                 height: 30,
               ),
