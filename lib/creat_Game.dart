@@ -1,18 +1,15 @@
-import 'dart:math';
-
 import 'package:derbyjo/screens/book.dart';
+import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class CreatGame extends StatefulWidget {
-  const CreatGame({super.key});
+class CreateGame extends StatefulWidget {
+  const CreateGame({super.key});
 
   @override
-  State<CreatGame> createState() => _CreatGameState();
+  State<CreateGame> createState() => _CreateGameState();
 }
 
-class _CreatGameState extends State<CreatGame> {
+class _CreateGameState extends State<CreateGame> {
   var sizeOfPlayeList = ["5 x 5", "6 x 6"];
   String sizeOfPlayeValue = "5 x 5";
   int selectedOptionIndex = -1;
@@ -59,7 +56,7 @@ class _CreatGameState extends State<CreatGame> {
       child: Stack(
         children: [
           Container(
-            color: Color.fromARGB(255, 240, 74, 74),
+            color: mRedColor,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -85,7 +82,7 @@ class _CreatGameState extends State<CreatGame> {
                     "Creat a Game ",
                     style: TextStyle(
                         fontSize: 25,
-                        color: Colors.white,
+                        color: mBackgroundColor,
                         shadows: [
                           Shadow(
                             color: Color.fromARGB(255, 237, 237, 237),
@@ -102,7 +99,7 @@ class _CreatGameState extends State<CreatGame> {
           Padding(
             padding: const EdgeInsets.fromLTRB(0, 90, 0, 0),
             child: Container(
-              color: Color.fromARGB(255, 216, 216, 216),
+              color: mBackgroundColor,
               child: Stack(
                 children: [
                   Padding(
@@ -122,7 +119,7 @@ class _CreatGameState extends State<CreatGame> {
                               "Select stadium ",
                               style: TextStyle(
                                   fontSize: 25,
-                                  color: Colors.red,
+                                  color: mRedColor,
                                   shadows: [
                                     Shadow(
                                       color: Color.fromARGB(255, 237, 237, 237),
@@ -142,7 +139,7 @@ class _CreatGameState extends State<CreatGame> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.white,
+                        color: mBackgroundColor,
                       ),
                       height: 200,
                       child: ListView.builder(
@@ -150,21 +147,21 @@ class _CreatGameState extends State<CreatGame> {
                         itemCount: cardContents.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Padding(
-                            padding: EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(8.0),
                             child: GestureDetector(
                               onTap: () => selectOption(index),
                               child: Card(
                                 color: selectedOptionIndex == index
-                                    ? Colors.red
-                                    : Colors.white,
+                                    ? mRedColor
+                                    : mBackgroundColor,
                                 child: Stack(
                                   children: [
-                                    Text(
+                                    const Text(
                                       "Select Stadium",
                                       style: TextStyle(
                                           fontSize: 20,
                                           color:
-                                              Color.fromARGB(255, 241, 61, 61),
+                                              mRedColor,
                                           shadows: [
                                             Shadow(
                                               color: Color.fromARGB(
@@ -175,7 +172,7 @@ class _CreatGameState extends State<CreatGame> {
                                           ],
                                           fontWeight: FontWeight.bold),
                                     ),
-                                    Container(
+                                    SizedBox(
                                       width: 150,
                                       child: Column(
                                         children: [
@@ -192,7 +189,7 @@ class _CreatGameState extends State<CreatGame> {
                                         child: Row(
                                       children: [
                                         Padding(
-                                          padding: EdgeInsets.only(
+                                          padding: const EdgeInsets.only(
                                               top: 130, left: 4),
                                           child: Text(
                                             cardContents[index],
@@ -227,7 +224,7 @@ class _CreatGameState extends State<CreatGame> {
                     padding: const EdgeInsets.fromLTRB(10, 270, 10, 150),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: mBackgroundColor,
                           borderRadius: BorderRadius.circular(20)),
                       child: Row(
                         children: [
@@ -239,11 +236,11 @@ class _CreatGameState extends State<CreatGame> {
                                   "Player Size ",
                                   style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.red,
+                                    color: mRedColor,
                                     fontWeight: FontWeight.bold,
                                     shadows: [
                                       Shadow(
-                                        color: Colors.white,
+                                        color: mBackgroundColor,
                                         offset: Offset(1, 1),
                                         blurRadius: 10,
                                       ),
@@ -254,7 +251,7 @@ class _CreatGameState extends State<CreatGame> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 50),
                                 child: Container(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         horizontal: 20, vertical: 0),
                                     decoration: BoxDecoration(
                                         boxShadow: [],
@@ -263,7 +260,7 @@ class _CreatGameState extends State<CreatGame> {
                                     child: DropdownButton(
                                       underline: Container(
                                         height: 2,
-                                        color: Color.fromARGB(255, 255, 77, 77),
+                                        color: mRedColor,
                                       ),
                                       value: sizeOfPlayeValue,
                                       onChanged: (String? value) {
@@ -284,14 +281,14 @@ class _CreatGameState extends State<CreatGame> {
                           ),
                           Column(
                             children: [
-                              Padding(
+                              const Padding(
                                 padding:
-                                    const EdgeInsets.fromLTRB(70, 50, 10, 10),
+                                    EdgeInsets.fromLTRB(70, 50, 10, 10),
                                 child: Text(
                                   "status of game ",
                                   style: TextStyle(
                                     fontSize: 18,
-                                    color: Colors.red,
+                                    color: mRedColor,
                                     fontWeight: FontWeight.bold,
                                     shadows: [
                                       Shadow(
@@ -307,12 +304,12 @@ class _CreatGameState extends State<CreatGame> {
                               Padding(
                                 padding: const EdgeInsets.only(left: 50),
                                 child: Container(
-                                    padding: EdgeInsets.symmetric(
+                                    padding: const EdgeInsets.symmetric(
                                         horizontal: 30, vertical: 0),
                                     child: DropdownButton(
                                       underline: Container(
                                         height: 2,
-                                        color: Color.fromARGB(255, 255, 77, 77),
+                                        color: mRedColor,
                                       ),
                                       value: statusValue,
                                       onChanged: (String? value) {
@@ -337,7 +334,7 @@ class _CreatGameState extends State<CreatGame> {
                   Padding(
                     padding: const EdgeInsets.only(top: 470),
                     child: Container(
-                      color: Colors.white,
+                      color: mBackgroundColor,
                       child: Padding(
                         padding: const EdgeInsets.fromLTRB(110, 40, 110, 25),
                         child: MaterialButton(
@@ -349,7 +346,7 @@ class _CreatGameState extends State<CreatGame> {
                                   builder: (context) => const Booking()),
                             );
                           },
-                          color: Color.fromARGB(255, 241, 61, 61),
+                          color: mRedColor,
                           elevation: 10,
                           height: 60,
                           shape: RoundedRectangleBorder(
@@ -363,7 +360,7 @@ class _CreatGameState extends State<CreatGame> {
                                   "Create",
                                   style: TextStyle(
                                     fontSize: 20,
-                                    color: Colors.white,
+                                    color: mBackgroundColor,
                                   ),
                                 ),
                               ),

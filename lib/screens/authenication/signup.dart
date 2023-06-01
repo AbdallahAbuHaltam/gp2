@@ -2,18 +2,10 @@ import 'package:derbyjo/screens/authenication/login.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../models/player.dart';
-
-Players player = Players(
-  email: "",
-  password: "",
-  phoneNo: "",
-  username: "",
-  fullName: "",
-  age: 0,
-  gender: "male"
-);
+import '../home/home.dart';
 
 class Signup extends StatefulWidget {
   const Signup({
@@ -27,6 +19,11 @@ class Signup extends StatefulWidget {
 class _SignupState extends State<Signup> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  late TextEditingController _emailcontroller = TextEditingController();
+  late TextEditingController _passwordcontroller = TextEditingController();
+  late TextEditingController _usernamecontroller = TextEditingController();
+  late TextEditingController _phonecontroller = TextEditingController();
+
   String error = '';
 
   bool _isObsecure = true;
@@ -109,10 +106,10 @@ class _SignupState extends State<Signup> {
                       keyboardType: TextInputType.emailAddress,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       onChanged: (val) {
-                        player.email = val;
+                        _emailcontroller.text = val;
                       },
                       onSaved: (value) {
-                        player.email = value!;
+                        _emailcontroller.text = value!;
                       },
                     ),
                     const SizedBox(
@@ -142,10 +139,10 @@ class _SignupState extends State<Signup> {
                       validator: (value) =>
                           value!.isEmpty ? "Enter UserName! " : null,
                       onChanged: (val) {
-                        player.username = val;
+                        _usernamecontroller.text = val;
                       },
                       onSaved: (value) {
-                        player.username = value!;
+                        _usernamecontroller.text = value!;
                       },
                     ),
                     const SizedBox(
@@ -175,10 +172,10 @@ class _SignupState extends State<Signup> {
                       validator: (value) =>
                           value!.length < 10 ? "Must be 10 length " : null,
                       onChanged: (val) {
-                        player.phoneNo = val;
+                        _phonecontroller.text = val;
                       },
                       onSaved: (value) {
-                        player.phoneNo = value!;
+                        _phonecontroller.text = value!;
                       },
                     ),
                     const SizedBox(
@@ -218,10 +215,10 @@ class _SignupState extends State<Signup> {
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (val) {
-                        player.password = val;
+                        _passwordcontroller.text = val;
                       },
                       onSaved: (value) {
-                        player.password = value!;
+                        _passwordcontroller.text = value!;
                       },
                     ),
                     const SizedBox(
@@ -282,25 +279,12 @@ class _SignupState extends State<Signup> {
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
-
-                                dynamic result = await _auth.registerW(
-                                    player.email, player.password);
-                                if (result == null) {
-                                  setState(() {
-                                    error = 'Please supply a valid email';
-                                  });
-                                }
-                                // ignore: use_build_context_synchronously
-                                Navigator.pop(context);
-                                /*players
-                                    .add({
-                                      'username': username,
-                                      "email": email,
-                                      "Phone Number": mobile,
-                                      "Password": password
-                                    })
-                                    .then((value) => print('User is added'))
-                                    .catchError((e) => print(e));*/
+                                _auth.userSignup(
+                                    username: _usernamecontroller.text,
+                                    email: _emailcontroller.text,
+                                    password: _passwordcontroller.text);
+                              
+                               
                               }
                             },
                             child: const Text(

@@ -1,8 +1,6 @@
 import 'package:derbyjo/screens/authenication/authenication.dart';
 import 'package:flutter/material.dart';
-
 import '../../utils/constants.dart';
-import '../../wrapper.dart';
 import '../about_us.dart';
 
 class GetStart extends StatefulWidget {
@@ -55,7 +53,7 @@ class _GetStartState extends State<GetStart> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Wrapper()),
+                MaterialPageRoute(builder: (context) => const Authenicate()),
               );
             },
             color: mRedColor,
@@ -87,8 +85,9 @@ class _GetStartState extends State<GetStart> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Wrapper()),
+                MaterialPageRoute(builder: (context) => const Authenicate()),
               );
+              
               setState(() {
                 showSignin = !showSignin;
               });

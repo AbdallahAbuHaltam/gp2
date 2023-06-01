@@ -1,10 +1,12 @@
 import 'package:derbyjo/screens/update_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import '../models/player.dart';
 import '../services/auth.dart';
 import '../utils/constants.dart';
 import '../widgets/profile_menu.dart';
-import 'authenication/signup.dart';
+import 'authenication/get_started.dart';
 
 class Profile extends StatefulWidget {
   const Profile({
@@ -18,6 +20,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+    Players? user = Provider.of<Players?>(context);
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -27,7 +30,7 @@ class _ProfileState extends State<Profile> {
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
         title: const Padding(
-          padding: EdgeInsets.only(left:100.0),
+          padding: EdgeInsets.only(left: 100.0),
           child: Text(
             "Profile",
             style: TextStyle(fontWeight: FontWeight.bold),
@@ -78,10 +81,7 @@ class _ProfileState extends State<Profile> {
                 'Abdullah Abuhaltam',
                 style: TextStyle(fontWeight: FontWeight.w500),
               ),
-              Text(
-                player.username,
-                style: const TextStyle(fontWeight: FontWeight.w400),
-              ),
+              _builderName(user, context),
               const SizedBox(
                 height: 30,
               ),
@@ -143,8 +143,13 @@ class _ProfileState extends State<Profile> {
                 endIcon: false,
                 onpress: () async {
                   await AuthService().signOut();
-                  // ignore: use_build_context_synchronously
-                  Navigator.pop(context);
+// ignore: use_build_context_synchronously
+                 Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GetStart(),
+                    ),
+                  );
                 },
               ),
             ],
@@ -153,4 +158,20 @@ class _ProfileState extends State<Profile> {
       ),
     );
   }
+}
+
+Widget _builderName(Players? player, context) {
+  
+  return Column(
+    children: [
+      Text(
+        "${player?.fullName}",
+        style: const TextStyle(fontWeight: FontWeight.w400),
+      ),
+      Text(
+        "${player?.username}",
+        style: const TextStyle(fontWeight: FontWeight.w400),
+      ),
+    ],
+  );
 }

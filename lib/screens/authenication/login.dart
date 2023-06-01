@@ -1,4 +1,5 @@
 import 'package:derbyjo/screens/authenication/signup.dart';
+import 'package:derbyjo/screens/home/home.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -16,12 +17,11 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
-late  TextEditingController _controllerEmail = TextEditingController();
-late TextEditingController _controllerPassword = TextEditingController();
+    late  TextEditingController _emailcontroller = TextEditingController();
+    late  TextEditingController _passwordcontroller = TextEditingController();
 
 
-  String _email = '';
-  String _password = '';
+ 
   String error = '';
 
   bool _isObsecure = true;
@@ -46,7 +46,6 @@ late TextEditingController _controllerPassword = TextEditingController();
               SizedBox(
                 width: 350,
                 child: TextFormField(
-                  controller: _controllerEmail,
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
@@ -61,11 +60,11 @@ late TextEditingController _controllerPassword = TextEditingController();
                     textCapitalization: TextCapitalization.none,
                     onChanged: (val) {
                       setState(() {
-                        _controllerEmail.text = val ;
+                        _emailcontroller.text = val;
                       });
                     },
                     onSaved: (value) {
-                      _controllerEmail.text = value!;
+                      _emailcontroller.text = value!;
                     },
                     validator: (value) {
                       if (value == null ||
@@ -84,7 +83,6 @@ late TextEditingController _controllerPassword = TextEditingController();
                 child: SizedBox(
                   width: 350,
                   child: TextFormField(
-                    controller: _controllerPassword,
                       obscureText: _isObsecure,
                       decoration: InputDecoration(
                           border: const OutlineInputBorder(
@@ -108,11 +106,11 @@ late TextEditingController _controllerPassword = TextEditingController();
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (val) {
                         setState(() {
-                          _controllerPassword.text = val;
+                          _passwordcontroller.text = val;
                         });
                       },
                       onSaved: (value) {
-                        _controllerPassword.text = value!;
+                        _passwordcontroller.text = value!;
                       },
                       validator: (value) {
                         if (value == null || value.trim().length < 8) {
@@ -173,13 +171,12 @@ late TextEditingController _controllerPassword = TextEditingController();
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-
-                          dynamic result = await _auth.login(_controllerEmail.text, _controllerPassword.text);
-                          if (result == null) {
-                            setState(() {
-                              error = 'Please supply a valid email';
-                            });
-                          }
+                          _auth.userLogin(email: _emailcontroller.text, password: _passwordcontroller.text);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Home()),
+                        );
                         }
                       },
                       child: const Text(

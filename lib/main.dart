@@ -1,10 +1,10 @@
-import 'package:derbyjo/screens/authenication/get_started.dart';
+import 'package:derbyjo/models/player.dart';
 import 'package:derbyjo/services/auth.dart';
+import 'package:derbyjo/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
-import 'package:derbyjo/models/user.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<MyUser?>.value(
+    return StreamProvider<Players?>.value(
       value: AuthService().user,
       initialData: null,
       child: const MaterialApp(
-        home: GetStart(),
+        home: Wrapper(),
         debugShowCheckedModeBanner: false,
       ),
     );

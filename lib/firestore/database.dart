@@ -41,6 +41,8 @@ class DataBaseServices {
     });
   }
 
+  
+
   Future addData(
       String username, String email, String phoneNo, String password,String fullName,int age,String gender)async {
     return await userCollection.add({
@@ -60,6 +62,8 @@ class DataBaseServices {
     return userCollection.snapshots();
   }
 
+
+  
   
   // 4
   

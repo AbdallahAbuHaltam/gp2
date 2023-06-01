@@ -1,9 +1,8 @@
-import 'package:derbyjo/firestore/database.dart';
+import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
-import 'authenication/signup.dart';
 
 class UpdateProfile extends StatefulWidget {
   const UpdateProfile({super.key});
@@ -15,8 +14,12 @@ class UpdateProfile extends StatefulWidget {
 class _UpdateProfileState extends State<UpdateProfile> {
   final _formKey = GlobalKey<FormState>();
 
-  late DataBaseServices data = DataBaseServices();
-  //final DataRepository repository = DataRepository();
+  final AuthService _auth = AuthService();
+
+    late  TextEditingController _emailcontroller = TextEditingController();
+    late  TextEditingController _usernamecontroller = TextEditingController();
+    late  TextEditingController _phonecontroller = TextEditingController();
+    late  TextEditingController _passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +92,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                           prefixIcon: Icon(LineAwesomeIcons.user),
                         ),
                         onChanged: (value) {
-                          player.username = value;
+                          _usernamecontroller = value as TextEditingController;
                         },
                         onSaved: (newValue) {
-                          player.username = newValue!;
+                          _usernamecontroller = newValue! as TextEditingController;
                         },
                         onTap: () async {
                           
@@ -106,10 +109,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         prefixIcon: Icon(LineAwesomeIcons.envelope),
                       ),
                       onChanged: (value) {
-                          player.email = value;
+                          _emailcontroller = value as TextEditingController;
                         },
                         onSaved: (newValue) {
-                          player.email = newValue!;
+                          _emailcontroller = newValue! as TextEditingController;
                         },
                     ),
                     const SizedBox(
@@ -121,10 +124,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         prefixIcon: Icon(LineAwesomeIcons.phone),
                       ),
                       onChanged: (value) {
-                          player.phoneNo = value;
+                          _phonecontroller = value as TextEditingController;
                         },
                         onSaved: (newValue) {
-                          player.phoneNo = newValue!;
+                          _phonecontroller = newValue! as TextEditingController;
                         },
                     ),
                     const SizedBox(
@@ -136,10 +139,10 @@ class _UpdateProfileState extends State<UpdateProfile> {
                         prefixIcon: Icon(LineAwesomeIcons.fingerprint),
                       ),
                       onChanged: (value) {
-                          player.password = value;
+                          _passwordcontroller = value as TextEditingController;
                         },
                         onSaved: (newValue) {
-                          player.password = newValue!;
+                          _passwordcontroller = newValue! as TextEditingController;
                         },
                     ),
                     const SizedBox(
@@ -152,9 +155,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
                           if (_formKey.currentState!.validate()) {
                             _formKey.currentState!.save();
 
-                            await data.updateData(player.fullName,player.email,player.phoneNo,player.password);
+                            //await data.up(player.fullName,player.email,player.phoneNo,player.password);
                           }
-                          Navigator.pop(context);
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: mRedColor,
