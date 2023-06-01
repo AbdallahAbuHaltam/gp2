@@ -1,11 +1,11 @@
 import 'package:derbyjo/screens/facuilities.dart';
 import 'package:derbyjo/screens/info.dart';
 import 'package:derbyjo/screens/review.dart';
+import 'package:derbyjo/screens/submit_page.dart';
 import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:favorite_button/favorite_button.dart';
 
-import 'submitPage.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key});
@@ -212,7 +212,7 @@ class _CheckOutState extends State<CheckOut> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const submitPage()),
+                  MaterialPageRoute(builder: (context) => const SubmitPage()),
                 );
               },
               color: mRedColor,

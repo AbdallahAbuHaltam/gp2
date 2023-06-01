@@ -3,7 +3,7 @@ import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
-import 'datePicker.dart';
+import 'date_picker.dart';
 
 class Booking extends StatefulWidget {
   const Booking({super.key});

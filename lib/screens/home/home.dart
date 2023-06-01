@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import '../../utils/constants.dart';
 import '../../widgets/bottom_menu.dart';
 import '../book.dart';
-import '../footballCategories.dart';
+import 'package:derbyjo/screens/footballCategories.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
