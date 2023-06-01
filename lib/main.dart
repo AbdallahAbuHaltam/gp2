@@ -9,7 +9,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:provider/provider.dart';
 
-final File file=File('images/playersadi.json');
+final File file=File('images/playersadii.json');
   final String jsonString=file.readAsStringSync();
   final Map<String,dynamic> map=json.decode(jsonString);
   final Players players = Players.formJson(map);
