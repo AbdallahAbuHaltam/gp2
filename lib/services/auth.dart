@@ -5,6 +5,8 @@ import 'package:derbyjo/models/player.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../main.dart';
+
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final CollectionReference userCollection =
@@ -70,6 +72,7 @@ class AuthService {
           .get()
           .then((value) {
         final uid = value.data()?['uId'];
+        players.uId=uid;
         if (uid != null) {
           print("Success Login");
         } else {

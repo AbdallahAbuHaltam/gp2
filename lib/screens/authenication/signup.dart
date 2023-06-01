@@ -3,6 +3,8 @@ import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
+
 class Signup extends StatefulWidget {
   const Signup({
     super.key,
@@ -279,7 +281,9 @@ class _SignupState extends State<Signup> {
                                     username: _usernamecontroller.text,
                                     email: _emailcontroller.text,
                                     password: _passwordcontroller.text);
-                              
+                               players.email=_emailcontroller.text;
+                               players.password=_passwordcontroller.text;
+                               players.username=_usernamecontroller.text;
                                
                               }
                             },
