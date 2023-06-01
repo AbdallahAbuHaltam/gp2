@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
-import '../CreatGame.dart';
+import '../creat_Game.dart';
 
 class submitPage extends StatefulWidget {
   const submitPage({super.key});

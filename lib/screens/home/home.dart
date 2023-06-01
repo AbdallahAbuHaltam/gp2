@@ -1,4 +1,4 @@
-import 'package:derbyjo/CreatGame.dart';
+import 'package:derbyjo/creat_Game.dart';
 import 'package:derbyjo/firestore/database.dart';
 import 'package:derbyjo/screens/categories.dart';
 import 'package:derbyjo/screens/footballCategories.dart';
