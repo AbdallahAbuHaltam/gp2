@@ -8,6 +8,7 @@ import '../main.dart';
 import '../models/player.dart';
 import '../services/auth.dart';
 import '../utils/constants.dart';
+import '../widgets/profile_data.dart';
 import '../widgets/profile_menu.dart';
 import 'authenication/get_started.dart';
 
@@ -83,14 +84,7 @@ final AuthService _auth = AuthService();
               const SizedBox(
                 height: 10,
               ),
-              Text(
-        "${players.username}",
-        style: const TextStyle(fontWeight: FontWeight.w400),
-      ),
-      Text(
-        "${players.username}",
-        style: const TextStyle(fontWeight: FontWeight.w400),
-      ),
+              const ProfileData(),
       /*ElevatedButton(onPressed: (){
 
         printData();
