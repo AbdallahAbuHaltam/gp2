@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:derbyjo/models/game.dart';
 import 'package:derbyjo/models/player.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -46,14 +47,20 @@ class AuthService {
           age: age,
           gender: gender,
           uId: value.user!.uid);
-      //User? user = value.user;
-      userCollection
-          .doc(value.user!.uid)
-          .set(model.toMap())
-          .then((value) => print('success'))
-          .catchError((e) {
+      User? user = value.user;
+      userCollection.add(model.toMap()).then((value) {
+        players.username = model.username;
+        players.email = model.email;
+        players.password = password;
+        players.fullName = fullName;
+        players.phoneNo = phoneNo;
+        players.age = age;
+        players.gender = gender;
+
+        print('success');
+      }).catchError((e) {
         print(e.toString());
-        //_userfromFirebase(user!);
+        _userfromFirebase(user!);
       });
     }).catchError((e) {
       print(e.toString());
@@ -64,7 +71,7 @@ class AuthService {
     _auth
         .signInWithEmailAndPassword(email: email, password: password)
         .then((value) {
-      //User? user = value.user;
+      User? user = value.user;
 
       FirebaseFirestore.instance
           .collection('users')
@@ -72,13 +79,13 @@ class AuthService {
           .get()
           .then((value) {
         final uid = value.data()?['uId'];
-        players.uId = uid;
+        /*players.uId = uid;
         players.username = value.data()?['username'];
         players.email = value.data()?['email'];
         players.password = value.data()?['password'];
         players.phoneNo = value.data()?['phoneNo'];
         players.gender = value.data()?['gender'];
-        players.fullName = value.data()?['fullName'];
+        players.fullName = value.data()?['fullName'];*/
 
         if (uid != null) {
           print("Success Login");
@@ -86,7 +93,7 @@ class AuthService {
           print("Falied Login");
         }
         //getData(uId: uid);
-        //_userfromFirebase(user!);
+        _userfromFirebase(user!);
       }).catchError((e) {
         print(e.toString());
       });
@@ -95,38 +102,62 @@ class AuthService {
     });
   }
 
-
-
   Future edit({
     required String email,
-     required String username,
+    required String username,
     required String password,
     int? age,
     String? gender,
-     required String phoneNo,
+    required String phoneNo,
     String? fullName,
   }) async {
-    
-    
-      Players model = Players(
-          email: email,
-          username: username,
-          password: password,
-          fullName: fullName,
-          phoneNo: phoneNo,
-          age: age,
-          gender: gender,
-          uId: players.uId);
-     userCollection.doc(players.uId).update(model.toMap()).then((value) {
-       
-
+    Players model = Players(
+        email: email,
+        username: username,
+        password: password,
+        fullName: fullName,
+        phoneNo: phoneNo,
+        age: age,
+        gender: gender,
+        uId: players.uId);
+    userCollection.doc(players.uId).update(model.toMap()).then((value) {
+      players.username = model.username;
+      players.email = model.email;
+      players.password = password;
+      players.fullName = fullName;
+      players.phoneNo = phoneNo;
+      players.age = age;
+      players.gender = gender;
 
       print("Edited Success");
-    }).catchError((e){
+    }).catchError((e) {
       print(e.toString());
     });
-    players.username=model.username;
+    //players.username=model.username;
   }
+
+  Future addPlaygroundData({
+    Players? player,
+    String? playgroundName,
+    String? size,
+    String? status,
+  }) async {
+    FirebaseFirestore.instance
+        .collection('game')
+        .add(Game(
+          playgroundName: playgroundName,
+          size: size,
+          status: status,
+          player: Players(
+            username: players.username,
+            uId: players.uId,
+          ),
+        ).toMap())
+        .then((value) {
+      print("Success add Playground Data");
+    });
+  }
+
 /*Future getData({ String? uId,})async{
 FirebaseFirestore.instance.collection('users').doc(uId).get().then((value) {
 Players playerModel=Players.formJson(value.data());
