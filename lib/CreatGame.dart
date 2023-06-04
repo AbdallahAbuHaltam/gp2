@@ -1,5 +1,6 @@
 import 'package:derbyjo/screens/book.dart';
 import 'package:derbyjo/utils/constants.dart';
+import 'package:derbyjo/widgets/list_create.dart';
 import 'package:flutter/material.dart';
 
 class CreateGame extends StatefulWidget {
@@ -12,23 +13,13 @@ class CreateGame extends StatefulWidget {
 class _CreateGameState extends State<CreateGame> {
   var sizeOfPlayeList = ["5 x 5", "6 x 6"];
   String sizeOfPlayeValue = "5 x 5";
-  int selectedOptionIndex = -1;
 
-  void selectOption(int index) {
-    setState(() {
-      selectedOptionIndex = index;
-    });
-  }
+ 
 
   var statusList = ["Public", "private"];
   String statusValue = "Public";
-  int selectedStatusIndex = -1;
 
-  void selectStatus(int index) {
-    setState(() {
-      selectedStatusIndex = index;
-    });
-  }
+  
 
   final List<String> cardContents = [
     'Al Jazeera Schools \n Stadium',
@@ -40,15 +31,7 @@ class _CreateGameState extends State<CreateGame> {
     'Zain Al Sharaf \n Stadium',
   ];
 
-  final List<String> imagesStadium = [
-    "stadiumImages/s1.jpg",
-    "stadiumImages/s2.jpg",
-    "stadiumImages/s3.jpg",
-    "stadiumImages/s4.jpg",
-    "stadiumImages/s5.jpg",
-    "stadiumImages/s6.jpg",
-    "stadiumImages/s7.jpg",
-  ];
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -142,82 +125,7 @@ class _CreateGameState extends State<CreateGame> {
                         color: mBackgroundColor,
                       ),
                       height: 200,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: cardContents.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: GestureDetector(
-                              onTap: () => selectOption(index),
-                              child: Card(
-                                color: selectedOptionIndex == index
-                                    ? mRedColor
-                                    : mBackgroundColor,
-                                child: Stack(
-                                  children: [
-                                    const Text(
-                                      "Select Stadium",
-                                      style: TextStyle(
-                                          fontSize: 20,
-                                          color:
-                                              mRedColor,
-                                          shadows: [
-                                            Shadow(
-                                              color: Color.fromARGB(
-                                                  255, 208, 208, 208),
-                                              offset: Offset(1, 1),
-                                              blurRadius: 10,
-                                            ),
-                                          ],
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                    SizedBox(
-                                      width: 150,
-                                      child: Column(
-                                        children: [
-                                          Image.asset(
-                                            imagesStadium[index],
-                                            width: 165,
-                                            height: 170,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Positioned(
-                                        child: Row(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(
-                                              top: 130, left: 4),
-                                          child: Text(
-                                            cardContents[index],
-                                            style: const TextStyle(
-                                              fontSize: 16,
-                                              color: Color.fromARGB(
-                                                  255, 255, 255, 255),
-                                              fontWeight: FontWeight.bold,
-                                              shadows: [
-                                                Shadow(
-                                                  color: Color.fromARGB(
-                                                      255, 0, 0, 0),
-                                                  offset: Offset(10, 5),
-                                                  blurRadius: 100,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ))
-                                  ],
-                                ),
-                              ),
-                            ),
-                          );
-                        },
-                      ),
+                      child: const ListCreate(),
                     ),
                   ),
                   Padding(
