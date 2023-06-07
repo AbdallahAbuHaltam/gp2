@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/screens/book.dart';
+import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/utils/constants.dart';
 import 'package:derbyjo/widgets/list_create.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +15,10 @@ class CreateGame extends StatefulWidget {
 class _CreateGameState extends State<CreateGame> {
   var sizeOfPlayeList = ["5 x 5", "6 x 6"];
   String sizeOfPlayeValue = "5 x 5";
-
- 
+  final AuthService _auth = AuthService();
 
   var statusList = ["Public", "private"];
   String statusValue = "Public";
-
-  
 
   final List<String> cardContents = [
     'Al Jazeera Schools \n Stadium',
@@ -30,8 +29,6 @@ class _CreateGameState extends State<CreateGame> {
     'Alkhudar Schools \n Stadium',
     'Zain Al Sharaf \n Stadium',
   ];
-
- 
 
   @override
   Widget build(BuildContext context) {
@@ -190,8 +187,7 @@ class _CreateGameState extends State<CreateGame> {
                           Column(
                             children: [
                               const Padding(
-                                padding:
-                                    EdgeInsets.fromLTRB(70, 50, 10, 10),
+                                padding: EdgeInsets.fromLTRB(70, 50, 10, 10),
                                 child: Text(
                                   "status of game ",
                                   style: TextStyle(
@@ -239,45 +235,63 @@ class _CreateGameState extends State<CreateGame> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 470),
-                    child: Container(
-                      color: mBackgroundColor,
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(110, 40, 110, 25),
-                        child: MaterialButton(
-                          minWidth: 0,
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Booking()),
-                            );
-                          },
-                          color: mRedColor,
-                          elevation: 10,
-                          height: 60,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Row(
-                            children: const [
-                              Padding(
-                                padding: EdgeInsets.only(left: 50),
-                                child: Text(
-                                  "Create",
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: mBackgroundColor,
-                                  ),
+                  StreamBuilder(
+                      stream: FirebaseFirestore.instance
+                          .collection('playgroundInfo')
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (!snapshot.hasData) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 470),
+                          child: Container(
+                            color: mBackgroundColor,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(110, 40, 110, 25),
+                              child: MaterialButton(
+                                minWidth: 0,
+                                onPressed: () {
+                                  _auth.addGame(
+                                      size: sizeOfPlayeValue,
+                                      status: statusValue,
+                                      playgroundName: snapshot.data!.docs[i]
+                                          ['playgroundName']);
+
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Booking()),
+                                  );
+                                },
+                                color: mRedColor,
+                                elevation: 10,
+                                height: 60,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Row(
+                                  children: const [
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 50),
+                                      child: Text(
+                                        "Create",
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          color: mBackgroundColor,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ],
+                            ),
                           ),
-                        ),
-                      ),
-                    ),
-                  ),
+                        );
+                      }),
                 ],
               ),
             ),

@@ -49,13 +49,14 @@ class AuthService {
           uId: value.user!.uid);
       User? user = value.user;
       userCollection.add(model.toMap()).then((value) {
-        players.username = model.username;
+        /*players.username = model.username;
         players.email = model.email;
-        players.password = password;
-        players.fullName = fullName;
-        players.phoneNo = phoneNo;
-        players.age = age;
-        players.gender = gender;
+        players.password = model.password;
+        players.fullName = model.fullName;
+        players.phoneNo = model.phoneNo;
+        players.age = model.age;
+        players.gender = model.gender;*/
+        
 
         print('success');
       }).catchError((e) {
@@ -79,13 +80,13 @@ class AuthService {
           .get()
           .then((value) {
         final uid = value.data()?['uId'];
-        /*players.uId = uid;
+        players.uId = uid;
         players.username = value.data()?['username'];
         players.email = value.data()?['email'];
         players.password = value.data()?['password'];
         players.phoneNo = value.data()?['phoneNo'];
         players.gender = value.data()?['gender'];
-        players.fullName = value.data()?['fullName'];*/
+        players.fullName = value.data()?['fullName'];
 
         if (uid != null) {
           print("Success Login");
@@ -136,7 +137,7 @@ class AuthService {
     //players.username=model.username;
   }
 
-  Future addPlaygroundData({
+  Future addGame({
     Players? player,
     String? playgroundName,
     String? size,
@@ -152,6 +153,7 @@ class AuthService {
             username: players.username,
             uId: players.uId,
           ),
+
         ).toMap())
         .then((value) {
       print("Success add Playground Data");

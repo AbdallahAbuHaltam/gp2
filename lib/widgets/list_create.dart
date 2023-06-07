@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
+int i=0;
 
 class ListCreate extends StatefulWidget {
   const ListCreate({super.key});
@@ -36,8 +37,10 @@ class _ListCreateState extends State<ListCreate> {
     "stadiumImages/s6.jpg",
     "stadiumImages/s7.jpg",
   ];
+
   @override
   Widget build(BuildContext context) {
+    
     return StreamBuilder(
         stream:
             FirebaseFirestore.instance.collection('playgroundInfo').snapshots(),
@@ -54,7 +57,14 @@ class _ListCreateState extends State<ListCreate> {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: GestureDetector(
-                  onTap: () => selectOption(index),
+                  onTap: () {
+                    selectOption(index);
+                    setState(() {
+                      i=index;
+                      print(i);
+                      //print(index);
+                    });
+                  },
                   child: Card(
                     color: selectedOptionIndex == index
                         ? mRedColor
@@ -121,3 +131,12 @@ class _ListCreateState extends State<ListCreate> {
         });
   }
 }
+
+/*Future id(String id) async {
+  DocumentReference doc_ref =
+      FirebaseFirestore.instance.collection("playgroundInfo").doc();
+  DocumentSnapshot docSnap = await doc_ref.get();
+  playgroundID = docSnap.reference.id;
+  print(playgroundID);
+  return playgroundID;
+}*/

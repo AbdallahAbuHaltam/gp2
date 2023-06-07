@@ -109,7 +109,7 @@ class HomeList extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          snapshot.data!.docs[index]['name'],
+                          snapshot.data!.docs[index]['playgroundName'],
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
