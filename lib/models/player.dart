@@ -5,7 +5,7 @@ class Players {
   String? password;
   String? fullName;
   String? phoneNo;
-  int? age;
+  String? age;
   String? gender;
   String? uId;
 

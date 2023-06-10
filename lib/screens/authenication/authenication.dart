@@ -17,7 +17,7 @@ class _AuthenicateState extends State<Authenicate> {
     if (showSignin) {
       return const Login();
     } else {
-      return const Signup();
+      return const SignupPage1();
     }
   }
 }
