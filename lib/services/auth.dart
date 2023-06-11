@@ -59,6 +59,7 @@ class AuthService {
         players.phoneNo = model.phoneNo;
         players.age = model.age;
         players.gender = model.gender;
+        players.uId = model.uId;
         print(players.username);
         print('success');
       }).catchError((e) {
@@ -81,7 +82,7 @@ class AuthService {
           .doc(value.user?.uid)
           .get()
           .then((value) {
-        final uid = value.data()?['uId'];
+        final uid = players.uId;
 
         /*players.uId = uid;
         players.username = value.data()?['username'];

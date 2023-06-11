@@ -13,8 +13,6 @@ import 'date_picker.dart';
 
 final AuthService _auth = AuthService();
 String size = '';
-int _numberOfPlayer = 0;
-int _numberOfPlayer2 = 0;
 
 class Booking extends StatefulWidget {
   const Booking({super.key});
@@ -25,6 +23,8 @@ class Booking extends StatefulWidget {
 
 class _BookingState extends State<Booking> {
   late int numPlyer;
+  int _numberOfPlayer = 0;
+  int _numberOfPlayer2 = 0;
 
   void _updateFillCount(int count) {
     setState(() {

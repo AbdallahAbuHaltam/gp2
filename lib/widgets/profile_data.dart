@@ -17,7 +17,7 @@ class ProfileData extends StatelessWidget {
           return Column(
             children: [
               Text(
-                snapshot.data!.docs[0]['username'],
+                snapshot.data!.docs[0]['fullName'],
                 style: const TextStyle(fontWeight: FontWeight.w400),
               ),
               Text(

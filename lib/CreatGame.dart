@@ -5,7 +5,9 @@ import 'package:derbyjo/utils/constants.dart';
 import 'package:derbyjo/widgets/list_create.dart';
 import 'package:derbyjo/widgets/list_data.dart';
 import 'package:flutter/material.dart';
- int i=0;
+
+int i = 0;
+
 class CreateGame extends StatefulWidget {
   const CreateGame({super.key});
 
