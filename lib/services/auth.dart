@@ -51,15 +51,14 @@ class AuthService {
           uId: value.user!.uid);
       User? user = value.user;
       userCollection.add(model.toMap()).then((value) {
-        /*players.username = model.username;
+        players.username = model.username;
         players.email = model.email;
         players.password = model.password;
         players.fullName = model.fullName;
         players.phoneNo = model.phoneNo;
         players.age = model.age;
-        players.gender = model.gender;*/
-        
-
+        players.gender = model.gender;
+        print(players.username);
         print('success');
       }).catchError((e) {
         print(e.toString());
@@ -82,14 +81,15 @@ class AuthService {
           .get()
           .then((value) {
         final uid = value.data()?['uId'];
-        players.uId = uid;
+
+        /*players.uId = uid;
         players.username = value.data()?['username'];
         players.email = value.data()?['email'];
         players.password = value.data()?['password'];
         players.phoneNo = value.data()?['phoneNo'];
         players.gender = value.data()?['gender'];
-        players.fullName = value.data()?['fullName'];
-
+        players.fullName = value.data()?['fullName'];*/
+        print(uid);
         if (uid != null) {
           print("Success Login");
         } else {
@@ -126,11 +126,11 @@ class AuthService {
     userCollection.doc(players.uId).update(model.toMap()).then((value) {
       players.username = model.username;
       players.email = model.email;
-      players.password = password;
-      players.fullName = fullName;
-      players.phoneNo = phoneNo;
-      players.age = age;
-      players.gender = gender;
+      players.password = model.password;
+      players.fullName = model.fullName;
+      players.phoneNo = model.phoneNo;
+      players.age = model.age;
+      players.gender = model.gender;
 
       print("Edited Success");
     }).catchError((e) {
@@ -155,7 +155,6 @@ class AuthService {
             username: players.username,
             uId: players.uId,
           ),
-
         ).toMap())
         .then((value) {
       print("Success add Game");
@@ -163,26 +162,29 @@ class AuthService {
   }
 
   Future addBook({
-Game? game, 
-  int? noPlayers,
-  String? price,
-  DateTime? date,
-  TimeOfDay? time,
-  String? bookId,
-  }) async{
-    FirebaseFirestore.instance.collection('Book').add(Book(
-      bookId: bookId,
-      date: date,
-      noPlayers: noPlayers,
-      time: time,
-      price: price,
-      game: Game(
-        playgroundName: game?.playgroundName,
-          gameId: game?.gameId,
-          player: Players(username: game?.player?.username,phoneNo: game?.player?.phoneNo),
-      )
-
-    ).toMap()).then((value) => print("Booked "));
+    Game? game,
+    int? noPlayers,
+    String? price,
+    DateTime? date,
+    TimeOfDay? time,
+    String? bookId,
+  }) async {
+    FirebaseFirestore.instance
+        .collection('Book')
+        .add(Book(
+            bookId: bookId,
+            date: date,
+            noPlayers: noPlayers,
+            time: time,
+            price: price,
+            game: Game(
+              playgroundName: game?.playgroundName,
+              gameId: game?.gameId,
+              player: Players(
+                  username: game?.player?.username,
+                  phoneNo: game?.player?.phoneNo),
+            )).toMap())
+        .then((value) => print("Booked "));
   }
 
 /*Future getData({ String? uId,})async{

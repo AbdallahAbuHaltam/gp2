@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
- var thetime;
+var date;
+
 class DateTimePickerDialog extends StatefulWidget {
   const DateTimePickerDialog({super.key});
 
@@ -50,6 +51,8 @@ class _DateTimePickerDialogState extends State<DateTimePickerDialog> {
           pickedTime.hour,
           pickedTime.minute,
         );
+        date = _selectedDateTime;
+        print(date);
       });
     }
   }
@@ -63,8 +66,8 @@ class _DateTimePickerDialogState extends State<DateTimePickerDialog> {
           borderRadius: BorderRadius.circular(
               10.0), // Set your desired border radius here
         ),
-        backgroundColor:
-            const Color.fromARGB(255, 241, 61, 61), // Set your desired color here
+        backgroundColor: const Color.fromARGB(
+            255, 241, 61, 61), // Set your desired color here
       ),
       child: Text(
         // ignore: unnecessary_null_comparison
@@ -76,7 +79,7 @@ class _DateTimePickerDialogState extends State<DateTimePickerDialog> {
       onPressed: () {
         _selectDateTime(context);
         // ignore: unused_local_variable
-        thetime = _selectedDateTime;
+        setState(() {});
       },
     );
   }

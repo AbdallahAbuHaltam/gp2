@@ -13,7 +13,6 @@ import 'date_picker.dart';
 
 final AuthService _auth = AuthService();
 
-
 class Booking extends StatefulWidget {
   const Booking({super.key});
 
@@ -171,179 +170,182 @@ class _BookingState extends State<Booking> {
                   color: mBackgroundColor,
                   borderRadius: BorderRadius.circular(17)),
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance
+                  stream: FirebaseFirestore.instance
                       .collection('playgroundInfo')
                       .snapshots(),
-                builder: (context, snapshot) {
-                   if (!snapshot.hasData) {
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
                       return const Center(
                         child: CircularProgressIndicator(),
                       );
                     }
-                  return Column(
-                    children: [
-                       Padding(
-                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                        child: SizedBox(
-                          height: 30,
-                          child: Text(snapshot.data!.docs[i]['playgroundName'],
-                              style: TextStyle(
-                                  fontSize: 25,
-                                  decoration: TextDecoration.none,
-                                  color: mBlackColor,
-                                  fontWeight: FontWeight.bold)),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(130, 10, 0, 0),
-                        child: Row(children: const [
-                          Text(
-                            "Amman-Jordan",
-                            style: TextStyle(
-                                fontSize: 12,
-                                decoration: TextDecoration.none,
-                                color: mBlackColor),
-                          ),
-                        ]),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(130, 5, 0, 0),
-                        child: Row(children: [
-                          Row(
-                            children: const [
-                              Text(
-                                "Open",
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: SizedBox(
+                            height: 30,
+                            child: Text(
+                                snapshot.data!.docs[i]['playgroundName'],
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 25,
                                     decoration: TextDecoration.none,
                                     color: mBlackColor,
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold)),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(130, 10, 0, 0),
+                          child: Row(children: const [
+                            Text(
+                              "Amman-Jordan",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  decoration: TextDecoration.none,
+                                  color: mBlackColor),
+                            ),
+                          ]),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(130, 5, 0, 0),
+                          child: Row(children: [
+                            Row(
+                              children: const [
+                                Text(
+                                  "Open",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      decoration: TextDecoration.none,
+                                      color: mBlackColor,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                  child: Text(
+                                    "10am - 2am",
+                                    style: TextStyle(
+                                        fontSize: 12,
+                                        decoration: TextDecoration.none,
+                                        color: mBlackColor),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ]),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(120, 3, 0, 0),
+                          child: Row(children: const [
+                            Icon(
+                              Icons.location_on_outlined,
+                              color: mYellow,
+                            ),
+                            Text(
+                              "2.5 km",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  decoration: TextDecoration.none,
+                                  color: mBackgroundColor),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                              child: Text(
+                                "5.0",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: mBlackColor,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ),
+                            Icon(
+                              Icons.star_outline_rounded,
+                              color: mYellow,
+                            ),
+                          ]),
+                        ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                child: Container(
+                                    height: 200,
+                                    width: 350,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "images/stadiumtraning.jpg"),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        ..._buildIconRows(),
+                                        SizedBox(height: 16),
+                                        Text(
+                                          'Number of player: $_numberOfPlayer',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15),
+                                        ),
+                                      ],
+                                    )),
                               ),
                               Padding(
-                                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                child: Text(
-                                  "10am - 2am",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      decoration: TextDecoration.none,
-                                      color: mBlackColor),
-                                ),
+                                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                child: Container(
+                                    height: 200,
+                                    width: 350,
+                                    decoration: const BoxDecoration(
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "images/stadiumtraning.jpg"),
+                                        fit: BoxFit.fill,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        ..._buildIconRows2(),
+                                        SizedBox(height: 16),
+                                        Text(
+                                          'Number of player: $_numberOfPlayer2',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 15),
+                                        ),
+                                      ],
+                                    )),
                               ),
                             ],
                           ),
-                        ]),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(120, 3, 0, 0),
-                        child: Row(children: const [
-                          Icon(
-                            Icons.location_on_outlined,
-                            color: mYellow,
-                          ),
-                          Text(
-                            "2.5 km",
-                            style: TextStyle(
-                                fontSize: 12,
-                                decoration: TextDecoration.none,
-                                color: mBackgroundColor),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                            child: Text(
-                              "5.0",
-                              style: TextStyle(
-                                fontSize: 10,
-                                color: mBlackColor,
-                                decoration: TextDecoration.none,
-                              ),
-                            ),
-                          ),
-                          Icon(
-                            Icons.star_outline_rounded,
-                            color: mYellow,
-                          ),
-                        ]),
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                              child: Container(
-                                  height: 200,
-                                  width: 350,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image:
-                                          AssetImage("images/stadiumtraning.jpg"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      ..._buildIconRows(),
-                                      SizedBox(height: 16),
-                                      Text(
-                                        'Number of player: $_numberOfPlayer',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 15),
-                                      ),
-                                    ],
-                                  )),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                              child: Container(
-                                  height: 200,
-                                  width: 350,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image:
-                                          AssetImage("images/stadiumtraning.jpg"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      ..._buildIconRows2(),
-                                      SizedBox(height: 16),
-                                      Text(
-                                        'Number of player: $_numberOfPlayer2',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 15),
-                                      ),
-                                    ],
-                                  )),
-                            ),
-                          ],
                         ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            const Text(
-                              "Pick Date",
-                              style: TextStyle(
-                                shadows: [
-                                  Shadow(
-                                    color: Color.fromARGB(255, 208, 208, 208),
-                                    offset: Offset(1, 1),
-                                    blurRadius: 10,
-                                  ),
-                                ],
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25,
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const Text(
+                                "Pick Date",
+                                style: TextStyle(
+                                  shadows: [
+                                    Shadow(
+                                      color: Color.fromARGB(255, 208, 208, 208),
+                                      offset: Offset(1, 1),
+                                      blurRadius: 10,
+                                    ),
+                                  ],
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25,
+                                ),
                               ),
-                            ),
-                            DateTimePickerDialog(),
-                          ],
+                              DateTimePickerDialog(),
+                            ],
+                          ),
                         ),
-                      ),
-                     StreamBuilder(
+                        StreamBuilder(
                             stream: FirebaseFirestore.instance
                                 .collection('playgroundInfo')
                                 .snapshots(),
@@ -362,9 +364,19 @@ class _BookingState extends State<Booking> {
                                         52, 0, 40, 25),
                                     child: MaterialButton(
                                       minWidth: 0,
-                                      onPressed: () async{ 
-                                        _auth.signOut();
-                                        _auth.addBook(date: thetime,game: Game(playgroundName: snapshot.data!.docs[i]['playgroundName'],player: Players(username: players.username,phoneNo: players.phoneNo)),price: snapshot.data!.docs[i]['price'],noPlayers: _numberOfPlayer);
+                                      onPressed: () async {
+                                        _auth.addBook(
+                                            date: date,
+                                            game: Game(
+                                                playgroundName: snapshot.data!
+                                                    .docs[i]['playgroundName'],
+                                                player: Players(
+                                                    username: players.username,
+                                                    phoneNo: players.phoneNo)),
+                                            price: snapshot.data!.docs[i]
+                                                ['price'],
+                                            noPlayers: _numberOfPlayer);
+                                        print(players.username);
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
@@ -399,10 +411,9 @@ class _BookingState extends State<Booking> {
                                 ),
                               );
                             }),
-                    ],
-                  );
-                }
-              ),
+                      ],
+                    );
+                  }),
             )),
           ))
     ]));

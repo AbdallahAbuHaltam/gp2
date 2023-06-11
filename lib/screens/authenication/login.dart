@@ -17,6 +17,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
+  String email = '';
+  String password = '';
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passwordcontroller = TextEditingController();
 
@@ -44,37 +46,36 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 350,
                 child: TextFormField(
-                    decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
-                        ),
-                        labelText: eEmail,
-                        isDense: true,
-                        prefixIcon: Icon(Icons.email_outlined),
-                        hintText: hEmail),
-                    keyboardType: TextInputType.emailAddress,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    autocorrect: false,
-                    textCapitalization: TextCapitalization.none,
-                    onChanged: (val) {
-                      setState(() {
-                        _emailcontroller.text = val;
-                      });
-                    },
-                    onSaved: (value) {
-                      _emailcontroller.text = value!;
-                    },
-                    validator: (value) {
-                      if (value == null ||
-                          value.trim().isEmpty ||
-                          !value.contains('@')) {
-                        return "Please Enter a valid Email address";
-                      }
-                      return null;
-                    } //(value) =>
-                    //value!.isEmpty ? "Enter an Email! " : null,
-
-                    ),
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                      ),
+                      labelText: eEmail,
+                      isDense: true,
+                      prefixIcon: Icon(Icons.email_outlined),
+                      hintText: hEmail),
+                  keyboardType: TextInputType.emailAddress,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  autocorrect: false,
+                  textCapitalization: TextCapitalization.none,
+                  onChanged: (val) {
+                    setState(() {
+                      email = val;
+                    });
+                  },
+                  onSaved: (value) {
+                    email = value!;
+                  },
+                  validator: (value) {
+                    if (value == null ||
+                        value.trim().isEmpty ||
+                        !value.contains('@')) {
+                      return "Please Enter a valid Email address";
+                    }
+                    return null;
+                  }, //(value) =>
+                  //value!.isEmpty ? "Enter an Email! " : null,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
@@ -104,11 +105,11 @@ class _LoginState extends State<Login> {
                       keyboardType: TextInputType.visiblePassword,
                       onChanged: (val) {
                         setState(() {
-                          _passwordcontroller.text = val;
+                          password = val;
                         });
                       },
                       onSaved: (value) {
-                        _passwordcontroller.text = value!;
+                        password = value!;
                       },
                       validator: (value) {
                         if (value == null || value.trim().length < 8) {
@@ -169,9 +170,7 @@ class _LoginState extends State<Login> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          _auth.userLogin(
-                              email: _emailcontroller.text,
-                              password: _passwordcontroller.text);
+                          _auth.userLogin(email: email, password: password);
                           Navigator.push(
                             context,
                             MaterialPageRoute(
