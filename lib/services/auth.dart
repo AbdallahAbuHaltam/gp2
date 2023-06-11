@@ -4,9 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/models/game.dart';
 import 'package:derbyjo/models/player.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../main.dart';
+import '../models/book.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -156,8 +158,31 @@ class AuthService {
 
         ).toMap())
         .then((value) {
-      print("Success add Playground Data");
+      print("Success add Game");
     });
+  }
+
+  Future addBook({
+Game? game, 
+  int? noPlayers,
+  String? price,
+  DateTime? date,
+  TimeOfDay? time,
+  String? bookId,
+  }) async{
+    FirebaseFirestore.instance.collection('Book').add(Book(
+      bookId: bookId,
+      date: date,
+      noPlayers: noPlayers,
+      time: time,
+      price: price,
+      game: Game(
+        playgroundName: game?.playgroundName,
+          gameId: game?.gameId,
+          player: Players(username: game?.player?.username,phoneNo: game?.player?.phoneNo),
+      )
+
+    ).toMap()).then((value) => print("Booked "));
   }
 
 /*Future getData({ String? uId,})async{

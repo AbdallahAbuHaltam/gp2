@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+ var thetime;
 class DateTimePickerDialog extends StatefulWidget {
   const DateTimePickerDialog({super.key});
 
@@ -75,7 +76,7 @@ class _DateTimePickerDialogState extends State<DateTimePickerDialog> {
       onPressed: () {
         _selectDateTime(context);
         // ignore: unused_local_variable
-        var thetime = _selectedDateTime;
+        thetime = _selectedDateTime;
       },
     );
   }

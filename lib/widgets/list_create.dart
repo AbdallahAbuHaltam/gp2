@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/constants.dart';
-int i=0;
+import 'list_data.dart';
 
 class ListCreate extends StatefulWidget {
   const ListCreate({super.key});

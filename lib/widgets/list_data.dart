@@ -5,9 +5,16 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import '../screens/book.dart';
 import '../utils/constants.dart';
 
-class HomeList extends StatelessWidget {
+int i = 0;
+
+class HomeList extends StatefulWidget {
   const HomeList({super.key});
 
+  @override
+  State<HomeList> createState() => _HomeListState();
+}
+
+class _HomeListState extends State<HomeList> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -88,8 +95,8 @@ class HomeList extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                           // snapshot.data!.docs[index]['type']
-                           "Football",
+                            // snapshot.data!.docs[index]['type']
+                            "Football",
                             style: TextStyle(
                               color: mRedColor,
                               fontSize: 13,
@@ -171,6 +178,11 @@ class HomeList extends StatelessWidget {
                               ),
                             ),
                             onPressed: () {
+                              setState(() {
+                                i = index;
+                                print(i);
+                                //print(index);
+                              });
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

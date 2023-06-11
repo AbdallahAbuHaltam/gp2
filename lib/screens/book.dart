@@ -1,11 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:derbyjo/models/game.dart';
+import 'package:derbyjo/models/player.dart';
 import 'package:derbyjo/screens/check_out.dart';
+import 'package:derbyjo/services/auth.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
 import '../utils/constants.dart';
-import '../widgets/list_create.dart';
+import '../widgets/list_data.dart';
 import 'date_picker.dart';
+
+final AuthService _auth = AuthService();
+
 
 class Booking extends StatefulWidget {
   const Booking({super.key});
@@ -15,6 +22,92 @@ class Booking extends StatefulWidget {
 }
 
 class _BookingState extends State<Booking> {
+  int _numberOfPlayer = 0;
+  int _numberOfPlayer2 = 0;
+  late int numPlyer;
+
+  void _updateFillCount(int count) {
+    setState(() {
+      _numberOfPlayer = count;
+    });
+  }
+
+  void _updateFillCount2(int count) {
+    setState(() {
+      _numberOfPlayer2 = count;
+    });
+  }
+
+  List<Widget> _buildIconRows() {
+    List<Widget> iconRows = [];
+    List<IconButton> iconButtons = [];
+
+    for (int i = 0; i < 10; i++) {
+      iconButtons.add(
+        IconButton(
+          icon: Icon(
+            Icons.person,
+            size: 65,
+            color: i < _numberOfPlayer ? Colors.red : Colors.grey,
+          ),
+          onPressed: () {
+            _updateFillCount(i + 1);
+          },
+        ),
+      );
+
+      if (iconButtons.length == 5 || i == 9) {
+        iconRows.add(
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15, 30, 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: iconButtons,
+            ),
+          ),
+        );
+        iconButtons = [];
+      }
+    }
+
+    return iconRows;
+  }
+
+  List<Widget> _buildIconRows2() {
+    List<Widget> iconRows2 = [];
+    List<IconButton> iconButtons2 = [];
+
+    for (int i = 0; i < 12; i++) {
+      iconButtons2.add(
+        IconButton(
+          icon: Icon(
+            Icons.person,
+            size: 65,
+            color: i < _numberOfPlayer2 ? Colors.red : Colors.grey,
+          ),
+          onPressed: () {
+            _updateFillCount2(i + 1);
+          },
+        ),
+      );
+
+      if (iconButtons2.length == 6 || i == 11) {
+        iconRows2.add(
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15, 30, 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: iconButtons2,
+            ),
+          ),
+        );
+        iconButtons2 = [];
+      }
+    }
+
+    return iconRows2;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -78,17 +171,23 @@ class _BookingState extends State<Booking> {
                   color: mBackgroundColor,
                   borderRadius: BorderRadius.circular(17)),
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance.collection('playgroundInfo').snapshots(),
+                stream: FirebaseFirestore.instance
+                      .collection('playgroundInfo')
+                      .snapshots(),
                 builder: (context, snapshot) {
+                   if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                   return Column(
                     children: [
                        Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                         child: SizedBox(
                           height: 30,
-                          child: Text(snapshot.data!.docs[i]
-                                          ['playgroundName'],
-                              style: const TextStyle(
+                          child: Text(snapshot.data!.docs[i]['playgroundName'],
+                              style: TextStyle(
                                   fontSize: 25,
                                   decoration: TextDecoration.none,
                                   color: mBlackColor,
@@ -165,296 +264,60 @@ class _BookingState extends State<Booking> {
                           ),
                         ]),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                        child: Container(
-                            height: 200,
-                            width: 350,
-                            decoration: const BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage("images/stadiumtraning.jpg"),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.fromLTRB(15, 30, 0, 0),
-                                  child: Row(children: [
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/bader.jpg",
-                                              width: 600,
-                                              height: 300,
-                                            ),
-                                            onPressed: () {},
-                                          )),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                              child: Container(
+                                  height: 200,
+                                  width: 350,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image:
+                                          AssetImage("images/stadiumtraning.jpg"),
+                                      fit: BoxFit.fill,
                                     ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(6, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/add3.png",
-                                              width: 500,
-                                              height: 300,
-                                              color: mBackgroundColor,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          )),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(6, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/add3.png",
-                                              width: 500,
-                                              height: 300,
-                                              color: mBackgroundColor,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          )),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(6, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/add3.png",
-                                              width: 500,
-                                              height: 300,
-                                              color: mBackgroundColor,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          )),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(6, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset("images/add3.png",
-                                                width: 500,
-                                                height: 300,
-                                                color: mBackgroundColor),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          )),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.topRight,
-                                      child: Padding(
-                                          padding:
-                                              const EdgeInsets.fromLTRB(6, 0, 0, 0),
-                                          child: IconButton(
-                                            icon: Image.asset(
-                                              "images/add3.png",
-                                              width: 500,
-                                              height: 300,
-                                              color: mBackgroundColor,
-                                            ),
-                                            onPressed: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const AddPlayer()),
-                                              );
-                                            },
-                                          )),
-                                    ),
-                                  ]),
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.fromLTRB(15, 30, 0, 0),
-                                      child: Row(
-                                        children: [
-                                          Align(
-                                            alignment: Alignment.topRight,
-                                            child: Padding(
-                                                padding: const EdgeInsets.fromLTRB(
-                                                    0, 0, 0, 0),
-                                                child: IconButton(
-                                                  icon: Image.asset(
-                                                    "images/add3.png",
-                                                    width: 600,
-                                                    height: 300,
-                                                    color: mBackgroundColor,
-                                                  ),
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const AddPlayer()),
-                                                    );
-                                                  },
-                                                )),
-                                          ),
-                                          Align(
-                                            alignment: Alignment.topRight,
-                                            child: Padding(
-                                                padding: const EdgeInsets.fromLTRB(
-                                                    6, 0, 0, 0),
-                                                child: IconButton(
-                                                  icon: Image.asset(
-                                                    "images/add3.png",
-                                                    width: 500,
-                                                    height: 300,
-                                                    color: mBackgroundColor,
-                                                  ),
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const AddPlayer()),
-                                                    );
-                                                  },
-                                                )),
-                                          ),
-                                          Align(
-                                            alignment: Alignment.topRight,
-                                            child: Padding(
-                                                padding: const EdgeInsets.fromLTRB(
-                                                    6, 0, 0, 0),
-                                                child: IconButton(
-                                                  icon: Image.asset(
-                                                    "images/add3.png",
-                                                    width: 500,
-                                                    height: 300,
-                                                    color: mBackgroundColor,
-                                                  ),
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              const AddPlayer()),
-                                                    );
-                                                  },
-                                                )),
-                                          ),
-                                          Align(
-                                            alignment: Alignment.topRight,
-                                            child: Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  6, 0, 0, 0),
-                                              child: IconButton(
-                                                icon: Image.asset(
-                                                  "images/add3.png",
-                                                  width: 500,
-                                                  height: 300,
-                                                  color: mBackgroundColor,
-                                                ),
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const AddPlayer()),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: Alignment.topRight,
-                                            child: Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  6, 0, 0, 0),
-                                              child: IconButton(
-                                                icon: Image.asset(
-                                                  "images/add3.png",
-                                                  width: 500,
-                                                  height: 300,
-                                                  color: mBackgroundColor,
-                                                ),
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            const AddPlayer()),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                          Align(
-                                            alignment: Alignment.topRight,
-                                            child: Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  6, 0, 0, 0),
-                                              child: IconButton(
-                                                icon: Image.asset(
-                                                  "images/add3.png",
-                                                  width: 500,
-                                                  height: 300,
-                                                  color: mBackgroundColor,
-                                                ),
-                                                onPressed: () {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          const AddPlayer(),
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      ..._buildIconRows(),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        'Number of player: $_numberOfPlayer',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 15),
                                       ),
+                                    ],
+                                  )),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                              child: Container(
+                                  height: 200,
+                                  width: 350,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image:
+                                          AssetImage("images/stadiumtraning.jpg"),
+                                      fit: BoxFit.fill,
                                     ),
-                                  ],
-                                ),
-                              ],
-                            )),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      ..._buildIconRows2(),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        'Number of player: $_numberOfPlayer2',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 15),
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
@@ -480,45 +343,62 @@ class _BookingState extends State<Booking> {
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-                        child: Container(
-                          color: Colors.white,
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(52, 0, 40, 25),
-                            child: MaterialButton(
-                              minWidth: 0,
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const CheckOut()),
+                     StreamBuilder(
+                            stream: FirebaseFirestore.instance
+                                .collection('playgroundInfo')
+                                .snapshots(),
+                            builder: (context, snapshot) {
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                  child: CircularProgressIndicator(),
                                 );
-                              },
-                              color: const Color.fromARGB(255, 241, 61, 61),
-                              elevation: 10,
-                              height: 50,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Row(
-                                children: const [
-                                  Padding(
-                                    padding: EdgeInsets.fromLTRB(70, 0, 0, 0),
-                                    child: Text(
-                                      "Book a game",
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold),
+                              }
+                              return Padding(
+                                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                                child: Container(
+                                  color: Colors.white,
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        52, 0, 40, 25),
+                                    child: MaterialButton(
+                                      minWidth: 0,
+                                      onPressed: () async{ 
+                                        _auth.signOut();
+                                        _auth.addBook(date: thetime,game: Game(playgroundName: snapshot.data!.docs[i]['playgroundName'],player: Players(username: players.username,phoneNo: players.phoneNo)),price: snapshot.data!.docs[i]['price'],noPlayers: _numberOfPlayer);
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const CheckOut()),
+                                        );
+                                      },
+                                      color: const Color.fromARGB(
+                                          255, 241, 61, 61),
+                                      elevation: 10,
+                                      height: 50,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Row(
+                                        children: const [
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                70, 0, 0, 0),
+                                            child: Text(
+                                              "Book a game",
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                                ),
+                              );
+                            }),
                     ],
                   );
                 }
@@ -681,4 +561,4 @@ class _AddPlayerState extends State<AddPlayer> {
       ),
     );
   }
-} /**/
+}

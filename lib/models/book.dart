@@ -2,7 +2,7 @@ import 'package:derbyjo/models/game.dart';
 import 'package:flutter/material.dart';
 
 class Book {
-  Game? game; //game Type
+  Game? game; 
   int? noPlayers;
   String? price;
   DateTime? date;
