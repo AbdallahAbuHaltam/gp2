@@ -67,6 +67,7 @@ class _ActivityState extends State<Activity> {
               ),
             ],
             onTap: (index) {
+              Navigator.pop(context);
               setState(() {
                 currentTab = index;
               });
@@ -171,12 +172,16 @@ class _ActivityState extends State<Activity> {
                                                             BorderRadius
                                                                 .circular(20),
                                                       ),
-                                                      child:  Row(
+                                                      child: Row(
                                                         children: [
                                                           Padding(
-                                                            padding: const EdgeInsets
-                                                                .fromLTRB(10, 0,
-                                                                    0, 0),
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .fromLTRB(
+                                                                    10,
+                                                                    0,
+                                                                    0,
+                                                                    0),
                                                             child: Row(
                                                               children: const [
                                                                 Text(
@@ -252,7 +257,7 @@ class _ActivityState extends State<Activity> {
                                                       ),
                                                     ),
                                                   ),
-                                                   Row(
+                                                  Row(
                                                     children: const [
                                                       Padding(
                                                         padding:
@@ -281,7 +286,7 @@ class _ActivityState extends State<Activity> {
                                                             BorderRadius
                                                                 .circular(20),
                                                       ),
-                                                      child:  Row(
+                                                      child: Row(
                                                         children: [
                                                           Row(
                                                             children: const [
@@ -335,7 +340,7 @@ class _ActivityState extends State<Activity> {
                                     children: [
                                       Column(
                                         children: [
-                                           Row(
+                                          Row(
                                             children: const [
                                               Padding(
                                                 padding: EdgeInsets.fromLTRB(
@@ -366,7 +371,7 @@ class _ActivityState extends State<Activity> {
                                               ),
                                             ),
                                           ),
-                                           Row(
+                                          Row(
                                             children: const [
                                               Padding(
                                                 padding: EdgeInsets.fromLTRB(
@@ -408,12 +413,11 @@ class _ActivityState extends State<Activity> {
                                                 borderRadius:
                                                     BorderRadius.circular(20),
                                               ),
-                                              child:  Row(
+                                              child: Row(
                                                 children: [
                                                   Padding(
-                                                    padding:
-                                                        const EdgeInsets.fromLTRB(
-                                                            0, 0, 0, 0),
+                                                    padding: const EdgeInsets
+                                                        .fromLTRB(0, 0, 0, 0),
                                                     child: Row(
                                                       children: const [
                                                         Text(
@@ -502,9 +506,10 @@ class _ActivityState extends State<Activity> {
                                                 ),
                                               ),
                                             ),
-                                             Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  10, 0, 0, 0),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      10, 0, 0, 0),
                                               child: Column(
                                                 children: [
                                                   const Padding(
@@ -587,9 +592,10 @@ class _ActivityState extends State<Activity> {
                                                 ),
                                               ),
                                             ),
-                                             Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  5, 0, 0, 0),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      5, 0, 0, 0),
                                               child: Column(
                                                 children: [
                                                   const Padding(
@@ -672,9 +678,10 @@ class _ActivityState extends State<Activity> {
                                                 ),
                                               ),
                                             ),
-                                             Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  5, 0, 0, 0),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      5, 0, 0, 0),
                                               child: Column(
                                                 children: [
                                                   const Padding(
@@ -757,9 +764,10 @@ class _ActivityState extends State<Activity> {
                                                 ),
                                               ),
                                             ),
-                                             Padding(
-                                              padding: const EdgeInsets.fromLTRB(
-                                                  5, 0, 0, 0),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      5, 0, 0, 0),
                                               child: Column(
                                                 children: [
                                                   const Padding(

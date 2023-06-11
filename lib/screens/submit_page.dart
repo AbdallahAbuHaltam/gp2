@@ -1,9 +1,19 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:derbyjo/models/book.dart';
+import 'package:derbyjo/models/game.dart';
+import 'package:derbyjo/models/player.dart';
+import 'package:derbyjo/screens/facuilities.dart';
 import 'package:derbyjo/screens/home/home.dart';
+import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../main.dart';
+import '../widgets/list_data.dart';
+
+double totalPrice = 0;
 
 class SubmitPage extends StatefulWidget {
   const SubmitPage({super.key});
@@ -15,6 +25,7 @@ class SubmitPage extends StatefulWidget {
 enum Payment { visa, cash }
 
 class _SubmitPageState extends State<SubmitPage> {
+  final AuthService _auth = AuthService();
   dynamic item = 0;
   Payment? _payment = Payment.cash;
   @override
@@ -28,182 +39,177 @@ class _SubmitPageState extends State<SubmitPage> {
             title: Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: const Icon(Icons.arrow_back_ios_new_outlined,
                       color: Colors.red),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(50),
-                  child: Text(
-                    'ملاعب القوات المسلحة',
-                    style: TextStyle(color: Colors.black),
-                  ),
-                ),
+                StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('playgroundInfo')
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      return Padding(
+                        padding: EdgeInsets.all(50),
+                        child: Text(
+                          snapshot.data!.docs[i]['playgroundName'],
+                          style: TextStyle(color: Colors.black),
+                        ),
+                      );
+                    }),
               ],
             ),
           ),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(30, 100, 0, 0),
-          child: Container(
-            height: 90,
-            width: 350,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 230, 229, 229),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Image.asset(
-                        "images/water.jpg",
-                        width: 70,
-                        height: 70,
-                      ),
-                    ),
-                    Column(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.fromLTRB(170, 10, 0, 0),
-                          child: Text(
-                            "Gatorade",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                                decoration: TextDecoration.none,
-                                fontSize: 15),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(175, 30, 0, 0),
-                          child: Row(
-                            children: const [
-                              Text(
-                                "2.50 JD",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    fontStyle: FontStyle.normal,
-                                    color: Colors.red,
-                                    decoration: TextDecoration.none,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.fromLTRB(30, 215, 0, 0),
-          child: Container(
-            height: 100,
-            width: 350,
-            decoration: BoxDecoration(
-              color: const Color.fromARGB(255, 230, 229, 229),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 222, 0),
-                  child: Text(
-                    "Payement",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(191, 17, 3, 68),
-                        decoration: TextDecoration.none,
-                        fontSize: 15),
+          child: StreamBuilder(
+              stream: FirebaseFirestore.instance
+                  .collection('playgroundInfo')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                totalPrice = snapshot.data!.docs[i]['price'] +
+                    waterPrice +
+                    gatoradePrice;
+                if (!snapshot.hasData) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return Container(
+                  height: 200,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 230, 229, 229),
+                    borderRadius: BorderRadius.circular(20),
                   ),
-                ),
-                Row(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(40, 3, 0, 0),
-                      child: Text(
-                        "Total",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            decoration: TextDecoration.none,
-                            fontSize: 12),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 10, 222, 0),
+                        child: Text(
+                          "Payement",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(191, 17, 3, 68),
+                              decoration: TextDecoration.none,
+                              fontSize: 15),
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(200, 3, 0, 0),
-                      child: Text(
-                        "27.50 Jd",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                            decoration: TextDecoration.none,
-                            fontSize: 12),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(40, 3, 0, 0),
+                            child: Text(
+                              "Playground Price",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 12),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(150, 3, 0, 0),
+                            child: Text(
+                              snapshot.data!.docs[i]['price'].toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 12),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(47, 3, 0, 0),
-                      child: Text(
-                        "Tax",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            decoration: TextDecoration.none,
-                            fontSize: 12),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(47, 3, 0, 0),
+                            child: Text(
+                              "Gatorade",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 12),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(215, 3, 0, 0),
+                            child: Text(
+                              gatoradePrice.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 12),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(215, 3, 0, 0),
-                      child: Text(
-                        "0.60 Jd",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                            decoration: TextDecoration.none,
-                            fontSize: 12),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(47, 3, 0, 0),
+                            child: Text(
+                              "Water",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 12),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(215, 3, 0, 0),
+                            child: Text(
+                              waterPrice.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 12),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(25, 15, 0, 0),
-                      child: Text(
-                        "Total Cost",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black,
-                            decoration: TextDecoration.none,
-                            fontSize: 13),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(25, 15, 0, 0),
+                            child: Text(
+                              "Total Cost",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 13),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(170, 15, 0, 0),
+                            child: Text(
+                              totalPrice.toString(),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red,
+                                  decoration: TextDecoration.none,
+                                  fontSize: 13),
+                            ),
+                          ),
+                        ],
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(170, 15, 0, 0),
-                      child: Text(
-                        "28.10 Jd",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                            decoration: TextDecoration.none,
-                            fontSize: 13),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
+                    ],
+                  ),
+                );
+              }),
         ),
         Padding(
           padding: const EdgeInsets.fromLTRB(20, 330, 0, 0),
@@ -307,7 +313,25 @@ class _SubmitPageState extends State<SubmitPage> {
         Padding(
           padding: const EdgeInsets.fromLTRB(50, 590, 0, 0),
           child: ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
+              _auth.addCheckout(
+                  totalPrice: totalPrice,
+                  player: Players(
+                      username: players.username,
+                      phoneNo: players.phoneNo,
+                      uId: players.uId),
+                  book: Book(
+                      date: book.date,
+                      noPlayers: book.noPlayers,
+                      price: book.price,
+                      playgroundName: book.playgroundName,
+                      size: book.size,
+                      status: book.size,
+                      player: Players(
+                        username: book.player?.username,
+                        phoneNo: book.player?.phoneNo,
+                        uId: book.player?.uId,
+                      )));
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => const Conferm()),

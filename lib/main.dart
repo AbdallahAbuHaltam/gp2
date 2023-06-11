@@ -1,5 +1,4 @@
-
-
+import 'package:derbyjo/models/book.dart';
 import 'package:derbyjo/models/player.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/wrapper.dart';
@@ -12,9 +11,9 @@ import 'package:provider/provider.dart';
   final String jsonString=file.readAsStringSync();
   final Map<String,dynamic> map=json.decode(jsonString);
   final Players players = Players.formJson(map);*/
- final Players players =Players();
+final Players players = Players();
+final Book book = Book();
 void main() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/screens/facuilities.dart';
 import 'package:derbyjo/screens/info.dart';
 import 'package:derbyjo/screens/review.dart';
@@ -6,6 +7,7 @@ import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:favorite_button/favorite_button.dart';
 
+import '../widgets/list_data.dart';
 
 class CheckOut extends StatefulWidget {
   const CheckOut({super.key});
@@ -105,18 +107,29 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: SizedBox(
-                    height: 30,
-                    child: Text("ملعب القوات المسلحة",
-                        style: TextStyle(
-                            fontSize: 25,
-                            decoration: TextDecoration.none,
-                            color: mBlackColor,
-                            fontWeight: FontWeight.bold)),
-                  ),
-                ),
+                StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('playgroundInfo')
+                        .snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        child: SizedBox(
+                          height: 30,
+                          child: Text(snapshot.data!.docs[i]['playgroundName'],
+                              style: TextStyle(
+                                  fontSize: 25,
+                                  decoration: TextDecoration.none,
+                                  color: mBlackColor,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      );
+                    }),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(155, 0, 0, 0),
                   child: Row(children: const [
@@ -207,52 +220,67 @@ class _CheckOutState extends State<CheckOut> {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(52, 620, 50, 0),
-            child: MaterialButton(
-              minWidth: 0,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const SubmitPage()),
-                );
-              },
-              color: mRedColor,
-              elevation: 10,
-              height: 50,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Row(
-                children: const [
-                  Text(
-                    "1 item",
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: mBackgroundColor,
+            child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('playgroundInfo')
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return MaterialButton(
+                    minWidth: 0,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SubmitPage()),
+                      );
+                    },
+                    color: mRedColor,
+                    elevation: 10,
+                    height: 50,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
-                    child: Text(
-                      "checkout",
-                      style: TextStyle(
-                          fontSize: 18,
-                          color: mBackgroundColor,
-                          fontWeight: FontWeight.bold),
+                    child: Row(
+                      children: [
+                        Text(
+                          item.toString(),
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: mBackgroundColor,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                          child: Text(
+                            "checkout",
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: mBackgroundColor,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
+                          child: Text(
+                            (snapshot.data!.docs[i]['price'] +
+                                    waterPrice +
+                                    gatoradePrice)
+                                .toString(),
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: mBackgroundColor,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
-                    child: Text(
-                      "37.00JD",
-                      style: TextStyle(
-                        fontSize: 15,
-                        color: mBackgroundColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                  );
+                }),
           ),
         ],
       ),

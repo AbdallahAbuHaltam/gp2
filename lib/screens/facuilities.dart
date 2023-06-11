@@ -5,6 +5,12 @@ import 'package:flutter/material.dart';
 import '../widgets/list_create.dart';
 import '../widgets/list_data.dart';
 
+dynamic gatoradePrice = 0;
+dynamic waterPrice = 0;
+dynamic item = 0;
+dynamic item1 = 0;
+dynamic item2 = 0;
+
 class Facuilities extends StatefulWidget {
   const Facuilities({super.key});
 
@@ -13,11 +19,10 @@ class Facuilities extends StatefulWidget {
 }
 
 class _FacuilitiesState extends State<Facuilities> {
-  dynamic item = 0;
-  dynamic item2 = 0;
   dynamic item3 = 0;
   dynamic item4 = 0;
   dynamic sale = 0;
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
@@ -46,13 +51,14 @@ class _FacuilitiesState extends State<Facuilities> {
                         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                         child: Column(
                           children: [
-                             Text(
+                            Text(
                               snapshot.data!.docs[i]['gatorade'],
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
-                             Text(
-                              snapshot.data!.docs[i]['gatoradePrice'],
+                            Text(
+                              snapshot.data!.docs[i]['gatoradePrice']
+                                  .toString(),
                               style: const TextStyle(
                                   fontSize: 14,
                                   fontStyle: FontStyle.normal,
@@ -82,7 +88,18 @@ class _FacuilitiesState extends State<Facuilities> {
                               InkWell(
                                   onTap: () {
                                     setState(() {
-                                      item -= 1;
+                                      item1 -= 1;
+
+                                      if (item1 == 0) {
+                                        gatoradePrice = snapshot.data!.docs[i]
+                                                ['gatoradePrice'] *
+                                            item1;
+                                      } else {
+                                        gatoradePrice -= snapshot.data!.docs[i]
+                                            ['gatoradePrice'];
+                                      }
+                                      item = item1 + item2;
+                                      print(item);
                                     });
                                   },
                                   child: const Icon(
@@ -99,7 +116,7 @@ class _FacuilitiesState extends State<Facuilities> {
                                     borderRadius: BorderRadius.circular(3),
                                     color: mBackgroundColor),
                                 child: Text(
-                                  "$item",
+                                  "$item1",
                                   style: const TextStyle(
                                       color: mBlackColor, fontSize: 15),
                                 ),
@@ -107,7 +124,17 @@ class _FacuilitiesState extends State<Facuilities> {
                               InkWell(
                                   onTap: () {
                                     setState(() {
-                                      item += 1;
+                                      item1 += 1;
+                                      if (item1 == 0) {
+                                        gatoradePrice = snapshot.data!.docs[i]
+                                                ['gatoradePrice'] *
+                                            item1;
+                                      } else {
+                                        gatoradePrice += snapshot.data!.docs[i]
+                                            ['gatoradePrice'];
+                                      }
+                                      item = item1 + item2;
+                                      print(item);
                                     });
                                   },
                                   child: const Icon(
@@ -135,13 +162,13 @@ class _FacuilitiesState extends State<Facuilities> {
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
                           children: [
-                             Text(
+                            Text(
                               snapshot.data!.docs[i]['water'],
                               style: const TextStyle(
                                   fontWeight: FontWeight.bold, fontSize: 20),
                             ),
-                             Text(
-                              snapshot.data!.docs[i]['waterPrice'],
+                            Text(
+                              snapshot.data!.docs[i]['waterPrice'].toString(),
                               style: const TextStyle(
                                   fontSize: 14,
                                   fontStyle: FontStyle.normal,
@@ -172,6 +199,16 @@ class _FacuilitiesState extends State<Facuilities> {
                                   onTap: () {
                                     setState(() {
                                       item2 -= 1;
+                                      if (item2 == 0) {
+                                        waterPrice = snapshot.data!.docs[i]
+                                                ['waterPrice'] *
+                                            item2;
+                                      } else {
+                                        waterPrice -= snapshot.data!.docs[i]
+                                            ['waterPrice'];
+                                      }
+                                      item = item1 + item2;
+                                      print(item);
                                     });
                                   },
                                   child: const Icon(
@@ -197,6 +234,16 @@ class _FacuilitiesState extends State<Facuilities> {
                                   onTap: () {
                                     setState(() {
                                       item2 += 1;
+                                      if (item2 == 0) {
+                                        waterPrice = snapshot.data!.docs[i]
+                                                ['waterPrice'] *
+                                            item2;
+                                      } else {
+                                        waterPrice += snapshot.data!.docs[i]
+                                            ['waterPrice'];
+                                      }
+                                      item = item1 + item2;
+                                      print(item);
                                     });
                                   },
                                   child: const Icon(
@@ -223,7 +270,7 @@ class _FacuilitiesState extends State<Facuilities> {
                       Padding(
                         padding: const EdgeInsets.all(40.0),
                         child: Column(
-                          children:  [
+                          children: [
                             Text(
                               snapshot.data!.docs[i]['kit'],
                               style: const TextStyle(
@@ -303,7 +350,7 @@ class _FacuilitiesState extends State<Facuilities> {
                       Padding(
                         padding: const EdgeInsets.all(20.0),
                         child: Column(
-                          children:  [
+                          children: [
                             Text(
                               snapshot.data!.docs[i]['kit'],
                               style: const TextStyle(

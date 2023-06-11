@@ -12,6 +12,9 @@ import '../widgets/list_data.dart';
 import 'date_picker.dart';
 
 final AuthService _auth = AuthService();
+String size = '';
+int _numberOfPlayer = 0;
+int _numberOfPlayer2 = 0;
 
 class Booking extends StatefulWidget {
   const Booking({super.key});
@@ -21,19 +24,19 @@ class Booking extends StatefulWidget {
 }
 
 class _BookingState extends State<Booking> {
-  int _numberOfPlayer = 0;
-  int _numberOfPlayer2 = 0;
   late int numPlyer;
 
   void _updateFillCount(int count) {
     setState(() {
       _numberOfPlayer = count;
+      size = '5X5';
     });
   }
 
   void _updateFillCount2(int count) {
     setState(() {
       _numberOfPlayer2 = count;
+      size = '6X6';
     });
   }
 
@@ -367,12 +370,12 @@ class _BookingState extends State<Booking> {
                                       onPressed: () async {
                                         _auth.addBook(
                                             date: date,
-                                            game: Game(
-                                                playgroundName: snapshot.data!
-                                                    .docs[i]['playgroundName'],
-                                                player: Players(
-                                                    username: players.username,
-                                                    phoneNo: players.phoneNo)),
+                                            playgroundName: snapshot.data!
+                                                .docs[i]['playgroundName'],
+                                            player: Players(
+                                                username: players.username,
+                                                phoneNo: players.phoneNo),
+                                            size: size,
                                             price: snapshot.data!.docs[i]
                                                 ['price'],
                                             noPlayers: _numberOfPlayer);

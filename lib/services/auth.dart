@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:derbyjo/models/checkout.dart';
 import 'package:derbyjo/models/game.dart';
 import 'package:derbyjo/models/player.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -162,28 +163,72 @@ class AuthService {
   }
 
   Future addBook({
-    Game? game,
+    String? playgroundName,
+    String? size,
+    String? status,
+    Players? player,
     int? noPlayers,
-    String? price,
+    double? price,
     DateTime? date,
     TimeOfDay? time,
     String? bookId,
   }) async {
+    Book model = Book(
+        bookId: bookId,
+        noPlayers: noPlayers,
+        price: price,
+        date: date,
+        playgroundName: playgroundName,
+        size: size,
+        status: status,
+        player: Players(
+            username: players.username,
+            phoneNo: players.phoneNo,
+            uId: players.uId));
     FirebaseFirestore.instance
         .collection('Book')
-        .add(Book(
-            bookId: bookId,
-            date: date,
-            noPlayers: noPlayers,
-            time: time,
-            price: price,
-            game: Game(
-              playgroundName: game?.playgroundName,
-              gameId: game?.gameId,
-              player: Players(
-                  username: game?.player?.username,
-                  phoneNo: game?.player?.phoneNo),
-            )).toMap())
+        .add(model.toMap())
+        .then((value) {
+      book.date = model.date;
+      book.noPlayers = model.noPlayers;
+      book.price = model.price;
+      book.playgroundName = model.playgroundName;
+      book.size = model.size;
+      book.status = model.status;
+      book.player = Players(
+        username: model.player?.username,
+        phoneNo: model.player?.phoneNo,
+        uId: model.player?.uId,
+      );
+      print("Booked ");
+    });
+  }
+
+  Future addCheckout({
+    double? totalPrice,
+    Players? player,
+    Book? book,
+  }) async {
+    FirebaseFirestore.instance
+        .collection('Checkout')
+        .add(Checkout(
+            totalPrice: totalPrice,
+            player: Players(
+                username: players.username,
+                uId: players.uId,
+                phoneNo: players.phoneNo),
+            book: Book(
+                date: book?.date,
+                noPlayers: book!.noPlayers,
+                price: book.price,
+                playgroundName: book.playgroundName,
+                size: book.size,
+                status: book.status,
+                player: Players(
+                  username: book.player?.username,
+                  phoneNo: book.player?.phoneNo,
+                  uId: book.player?.uId,
+                ))).toMap())
         .then((value) => print("Booked "));
   }
 
