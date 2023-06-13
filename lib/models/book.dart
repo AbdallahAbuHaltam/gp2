@@ -6,8 +6,9 @@ class Book {
   String? playgroundName;
   String? size;
   String? status;
-  int? noPlayers;
   Players? player;
+
+  int? noPlayers;
   double? price;
   DateTime? date;
   TimeOfDay? time;

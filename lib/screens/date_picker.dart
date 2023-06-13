@@ -52,7 +52,8 @@ class _DateTimePickerDialogState extends State<DateTimePickerDialog> {
           pickedTime.minute,
         );
         date = _selectedDateTime;
-        print(date);
+        print(_selectedTime);
+        print(_selectedDateTime);
       });
     }
   }

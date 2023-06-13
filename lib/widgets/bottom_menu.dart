@@ -1,3 +1,4 @@
+import 'package:derbyjo/screens/search.dart';
 import 'package:flutter/material.dart';
 import '../../utils/constants.dart';
 import '../screens/activity.dart';
@@ -50,7 +51,12 @@ class _BottomMenuState extends State<BottomMenu> {
                     },
                   ),
                   GestureDetector(
-                    onTap: null,
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Search()),
+                      );
+                    },
                     child: const Icon(
                       Icons.search,
                       color: mBackgroundColor,

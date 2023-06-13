@@ -388,6 +388,8 @@ class _SignupPage2State extends State<SignupPage2> {
     }
   }
 
+  final picker = ImagePicker();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/screens/update_profile.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,6 @@ import '../widgets/profile_menu.dart';
 import 'authenication/get_started.dart';
 
 class Profile extends StatefulWidget {
-  
   const Profile({
     super.key,
   });
@@ -25,7 +23,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-final AuthService _auth = AuthService();
+    final AuthService _auth = AuthService();
 
     //final user = _auth.getData();
     return Scaffold(
@@ -33,6 +31,7 @@ final AuthService _auth = AuthService();
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
+            _auth.signOut();
           },
           icon: const Icon(LineAwesomeIcons.angle_left),
         ),
@@ -85,13 +84,13 @@ final AuthService _auth = AuthService();
                 height: 10,
               ),
               const ProfileData(),
-      /*ElevatedButton(onPressed: (){
+              /*ElevatedButton(onPressed: (){
 
         printData();
         
       }, child: Text("data")),
     
-            */  
+            */
               const SizedBox(
                 height: 30,
               ),
@@ -154,7 +153,7 @@ final AuthService _auth = AuthService();
                 onpress: () async {
                   await AuthService().signOut();
 // ignore: use_build_context_synchronously
-                 Navigator.push(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const GetStart(),
