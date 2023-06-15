@@ -38,12 +38,15 @@ class _SubmitPageState extends State<SubmitPage> {
             backgroundColor: Colors.white,
             title: Row(
               children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.arrow_back_ios_new_outlined,
-                      color: Colors.red),
+                Padding(
+                  padding: const EdgeInsets.only(right: 60),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(Icons.arrow_back_ios_new_outlined,
+                        color: Colors.red),
+                  ),
                 ),
                 StreamBuilder(
                     stream: FirebaseFirestore.instance
@@ -56,7 +59,7 @@ class _SubmitPageState extends State<SubmitPage> {
                         );
                       }
                       return Padding(
-                        padding: EdgeInsets.all(50),
+                        padding: EdgeInsets.only(left: 0),
                         child: Text(
                           snapshot.data!.docs[i]['playgroundName'],
                           style: TextStyle(color: Colors.black),
@@ -92,20 +95,20 @@ class _SubmitPageState extends State<SubmitPage> {
                   child: Column(
                     children: [
                       Padding(
-                        padding: EdgeInsets.fromLTRB(0, 10, 222, 0),
+                        padding: EdgeInsets.fromLTRB(0, 10, 222, 20),
                         child: Text(
                           "Payement",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(191, 17, 3, 68),
+                              color: Colors.black,
                               decoration: TextDecoration.none,
-                              fontSize: 15),
+                              fontSize: 16),
                         ),
                       ),
                       Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(40, 3, 0, 0),
+                            padding: EdgeInsets.fromLTRB(30, 3, 0, 10),
                             child: Text(
                               "Playground Price",
                               style: TextStyle(
@@ -116,7 +119,7 @@ class _SubmitPageState extends State<SubmitPage> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(150, 3, 0, 0),
+                            padding: EdgeInsets.fromLTRB(150, 3, 0, 10),
                             child: Text(
                               snapshot.data!.docs[i]['price'].toString(),
                               style: TextStyle(
@@ -131,7 +134,7 @@ class _SubmitPageState extends State<SubmitPage> {
                       Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(47, 3, 0, 0),
+                            padding: EdgeInsets.fromLTRB(30, 3, 0, 10),
                             child: Text(
                               "Gatorade",
                               style: TextStyle(
@@ -142,7 +145,7 @@ class _SubmitPageState extends State<SubmitPage> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(215, 3, 0, 0),
+                            padding: EdgeInsets.fromLTRB(220, 3, 0, 10),
                             child: Text(
                               gatoradePrice.toString(),
                               style: TextStyle(
@@ -157,7 +160,7 @@ class _SubmitPageState extends State<SubmitPage> {
                       Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(47, 3, 0, 0),
+                            padding: EdgeInsets.fromLTRB(30, 3, 0, 10),
                             child: Text(
                               "Water",
                               style: TextStyle(
@@ -168,7 +171,7 @@ class _SubmitPageState extends State<SubmitPage> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(215, 3, 0, 0),
+                            padding: EdgeInsets.fromLTRB(241, 3, 0, 10),
                             child: Text(
                               waterPrice.toString(),
                               style: TextStyle(
@@ -183,25 +186,25 @@ class _SubmitPageState extends State<SubmitPage> {
                       Row(
                         children: [
                           Padding(
-                            padding: EdgeInsets.fromLTRB(25, 15, 0, 0),
+                            padding: EdgeInsets.fromLTRB(25, 20, 0, 0),
                             child: Text(
                               "Total Cost",
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.black,
                                   decoration: TextDecoration.none,
-                                  fontSize: 13),
+                                  fontSize: 14),
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(170, 15, 0, 0),
+                            padding: EdgeInsets.fromLTRB(185, 15, 0, 0),
                             child: Text(
                               totalPrice.toString(),
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.red,
                                   decoration: TextDecoration.none,
-                                  fontSize: 13),
+                                  fontSize: 14),
                             ),
                           ),
                         ],
@@ -409,6 +412,11 @@ class _ConfermState extends State<Conferm> {
                       context,
                       MaterialPageRoute(builder: (context) => const Home()),
                     );
+
+                    final snackBar = SnackBar(
+                      content: Text('The Booking updated !'),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   },
                   color: Color.fromARGB(255, 241, 61, 61),
                   elevation: 10,

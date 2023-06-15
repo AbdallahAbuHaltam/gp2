@@ -52,18 +52,21 @@ class _CheckOutState extends State<CheckOut> {
                 ),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Image.asset(
-                        "images/left.png",
-                      )),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20, left: 10),
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Image.asset(
+                          "images/left.png",
+                        )),
+                  ),
                 ),
                 Align(
                   alignment: Alignment.topRight,
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 11, 0, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
                     child: FavoriteButton(
                       iconSize: 40,
                       isFavorite: true,
@@ -219,7 +222,7 @@ class _CheckOutState extends State<CheckOut> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(52, 620, 50, 0),
+            padding: const EdgeInsets.fromLTRB(80, 620, 80, 0),
             child: StreamBuilder(
                 stream: FirebaseFirestore.instance
                     .collection('playgroundInfo')
@@ -245,17 +248,17 @@ class _CheckOutState extends State<CheckOut> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Row(
+                    child: const Row(
                       children: [
-                        Text(
-                          item.toString(),
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: mBackgroundColor,
-                          ),
-                        ),
+                        // Text(
+                        //   item.toString(),
+                        //   style: TextStyle(
+                        //     fontSize: 15,
+                        //     color: mBackgroundColor,
+                        //   ),
+                        // ),
                         Padding(
-                          padding: EdgeInsets.fromLTRB(60, 0, 0, 0),
+                          padding: EdgeInsets.fromLTRB(75, 0, 0, 0),
                           child: Text(
                             "checkout",
                             style: TextStyle(
@@ -264,19 +267,19 @@ class _CheckOutState extends State<CheckOut> {
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
-                          child: Text(
-                            (snapshot.data!.docs[i]['price'] +
-                                    waterPrice +
-                                    gatoradePrice)
-                                .toString(),
-                            style: TextStyle(
-                              fontSize: 15,
-                              color: mBackgroundColor,
-                            ),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
+                        //   child: Text(
+                        //     (snapshot.data!.docs[i]['price'] +
+                        //             waterPrice +
+                        //             gatoradePrice)
+                        //         .toString(),
+                        //     style: TextStyle(
+                        //       fontSize: 15,
+                        //       color: mBackgroundColor,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   );

@@ -1,3 +1,4 @@
+import 'package:derbyjo/screens/activity.dart';
 import 'package:derbyjo/screens/categories.dart';
 import 'package:derbyjo/screens/profile.dart';
 import 'package:flutter/material.dart';
@@ -294,7 +295,13 @@ class _HomeState extends State<Home> {
                           textStyle: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.w600),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Activity()),
+                          );
+                        },
                         child: const Text(seeAll),
                       ),
                     ),
@@ -349,7 +356,7 @@ class _HomeState extends State<Home> {
                                       color: mRedColor,
                                     ),
                                     Text(
-                                      '7/10',
+                                      '?/10',
                                       style: TextStyle(
                                           color: mBackgroundColor,
                                           fontSize: 12,
@@ -368,20 +375,20 @@ class _HomeState extends State<Home> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
-                                'Today from 10-11pm',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              // const Text(
+                              //   'Today from 10-11pm',
+                              //   style: TextStyle(
+                              //     fontSize: 18,
+                              //     fontWeight: FontWeight.bold,
+                              //   ),
+                              // ),
                               const SizedBox(
                                 height: 10,
                               ),
                               Row(
                                 children: const [
                                   Text(
-                                    'ملعب القوات المسلحة',
+                                    'Basketball Game',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 18,
@@ -405,10 +412,8 @@ class _HomeState extends State<Home> {
                                   Icon(Icons.star, color: Colors.orange),
                                   Icon(Icons.star, color: Colors.orange),
                                   Icon(Icons.star, color: Colors.orange),
-                                  Icon(Icons.star_border,
-                                      color: Colors.orange),
-                                  Icon(Icons.star_border,
-                                      color: Colors.orange),
+                                  Icon(Icons.star_border, color: Colors.orange),
+                                  Icon(Icons.star_border, color: Colors.orange),
                                 ],
                               ),
                               const SizedBox(height: 8),
@@ -432,31 +437,46 @@ class _HomeState extends State<Home> {
                                     ],
                                   ),
                                   SizedBox(
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const Soon()),
-                                        );
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                          foregroundColor: Colors.white,
-                                          backgroundColor: Colors.red,
-                                          fixedSize: const Size(100, 40),
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                          )),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: const [
-                                          Text(book),
-                                        ],
-                                      ),
-                                    ),
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          color: Colors.red,
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Text(
+                                            "Comming soon",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                        )),
+
+                                    //child: ElevatedButton(
+                                    //   onPressed: () {
+                                    //     Navigator.push(
+                                    //       context,
+                                    //       MaterialPageRoute(
+                                    //           builder: (context) =>
+                                    //               const Soon()),
+                                    //     );
+                                    //   },
+                                    //   style: ElevatedButton.styleFrom(
+                                    //       foregroundColor: Colors.white,
+                                    //       backgroundColor: Colors.red,
+                                    //       fixedSize: const Size(100, 40),
+                                    //       shape: RoundedRectangleBorder(
+                                    //         borderRadius:
+                                    //             BorderRadius.circular(15),
+                                    //       )),
+                                    //   child: Column(
+                                    //     mainAxisAlignment:
+                                    //         MainAxisAlignment.center,
+                                    //     children: const [
+                                    //       Text(book),
+                                    //     ],
+                                    //   ),
+                                    // ),
                                   ),
                                 ],
                               ),
@@ -467,6 +487,9 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                )
               ],
             ),
           ),

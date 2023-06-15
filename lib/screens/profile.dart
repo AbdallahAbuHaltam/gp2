@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/screens/update_profile.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -21,6 +22,23 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  String imageUrl = '';
+
+  Future<void> _getImageUrl() async {
+    Reference storageReference =
+        FirebaseStorage.instance.ref().child('image.jpg');
+
+    try {
+      String downloadURL = await storageReference.getDownloadURL();
+      setState(() {
+        imageUrl = downloadURL;
+      });
+    } catch (error) {
+      // Handle error while fetching the image URL
+      print('Error: $error');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final AuthService _auth = AuthService();
@@ -151,6 +169,10 @@ class _ProfileState extends State<Profile> {
                 icon: LineAwesomeIcons.alternate_sign_out,
                 endIcon: false,
                 onpress: () async {
+                  final snackBar = SnackBar(
+                    content: Text('You have been successfully logged out!'),
+                  );
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   await AuthService().signOut();
 // ignore: use_build_context_synchronously
                   Navigator.push(

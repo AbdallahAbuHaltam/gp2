@@ -70,7 +70,7 @@ class _FacuilitiesState extends State<Facuilities> {
                                   Icons.local_offer_outlined,
                                   color: mRedColor,
                                 ),
-                                Text("15% Discount"),
+                                Text("0% Discount"),
                               ],
                             ),
                           ],
@@ -180,7 +180,7 @@ class _FacuilitiesState extends State<Facuilities> {
                                   Icons.local_offer_outlined,
                                   color: mRedColor,
                                 ),
-                                Text("15% Discount")
+                                Text("0% Discount")
                               ],
                             ),
                           ],
@@ -287,7 +287,7 @@ class _FacuilitiesState extends State<Facuilities> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(45, 110, 10, 0),
+                        padding: const EdgeInsets.fromLTRB(75, 110, 10, 0),
                         child: Container(
                           padding: const EdgeInsets.all(2),
                           decoration: BoxDecoration(
@@ -367,7 +367,7 @@ class _FacuilitiesState extends State<Facuilities> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(45, 110, 10, 40),
+                        padding: const EdgeInsets.fromLTRB(120, 110, 10, 60),
                         child: Container(
                           padding: const EdgeInsets.all(2),
                           decoration: BoxDecoration(
@@ -417,6 +417,9 @@ class _FacuilitiesState extends State<Facuilities> {
                       ),
                     ],
                   ),
+                  SizedBox(
+                    height: 30,
+                  )
                 ],
               ),
             ),

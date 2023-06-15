@@ -1,10 +1,12 @@
+import 'package:derbyjo/CreatGame.dart';
+import 'package:derbyjo/screens/footballCategories.dart';
+import 'package:derbyjo/screens/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../utils/constants.dart';
 import '../widgets/bottom_menu.dart';
-
 
 class Categories extends StatefulWidget {
   const Categories({super.key});
@@ -35,11 +37,14 @@ class _CategoriesState extends State<Categories> {
                         child: Align(
                           alignment: Alignment.topLeft,
                           child: IconButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              icon: const Icon(LineAwesomeIcons.angle_left,color: mRedColor,),
-                              ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(
+                              LineAwesomeIcons.angle_left,
+                              color: mRedColor,
+                            ),
+                          ),
                         ),
                       ),
                       //Search
@@ -88,11 +93,11 @@ class _CategoriesState extends State<Categories> {
                       Padding(
                           padding: const EdgeInsets.only(left: 30),
                           child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(LineAwesomeIcons.filter),
-                                color: mRedColor,
-                                iconSize: 35,
-                              )),
+                            onPressed: () {},
+                            icon: const Icon(LineAwesomeIcons.filter),
+                            color: mRedColor,
+                            iconSize: 35,
+                          )),
                     ],
                   ),
                 ),
@@ -144,7 +149,14 @@ class _CategoriesState extends State<Categories> {
                                               30, 0, 30, 0),
                                           child: MaterialButton(
                                             minWidth: 0,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const FootballCategories()),
+                                              );
+                                            },
                                             color: mRedColor,
                                             elevation: 10,
                                             height: 30,
@@ -155,15 +167,17 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsets.fromLTRB(
-                                                      10, 0, 0, 0),
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 0, 0, 0),
                                                   child: Row(
                                                     children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
                                                             fontSize: 15,
-                                                            color: mBackgroundColor,
+                                                            color:
+                                                                mBackgroundColor,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
@@ -214,7 +228,14 @@ class _CategoriesState extends State<Categories> {
                                               30, 0, 30, 0),
                                           child: MaterialButton(
                                             minWidth: 0,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const Soon()),
+                                              );
+                                            },
                                             color: mRedColor,
                                             elevation: 10,
                                             height: 30,
@@ -225,15 +246,17 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsets.fromLTRB(
-                                                      10, 0, 0, 0),
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 0, 0, 0),
                                                   child: Row(
                                                     children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
                                                             fontSize: 15,
-                                                            color: mBackgroundColor,
+                                                            color:
+                                                                mBackgroundColor,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
@@ -288,7 +311,14 @@ class _CategoriesState extends State<Categories> {
                                               30, 0, 30, 0),
                                           child: MaterialButton(
                                             minWidth: 0,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const Soon()),
+                                              );
+                                            },
                                             color: mRedColor,
                                             elevation: 10,
                                             height: 30,
@@ -299,15 +329,17 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsets.fromLTRB(
-                                                      10, 0, 0, 0),
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 0, 0, 0),
                                                   child: Row(
                                                     children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
                                                             fontSize: 15,
-                                                            color: mBackgroundColor,
+                                                            color:
+                                                                mBackgroundColor,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
@@ -358,7 +390,14 @@ class _CategoriesState extends State<Categories> {
                                               30, 0, 30, 0),
                                           child: MaterialButton(
                                             minWidth: 0,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const Soon()),
+                                              );
+                                            },
                                             color: mRedColor,
                                             elevation: 10,
                                             height: 30,
@@ -369,15 +408,17 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsets.fromLTRB(
-                                                      10, 0, 0, 0),
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 0, 0, 0),
                                                   child: Row(
                                                     children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
                                                             fontSize: 15,
-                                                            color: mBackgroundColor,
+                                                            color:
+                                                                mBackgroundColor,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
@@ -432,7 +473,14 @@ class _CategoriesState extends State<Categories> {
                                               30, 0, 30, 0),
                                           child: MaterialButton(
                                             minWidth: 0,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const Soon()),
+                                              );
+                                            },
                                             color: mRedColor,
                                             elevation: 10,
                                             height: 30,
@@ -443,15 +491,17 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsets.fromLTRB(
-                                                      10, 0, 0, 0),
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 0, 0, 0),
                                                   child: Row(
                                                     children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
                                                             fontSize: 15,
-                                                            color: mBackgroundColor,
+                                                            color:
+                                                                mBackgroundColor,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
@@ -495,14 +545,21 @@ class _CategoriesState extends State<Categories> {
                                               fontSize: 20,
                                               decoration: TextDecoration.none,
                                               fontWeight: FontWeight.bold,
-                                              color:mBackgroundColor),
+                                              color: mBackgroundColor),
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.fromLTRB(
                                               30, 0, 30, 0),
                                           child: MaterialButton(
                                             minWidth: 0,
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const Soon()),
+                                              );
+                                            },
                                             color: mRedColor,
                                             elevation: 10,
                                             height: 30,
@@ -513,15 +570,17 @@ class _CategoriesState extends State<Categories> {
                                             child: Row(
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsets.fromLTRB(
-                                                      10, 0, 0, 0),
+                                                  padding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          10, 0, 0, 0),
                                                   child: Row(
                                                     children: const [
                                                       Text(
                                                         "Explore ",
                                                         style: TextStyle(
                                                             fontSize: 15,
-                                                            color: mBackgroundColor,
+                                                            color:
+                                                                mBackgroundColor,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .bold),
@@ -549,7 +608,12 @@ class _CategoriesState extends State<Categories> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CreateGame()),
+          );
+        },
         backgroundColor: mBackgroundColor,
         child: const Icon(
           Icons.add,

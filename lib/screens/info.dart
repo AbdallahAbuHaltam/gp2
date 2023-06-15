@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../utils/constants.dart';
+
 class Info extends StatefulWidget {
   const Info({super.key});
 
@@ -10,76 +12,40 @@ class Info extends StatefulWidget {
 class _InfoState extends State<Info> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const <Widget>[
-              CircleAvatar(
-                backgroundImage: AssetImage('images/gatoo.jpeg'),
-                radius: 40,
+    return Container(
+      child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: <Widget>[
+            Image.asset(
+              "images/stadiumphoto.png",
+              fit: BoxFit.contain,
+              width: 411,
+              height: 185,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              child: Text(
+                "The sports stadium includes a stadium with distinctive specifications for football and can accommodate 5-7 players in each team. This is in addition to the world-class facilities. With the stadium, there is a private car park that can accommodate more than 20 cars. Football tournaments are held there, as well as tournaments and sports training are hosted for some centers and schools.",
+                style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 20),
-              Text(
-                'Gatorade',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-          const SizedBox(
-              width:
-                  20), // Add a SizedBox between the first and second Column
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const <Widget>[
-              CircleAvatar(
-                backgroundImage: AssetImage('images/waterr.jpeg'),
-                radius: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 20, 10),
+              child: Text(
+                "\nInformation about the stadium:",
+                style: TextStyle(fontSize: 25),
               ),
-              SizedBox(height: 20),
-              Text(
-                'Water',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-          const SizedBox(
-              width:
-                  20), // Add a SizedBox between the second and third Column
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const <Widget>[
-              CircleAvatar(
-                backgroundImage: AssetImage('images/park.jpeg'),
-                radius: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              child: Text(
+                "\n- The size of the stadium, there are several stadiums (five, six)\n\n\n\n\n",
+                style: TextStyle(fontSize: 18),
               ),
-              SizedBox(height: 20),
-              Text(
-                'Parking',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-          const SizedBox(
-              width:
-                  20), // Add a SizedBox between the third and fourth Column
-          Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const <Widget>[
-              CircleAvatar(
-                backgroundImage: AssetImage('images/kut.png'),
-                radius: 40,
-              ),
-              SizedBox(height: 20),
-              Text(
-                'Kits',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:derbyjo/screens/authenication/login.dart';
+import 'package:derbyjo/screens/home/home.dart';
 import 'package:derbyjo/services/auth.dart';
 // import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/utils/constants.dart';
@@ -102,12 +103,18 @@ class _SignupPage1State extends State<SignupPage1> {
                       validator: (value) =>
                           value!.isEmpty ? "Enter an Email! " : null,
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
                         labelText: emailA,
+                        labelStyle: TextStyle(
+                          color: Colors.redAccent,
+                        ),
                         isDense: true,
-                        prefixIcon: Icon(Icons.email_rounded),
+                        prefixIcon: Icon(
+                          Icons.email_rounded,
+                          color: Colors.redAccent,
+                        ),
                       ),
                       keyboardType: TextInputType.emailAddress,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -133,12 +140,18 @@ class _SignupPage1State extends State<SignupPage1> {
                     ),
                     TextFormField(
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
                         labelText: userN,
+                        labelStyle: TextStyle(
+                          color: Colors.redAccent,
+                        ),
                         isDense: true,
-                        prefixIcon: Icon(Icons.person_2_sharp),
+                        prefixIcon: Icon(
+                          Icons.person_2_sharp,
+                          color: Colors.redAccent,
+                        ),
                       ),
                       keyboardType: TextInputType.emailAddress,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -166,12 +179,18 @@ class _SignupPage1State extends State<SignupPage1> {
                     ),
                     TextFormField(
                       decoration: const InputDecoration(
-                        border: OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
                         labelText: mobileN,
+                        labelStyle: TextStyle(
+                          color: Colors.redAccent,
+                        ),
                         isDense: true,
-                        prefixIcon: Icon(Icons.phone),
+                        prefixIcon: Icon(
+                          Icons.phone,
+                          color: Colors.redAccent,
+                        ),
                       ),
                       keyboardType: TextInputType.emailAddress,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -202,21 +221,30 @@ class _SignupPage1State extends State<SignupPage1> {
                           value!.length < 8 ? "Must be 8 length " : null,
                       obscureText: _isObsecure,
                       decoration: InputDecoration(
-                        border: const OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15.0)),
                         ),
                         labelText: pass,
+                        labelStyle: const TextStyle(
+                          color: Colors.redAccent,
+                        ),
                         isDense: true,
-                        prefixIcon: const Icon(Icons.lock),
+                        prefixIcon: const Icon(
+                          Icons.lock,
+                          color: Colors.redAccent,
+                        ),
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
                                 _isObsecure = !_isObsecure;
                               });
                             },
-                            icon: Icon(_isObsecure
-                                ? Icons.visibility
-                                : Icons.visibility_off)),
+                            icon: Icon(
+                              _isObsecure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.redAccent,
+                            )),
                       ),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.visiblePassword,
@@ -243,21 +271,32 @@ class _SignupPage1State extends State<SignupPage1> {
                     TextFormField(
                       obscureText: _isObsecure,
                       decoration: InputDecoration(
-                        border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                        focusedBorder: const OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15.0),
+                          ),
                         ),
                         labelText: pass,
+                        labelStyle: const TextStyle(
+                          color: Colors.redAccent,
+                        ),
                         isDense: true,
-                        prefixIcon: const Icon(Icons.lock),
+                        prefixIcon: const Icon(
+                          Icons.lock,
+                          color: Colors.redAccent,
+                        ),
                         suffixIcon: IconButton(
                             onPressed: () {
                               setState(() {
                                 _isObsecure = !_isObsecure;
                               });
                             },
-                            icon: Icon(_isObsecure
-                                ? Icons.visibility
-                                : Icons.visibility_off)),
+                            icon: Icon(
+                              _isObsecure
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: Colors.redAccent,
+                            )),
                       ),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.visiblePassword,
@@ -450,12 +489,18 @@ class _SignupPage2State extends State<SignupPage2> {
               key: _formKeyFullName,
               child: TextFormField(
                 decoration: const InputDecoration(
-                  border: OutlineInputBorder(
+                  focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
                   labelText: "Enter yore full name",
+                  labelStyle: TextStyle(
+                    color: Colors.redAccent,
+                  ),
                   isDense: true,
-                  prefixIcon: Icon(Icons.person_2_sharp),
+                  prefixIcon: Icon(
+                    Icons.person_2_sharp,
+                    color: Colors.redAccent,
+                  ),
                 ),
                 keyboardType: TextInputType.emailAddress,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -481,7 +526,7 @@ class _SignupPage2State extends State<SignupPage2> {
             ),
 
             const Text(
-              "pick your images",
+              "Pick your images",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
             ),
             // SizedBox
@@ -540,33 +585,26 @@ class _SignupPage2State extends State<SignupPage2> {
             Form(
               key: _formKeyAge,
               child: TextFormField(
-                controller: _agecontroller,
                 keyboardType: TextInputType.number,
                 style: const TextStyle(),
-                enabled: true,
                 textAlign: TextAlign.start,
                 textDirection: TextDirection.ltr,
                 decoration: InputDecoration(
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.redAccent),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  labelText: 'Age',
-                  labelStyle: const TextStyle(
-                    color: Colors.redAccent,
-                  ),
-                  hintText: 'Enter Your Age',
-                  hintStyle: const TextStyle(fontWeight: FontWeight.bold),
-                  hintMaxLines: 1,
-                  hintTextDirection: TextDirection.ltr,
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Colors.grey,
-                      width: 1,
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
+                    labelText: 'Age',
+                    isDense: true,
+                    labelStyle: const TextStyle(
+                      color: Colors.redAccent,
+                    ),
+                    hintText: 'Enter Your Age',
+                    hintStyle: const TextStyle(fontWeight: FontWeight.bold),
+                    hintTextDirection: TextDirection.ltr,
+                    icon: Icon(
+                      Icons.numbers_outlined,
+                      color: Colors.redAccent,
+                    )),
                 onChanged: (String value) {
                   setState(() {
                     _agecontroller.text = value;
@@ -693,6 +731,11 @@ class _SignupPage2State extends State<SignupPage2> {
                             username: _usernamecontroller.text,
                             gender: genderValue,
                             phoneNo: _phonecontroller.text);
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Home()),
+                        );
                       }
                     },
                     // onPressed: () {

@@ -46,13 +46,19 @@ class _LoginState extends State<Login> {
               SizedBox(
                 width: 350,
                 child: TextFormField(
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                  decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
                       ),
                       labelText: eEmail,
+                      labelStyle: const TextStyle(
+                        color: Colors.redAccent,
+                      ),
                       isDense: true,
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: Icon(
+                        Icons.email_outlined,
+                        color: Colors.redAccent,
+                      ),
                       hintText: hEmail),
                   keyboardType: TextInputType.emailAddress,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -84,22 +90,31 @@ class _LoginState extends State<Login> {
                   child: TextFormField(
                       obscureText: _isObsecure,
                       decoration: InputDecoration(
-                          border: const OutlineInputBorder(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(15.0)),
+                          hoverColor: Colors.red,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(15),
                           ),
                           labelText: ePassword,
+                          labelStyle: const TextStyle(
+                            color: Colors.redAccent,
+                          ),
                           isDense: true,
-                          prefixIcon: const Icon(Icons.key_rounded),
+                          prefixIcon: const Icon(
+                            Icons.key_rounded,
+                            color: Colors.redAccent,
+                          ),
                           suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
                                   _isObsecure = !_isObsecure;
                                 });
                               },
-                              icon: Icon(_isObsecure
-                                  ? Icons.visibility
-                                  : Icons.visibility_off)),
+                              icon: Icon(
+                                _isObsecure
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: Colors.redAccent,
+                              )),
                           hintText: hPassword),
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       keyboardType: TextInputType.visiblePassword,

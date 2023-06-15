@@ -309,7 +309,14 @@ class _FootballCategoriesState extends State<FootballCategories> {
                                                 30, 0, 30, 0),
                                             child: MaterialButton(
                                               minWidth: 0,
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const Booking()),
+                                                );
+                                              },
                                               color: Color.fromARGB(
                                                   255, 218, 44, 93),
                                               elevation: 10,
@@ -430,7 +437,14 @@ class _FootballCategoriesState extends State<FootballCategories> {
                                                 30, 0, 30, 0),
                                             child: MaterialButton(
                                               minWidth: 0,
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const Booking()),
+                                                );
+                                              },
                                               color: Color.fromARGB(
                                                   255, 218, 44, 93),
                                               elevation: 10,
@@ -547,7 +561,14 @@ class _FootballCategoriesState extends State<FootballCategories> {
                                                 30, 0, 30, 0),
                                             child: MaterialButton(
                                               minWidth: 0,
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const Booking()),
+                                                );
+                                              },
                                               color: Color.fromARGB(
                                                   255, 218, 44, 93),
                                               elevation: 10,
@@ -668,7 +689,14 @@ class _FootballCategoriesState extends State<FootballCategories> {
                                                 30, 0, 30, 0),
                                             child: MaterialButton(
                                               minWidth: 0,
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const Booking()),
+                                                );
+                                              },
                                               color: Color.fromARGB(
                                                   255, 218, 44, 93),
                                               elevation: 10,
@@ -785,7 +813,14 @@ class _FootballCategoriesState extends State<FootballCategories> {
                                                 30, 0, 30, 0),
                                             child: MaterialButton(
                                               minWidth: 0,
-                                              onPressed: () {},
+                                              onPressed: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          const Booking()),
+                                                );
+                                              },
                                               color: Color.fromARGB(
                                                   255, 218, 44, 93),
                                               elevation: 10,

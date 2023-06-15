@@ -12,6 +12,8 @@ import '../widgets/list_data.dart';
 import 'date_picker.dart';
 
 final AuthService _auth = AuthService();
+int numberOfPlayer = 0;
+int numberOfPlayer2 = 0;
 String size = '';
 
 class Booking extends StatefulWidget {
@@ -23,19 +25,17 @@ class Booking extends StatefulWidget {
 
 class _BookingState extends State<Booking> {
   late int numPlyer;
-  int _numberOfPlayer = 0;
-  int _numberOfPlayer2 = 0;
 
   void _updateFillCount(int count) {
     setState(() {
-      _numberOfPlayer = count;
+      numberOfPlayer = count;
       size = '5X5';
     });
   }
 
   void _updateFillCount2(int count) {
     setState(() {
-      _numberOfPlayer2 = count;
+      numberOfPlayer2 = count;
       size = '6X6';
     });
   }
@@ -50,7 +50,7 @@ class _BookingState extends State<Booking> {
           icon: Icon(
             Icons.person,
             size: 65,
-            color: i < _numberOfPlayer ? Colors.red : Colors.grey,
+            color: i < numberOfPlayer ? Colors.red : Colors.grey,
           ),
           onPressed: () {
             _updateFillCount(i + 1);
@@ -85,7 +85,7 @@ class _BookingState extends State<Booking> {
           icon: Icon(
             Icons.person,
             size: 65,
-            color: i < _numberOfPlayer2 ? Colors.red : Colors.grey,
+            color: i < numberOfPlayer2 ? Colors.red : Colors.grey,
           ),
           onPressed: () {
             _updateFillCount2(i + 1);
@@ -166,413 +166,291 @@ class _BookingState extends State<Booking> {
       ),
       Padding(
           padding: const EdgeInsets.fromLTRB(20, 170, 20, 0),
-          child: Expanded(
-            child: SingleChildScrollView(
-                child: Container(
-              decoration: BoxDecoration(
-                  color: mBackgroundColor,
-                  borderRadius: BorderRadius.circular(17)),
-              child: StreamBuilder(
-                  stream: FirebaseFirestore.instance
-                      .collection('playgroundInfo')
-                      .snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return const Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    return Column(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                          child: SizedBox(
-                            height: 30,
-                            child: Text(
-                                snapshot.data!.docs[i]['playgroundName'],
-                                style: TextStyle(
-                                    fontSize: 25,
-                                    decoration: TextDecoration.none,
-                                    color: mBlackColor,
-                                    fontWeight: FontWeight.bold)),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(130, 10, 0, 0),
-                          child: Row(children: const [
-                            Text(
-                              "Amman-Jordan",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  decoration: TextDecoration.none,
-                                  color: mBlackColor),
-                            ),
-                          ]),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(130, 5, 0, 0),
-                          child: Row(children: [
-                            Row(
-                              children: const [
-                                Text(
-                                  "Open",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      decoration: TextDecoration.none,
-                                      color: mBlackColor,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Padding(
-                                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                                  child: Text(
-                                    "10am - 2am",
-                                    style: TextStyle(
-                                        fontSize: 12,
-                                        decoration: TextDecoration.none,
-                                        color: mBlackColor),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ]),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(120, 3, 0, 0),
-                          child: Row(children: const [
-                            Icon(
-                              Icons.location_on_outlined,
-                              color: mYellow,
-                            ),
-                            Text(
-                              "2.5 km",
-                              style: TextStyle(
-                                  fontSize: 12,
-                                  decoration: TextDecoration.none,
-                                  color: mBackgroundColor),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                              child: Text(
-                                "5.0",
-                                style: TextStyle(
-                                  fontSize: 10,
-                                  color: mBlackColor,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                            ),
-                            Icon(
-                              Icons.star_outline_rounded,
-                              color: mYellow,
-                            ),
-                          ]),
-                        ),
-                        SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                                child: Container(
-                                    height: 200,
-                                    width: 350,
-                                    decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            "images/stadiumtraning.jpg"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        ..._buildIconRows(),
-                                        SizedBox(height: 16),
-                                        Text(
-                                          'Number of player: $_numberOfPlayer',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15),
-                                        ),
-                                      ],
-                                    )),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                                child: Container(
-                                    height: 200,
-                                    width: 350,
-                                    decoration: const BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            "images/stadiumtraning.jpg"),
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        ..._buildIconRows2(),
-                                        SizedBox(height: 16),
-                                        Text(
-                                          'Number of player: $_numberOfPlayer2',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15),
-                                        ),
-                                      ],
-                                    )),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              const Text(
-                                "Pick Date",
-                                style: TextStyle(
-                                  shadows: [
-                                    Shadow(
-                                      color: Color.fromARGB(255, 208, 208, 208),
-                                      offset: Offset(1, 1),
-                                      blurRadius: 10,
-                                    ),
-                                  ],
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 25,
-                                ),
-                              ),
-                              DateTimePickerDialog(),
-                            ],
-                          ),
-                        ),
-                        StreamBuilder(
-                            stream: FirebaseFirestore.instance
-                                .collection('playgroundInfo')
-                                .snapshots(),
-                            builder: (context, snapshot) {
-                              if (!snapshot.hasData) {
-                                return const Center(
-                                  child: CircularProgressIndicator(),
-                                );
-                              }
-                              return Padding(
-                                padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
-                                child: Container(
-                                  color: Colors.white,
-                                  child: Padding(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        52, 0, 40, 25),
-                                    child: MaterialButton(
-                                      minWidth: 0,
-                                      onPressed: () async {
-                                        _auth.addBook(
-                                            date: date,
-                                            playgroundName: snapshot.data!
-                                                .docs[i]['playgroundName'],
-                                            player: Players(
-                                                username: players.username,
-                                                phoneNo: players.phoneNo),
-                                            size: size,
-                                            price: snapshot.data!.docs[i]
-                                                ['price'],
-                                            noPlayers: _numberOfPlayer);
-                                        print(players.username);
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  const CheckOut()),
-                                        );
-                                      },
-                                      color: const Color.fromARGB(
-                                          255, 241, 61, 61),
-                                      elevation: 10,
-                                      height: 50,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Row(
-                                        children: const [
-                                          Padding(
-                                            padding: EdgeInsets.fromLTRB(
-                                                70, 0, 0, 0),
-                                            child: Text(
-                                              "Book a game",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
-                      ],
+          child: SingleChildScrollView(
+              child: Container(
+            decoration: BoxDecoration(
+                color: mBackgroundColor,
+                borderRadius: BorderRadius.circular(17)),
+            child: StreamBuilder(
+                stream: FirebaseFirestore.instance
+                    .collection('playgroundInfo')
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
                     );
-                  }),
-            )),
-          ))
-    ]));
-  }
-}
-
-class AddPlayer extends StatefulWidget {
-  const AddPlayer({super.key});
-
-  @override
-  State<AddPlayer> createState() => _AddPlayerState();
-}
-
-class _AddPlayerState extends State<AddPlayer> {
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(50, 130, 50, 130),
-        child: Scaffold(
-          body: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 5, 20, 10),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 0, 225, 0),
-                      child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Image.asset(
-                            "images/left.png",
-                          )),
-                    ),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(30)),
-                        ),
-                        labelText: 'User Name',
-                        isDense: true,
-                        prefixIcon: Icon(Icons.person),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(150, 10, 50, 60),
-                child: MaterialButton(
-                  minWidth: 0,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Booking()),
-                    );
-                  },
-                  color: mRedColor,
-                  elevation: 10,
-                  height: 50,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Row(
+                  }
+                  return Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Row(
-                          children: const [
-                            Text(
-                              "find ",
+                        padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                        child: SizedBox(
+                          height: 30,
+                          child: Text(snapshot.data!.docs[i]['playgroundName'],
                               style: TextStyle(
-                                  fontSize: 15,
-                                  color: mBackgroundColor,
-                                  fontWeight: FontWeight.bold),
+                                  fontSize: 25,
+                                  decoration: TextDecoration.none,
+                                  color: mBlackColor,
+                                  fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(130, 10, 0, 0),
+                        child: Row(children: const [
+                          Text(
+                            "Amman-Jordan",
+                            style: TextStyle(
+                                fontSize: 12,
+                                decoration: TextDecoration.none,
+                                color: mBlackColor),
+                          ),
+                        ]),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(130, 5, 0, 0),
+                        child: Row(children: [
+                          Row(
+                            children: const [
+                              Text(
+                                "Open",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none,
+                                    color: mBlackColor,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                child: Text(
+                                  "10am - 2am",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      decoration: TextDecoration.none,
+                                      color: mBlackColor),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ]),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(120, 3, 0, 0),
+                        child: Row(children: const [
+                          Icon(
+                            Icons.location_on_outlined,
+                            color: mYellow,
+                          ),
+                          Text(
+                            "2.5 km",
+                            style: TextStyle(
+                                fontSize: 12,
+                                decoration: TextDecoration.none,
+                                color: mBackgroundColor),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                            child: Text(
+                              "5.0",
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: mBlackColor,
+                                decoration: TextDecoration.none,
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            Icons.star_outline_rounded,
+                            color: mYellow,
+                          ),
+                        ]),
+                      ),
+                      SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                              child: Container(
+                                  height: 200,
+                                  width: 350,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                          "images/stadiumtraning.jpg"),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      ..._buildIconRows(),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        'Number of player: $numberOfPlayer',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 15),
+                                      ),
+                                    ],
+                                  )),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                              child: Container(
+                                  height: 200,
+                                  width: 350,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                          "images/stadiumtraning.jpg"),
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      ..._buildIconRows2(),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        'Number of player: $numberOfPlayer2',
+                                        style: TextStyle(
+                                            color: Colors.white, fontSize: 15),
+                                      ),
+                                    ],
+                                  )),
                             ),
                           ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                child: Align(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Image.asset(
-                            "images/bader.jpg",
-                            width: 50,
-                            height: 50,
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.all(10.0),
-                            child: Text(
-                              "Mohammad Bader",
-                              style: TextStyle(
-                                  fontSize: 15,
-                                  color: mBlackColor,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ],
-                      ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(50, 50, 50, 20),
-                        child: MaterialButton(
-                          minWidth: 0,
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const Booking()),
-                            );
-                          },
-                          color: mRedColor,
-                          elevation: 10,
-                          height: 50,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(60, 0, 0, 0),
-                                child: Row(
-                                  children: const [
-                                    Text(
-                                      "Add ",
-                                      style: TextStyle(
-                                          fontSize: 15,
-                                          color: mBackgroundColor,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
+                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const Text(
+                              "Pick Date",
+                              style: TextStyle(
+                                shadows: [
+                                  Shadow(
+                                    color: Color.fromARGB(255, 208, 208, 208),
+                                    offset: Offset(1, 1),
+                                    blurRadius: 10,
+                                  ),
+                                ],
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
                               ),
-                            ],
-                          ),
+                            ),
+                            DateTimePickerDialog(),
+                          ],
                         ),
                       ),
+                      // Checkdate(),
+                      StreamBuilder(
+                          stream: FirebaseFirestore.instance
+                              .collection('playgroundInfo')
+                              .snapshots(),
+                          builder: (context, snapshot) {
+                            if (!snapshot.hasData) {
+                              return const Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                            return Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 50, 0, 0),
+                              child: Container(
+                                color: Colors.white,
+                                child: Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(52, 0, 40, 25),
+                                  child: MaterialButton(
+                                    minWidth: 0,
+                                    onPressed: () async {
+                                      _auth.addBook(
+                                          date: date,
+                                          playgroundName: snapshot.data!.docs[i]
+                                              ['playgroundName'],
+                                          player: Players(
+                                              username: players.username,
+                                              phoneNo: players.phoneNo),
+                                          size: size,
+                                          price: snapshot.data!.docs[i]
+                                              ['price'],
+                                          noPlayers: numberOfPlayer);
+                                      print(players.username);
+
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const CheckOut()),
+                                      );
+                                    },
+                                    color:
+                                        const Color.fromARGB(255, 241, 61, 61),
+                                    elevation: 10,
+                                    height: 50,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Row(
+                                      children: const [
+                                        Padding(
+                                          padding:
+                                              EdgeInsets.fromLTRB(70, 0, 0, 0),
+                                          child: Text(
+                                            "Book a game",
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
                     ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                  );
+                }),
+          )))
+    ]));
+  }
+}
+
+class Checkdate extends StatefulWidget {
+  const Checkdate({super.key});
+
+  @override
+  State<Checkdate> createState() => _CheckdateState();
+}
+
+class _CheckdateState extends State<Checkdate> {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('Checkout').snapshots(),
+        builder: (context, snapshot) {
+          Timestamp timestamp = snapshot.data!.docs[i]['date'];
+          DateTime datee = timestamp.toDate();
+          return ElevatedButton(
+            child: Text('GG'),
+            onPressed: () {
+              if (datee == date) {
+                setState(() {
+                  numberOfPlayer = snapshot.data!.docs[i]['NoPlayers'];
+                  print('DONE');
+                });
+              } else {
+                setState(() {
+                  numberOfPlayer = 0;
+                });
+                print('GG');
+              }
+            },
+          );
+        });
   }
 }
