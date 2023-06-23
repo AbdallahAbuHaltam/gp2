@@ -5,8 +5,8 @@ import 'package:derbyjo/screens/check_out.dart';
 import 'package:derbyjo/services/auth.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:derbyjo/main.dart';
 
-import '../main.dart';
 import '../utils/constants.dart';
 import '../widgets/list_data.dart';
 import 'date_picker.dart';
@@ -24,19 +24,37 @@ class Booking extends StatefulWidget {
 }
 
 class _BookingState extends State<Booking> {
-  late int numPlyer;
+  /*DateTime? dateSelected;
 
-  void _updateFillCount(int count) {
+  void fetchItemList() async {
+    final CollectionReference collectionRef =
+        FirebaseFirestore.instance.collection('Book');
+    QuerySnapshot querySnapshot = await collectionRef.get();
+    List<QueryDocumentSnapshot> documents = querySnapshot.docs;
     setState(() {
-      numberOfPlayer = count;
-      size = '5X5';
+      dateSelected = documents.map((doc) => doc.get('date')) as DateTime?;
     });
   }
+
+  @override
+  void initState() {
+    super.initState();
+    fetchItemList();
+  }*/
+
+  late int numPlyer;
 
   void _updateFillCount2(int count) {
     setState(() {
       numberOfPlayer2 = count;
       size = '6X6';
+    });
+  }
+
+  void _updateFillCount(int count) {
+    setState(() {
+      numberOfPlayer = count;
+      size = '5X5';
     });
   }
 
@@ -53,7 +71,10 @@ class _BookingState extends State<Booking> {
             color: i < numberOfPlayer ? Colors.red : Colors.grey,
           ),
           onPressed: () {
-            _updateFillCount(i + 1);
+            setState(() {
+              i = numberOfPlayer;
+              _updateFillCount(i + 1);
+            });
           },
         ),
       );
@@ -265,6 +286,30 @@ class _BookingState extends State<Booking> {
                           ),
                         ]),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            const Text(
+                              "Pick Date",
+                              style: TextStyle(
+                                shadows: [
+                                  Shadow(
+                                    color: Color.fromARGB(255, 208, 208, 208),
+                                    offset: Offset(1, 1),
+                                    blurRadius: 10,
+                                  ),
+                                ],
+                                color: Colors.red,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25,
+                              ),
+                            ),
+                            DateTimePickerDialog(),
+                          ],
+                        ),
+                      ),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -293,54 +338,38 @@ class _BookingState extends State<Booking> {
                                     ],
                                   )),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                              child: Container(
-                                  height: 200,
-                                  width: 350,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          "images/stadiumtraning.jpg"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      ..._buildIconRows2(),
-                                      SizedBox(height: 16),
-                                      Text(
-                                        'Number of player: $numberOfPlayer2',
-                                        style: TextStyle(
-                                            color: Colors.white, fontSize: 15),
-                                      ),
-                                    ],
-                                  )),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            const Text(
-                              "Pick Date",
-                              style: TextStyle(
-                                shadows: [
-                                  Shadow(
-                                    color: Color.fromARGB(255, 208, 208, 208),
-                                    offset: Offset(1, 1),
-                                    blurRadius: 10,
-                                  ),
-                                ],
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25,
-                              ),
-                            ),
-                            DateTimePickerDialog(),
+                            StreamBuilder(
+                                stream: FirebaseFirestore.instance
+                                    .collection('Book')
+                                    .snapshots(),
+                                builder: (context, snapshot) {
+                                  return Padding(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                                    child: Container(
+                                        height: 200,
+                                        width: 350,
+                                        decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                            image: AssetImage(
+                                                "images/stadiumtraning.jpg"),
+                                            fit: BoxFit.fill,
+                                          ),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            ..._buildIconRows2(),
+                                            SizedBox(height: 16),
+                                            Text(
+                                              'Number of player: $numberOfPlayer2',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 15),
+                                            ),
+                                          ],
+                                        )),
+                                  );
+                                }),
                           ],
                         ),
                       ),
@@ -376,7 +405,6 @@ class _BookingState extends State<Booking> {
                                           price: snapshot.data!.docs[i]
                                               ['price'],
                                           noPlayers: numberOfPlayer);
-                                      print(players.username);
 
                                       Navigator.push(
                                         context,

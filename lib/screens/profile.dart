@@ -10,6 +10,7 @@ import '../services/auth.dart';
 import '../utils/constants.dart';
 import '../widgets/profile_data.dart';
 import '../widgets/profile_menu.dart';
+import 'authenication/authenication.dart';
 import 'authenication/get_started.dart';
 
 class Profile extends StatefulWidget {
@@ -169,11 +170,10 @@ class _ProfileState extends State<Profile> {
                 icon: LineAwesomeIcons.alternate_sign_out,
                 endIcon: false,
                 onpress: () async {
-                  final snackBar = SnackBar(
-                    content: Text('You have been successfully logged out!'),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                  await AuthService().signOut();
+                  _auth.signOut();
+                  setState(() {
+                    showSignin = !showSignin;
+                  });
 // ignore: use_build_context_synchronously
                   Navigator.push(
                     context,

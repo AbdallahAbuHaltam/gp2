@@ -186,6 +186,11 @@ class _LoginState extends State<Login> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
                           _auth.userLogin(email: email, password: password);
+
+                          final snackBar = SnackBar(
+                            content: Text('Successfull Login !'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                           Navigator.push(
                             context,
                             MaterialPageRoute(

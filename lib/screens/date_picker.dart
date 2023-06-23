@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/CreatGame.dart';
+import 'package:derbyjo/main.dart';
 import 'package:derbyjo/screens/book.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -55,44 +56,72 @@ class _DateTimePickerDialogState extends State<DateTimePickerDialog> {
           pickedTime.minute,
         );
         date = _selectedDateTime;
-        /*print(_selectedTime);
-        print(_selectedDateTime);*/
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.all(50.0), // Adjust the padding as needed
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(
-                10.0), // Set your desired border radius here
-          ),
-          backgroundColor: const Color.fromARGB(
-              255, 241, 61, 61), // Set your desired color here
-        ),
-        child: Text(
-          // ignore: unnecessary_null_comparison
-          _selectedDateTime != null
-              ? DateFormat('yyyy-MM-dd hh:mm a').format(_selectedDateTime)
-              : 'Select a date and time',
-          style: const TextStyle(fontSize: 15),
-        ),
-        onPressed: () {
-          _selectDateTime(context);
-          // ignore: unused_local_variable
-          /* if (datee == date) {
-                setState(() {
-                  numberOfPlayer = snapshot.data!.docs[i]['NoPlayers'];
+    return StreamBuilder(
+        stream: FirebaseFirestore.instance.collection('Book').snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding:
+                    const EdgeInsets.all(50.0), // Adjust the padding as needed
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                      10.0), // Set your desired border radius here
+                ),
+                backgroundColor: const Color.fromARGB(
+                    255, 241, 61, 61), // Set your desired color here
+              ),
+              child: Text(
+                // ignore: unnecessary_null_comparison
+                _selectedDateTime != null
+                    ? DateFormat('yyyy-MM-dd hh:mm a').format(_selectedDateTime)
+                    : 'Select a date and time',
+                style: const TextStyle(fontSize: 15),
+              ),
+              onPressed: () {
+                _selectDateTime(context);
+                /*setState(() {
+                  if (date == book.date) {
+                    numberOfPlayer = book.noPlayers!;
+                  } else {
+                    numberOfPlayer = 0;
+                  }
+                  print(" fire ${book.noPlayers}");
+                  print('fire ${book.date}');
+                  print(date);
+                  print(numberOfPlayer);
+                });*/
+
+                /* setState(() {
+                  date = _selectedDateTime;
                 });
-              } else {
-                //print(date);
-                print(datee);
-                print(date);
-              }
-            },*/
+                if (_selectedDateTime == snapshot.data!.docs[i]['date']) {
+                  numberOfPlayer = snapshot.data!.docs[i]['NoPlayers'];
+                } else {
+                  numberOfPlayer = 0;
+                }*/
+                // ignore: unused_local_variable
+                /* if (datee == date) {
+                    setState(() {
+                      numberOfPlayer = snapshot.data!.docs[i]['NoPlayers'];
+                    });
+                  } else {
+                    //print(date);
+                    print(datee);
+                    print(date);
+                  }
+                },*/
+              });
         });
   }
 }

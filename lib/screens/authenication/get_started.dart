@@ -1,4 +1,6 @@
 import 'package:derbyjo/screens/authenication/authenication.dart';
+import 'package:derbyjo/screens/authenication/login.dart';
+import 'package:derbyjo/screens/authenication/signup.dart';
 import 'package:flutter/material.dart';
 import '../../utils/constants.dart';
 import '../about_us.dart';
@@ -35,7 +37,7 @@ class _GetStartState extends State<GetStart> {
           ),
         ),
         const Padding(
-          padding:  EdgeInsets.fromLTRB(50, 20, 35, 0),
+          padding: EdgeInsets.fromLTRB(50, 20, 35, 0),
           child: Text(
             welcome,
             style: TextStyle(
@@ -53,7 +55,9 @@ class _GetStartState extends State<GetStart> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Authenicate()),
+                MaterialPageRoute(
+                  builder: (context) => const Login(),
+                ),
               );
             },
             color: mRedColor,
@@ -85,9 +89,11 @@ class _GetStartState extends State<GetStart> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const Authenicate()),
+                MaterialPageRoute(
+                  builder: (context) => const SignupPage1(),
+                ),
               );
-              
+
               setState(() {
                 showSignin = !showSignin;
               });

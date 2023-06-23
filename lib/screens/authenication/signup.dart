@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:derbyjo/screens/authenication/login.dart';
 import 'package:derbyjo/screens/home/home.dart';
 import 'package:derbyjo/services/auth.dart';
-// import 'package:derbyjo/services/auth.dart';
 import 'package:derbyjo/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -28,7 +27,6 @@ class SignupPage1 extends StatefulWidget {
 }
 
 class _SignupPage1State extends State<SignupPage1> {
-  // final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
   String error = '';
@@ -324,12 +322,6 @@ class _SignupPage1State extends State<SignupPage1> {
                             onPressed: () async {
                               if (_formKey.currentState!.validate()) {
                                 _formKey.currentState!.save();
-                                //     _auth.userSignup(
-                                //         username: _usernamecontroller.text,
-                                //         email: _emailcontroller.text,
-                                //         password: _passwordcontroller.text,
-                                //         phoneNo: _phonecontroller.text,
-                                //         );
                               }
                               Navigator.push(
                                 context,
@@ -415,19 +407,6 @@ class _SignupPage2State extends State<SignupPage2> {
 
   final _formKeyFullName = GlobalKey<FormState>();
   final _formKeyAge = GlobalKey<FormState>();
-
-  final List<XFile> _images = [];
-  final ImagePicker _picker = ImagePicker();
-  Future<void> _pickImage() async {
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        _images.add(image);
-      });
-    }
-  }
-
-  final picker = ImagePicker();
 
   @override
   Widget build(BuildContext context) {
@@ -523,57 +502,6 @@ class _SignupPage2State extends State<SignupPage2> {
             //SizedBox
             const SizedBox(
               height: 15,
-            ),
-
-            const Text(
-              "Pick your images",
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
-            ),
-            // SizedBox
-            const SizedBox(
-              height: 20,
-            ),
-
-            //image pick from gallary(3)
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  for (var i = 0; i < _images.length; i++)
-                    InkWell(
-                      onTap: () => setState(() => _images.removeAt(i)),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.all(10),
-                        child: Image.file(
-                          File(_images[i].path),
-                          width: 90,
-                          height: 100,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                  if (_images.length < 3)
-                    InkWell(
-                      onTap: _pickImage,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: const EdgeInsets.all(10),
-                        child: const Icon(
-                          Icons.add_a_photo,
-                          color: Colors.redAccent,
-                        ),
-                      ),
-                    ),
-                ],
-              ),
             ),
 
             //SizedBox
@@ -738,13 +666,6 @@ class _SignupPage2State extends State<SignupPage2> {
                         );
                       }
                     },
-                    // onPressed: () {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => const SignupPage2()),
-                    //   );
-                    // },
                     child: const Text(
                       "Sign Up",
                       style: TextStyle(fontSize: 20),

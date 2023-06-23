@@ -1,6 +1,8 @@
 import 'package:derbyjo/screens/activity.dart';
+import 'package:derbyjo/screens/authenication/get_started.dart';
 import 'package:derbyjo/screens/categories.dart';
 import 'package:derbyjo/screens/profile.dart';
+import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import '../../CreatGame.dart';
@@ -8,6 +10,8 @@ import '../../utils/constants.dart';
 import '../../widgets/bottom_menu.dart';
 import '../../widgets/list_data.dart';
 import 'package:derbyjo/screens/footballCategories.dart';
+
+final AuthService _auth = AuthService();
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -445,38 +449,16 @@ class _HomeState extends State<Home> {
                                         ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(12.0),
-                                          child: Text(
-                                            "Comming soon",
-                                            style:
-                                                TextStyle(color: Colors.white),
+                                          child: Column(
+                                            children: [
+                                              Text(
+                                                "Comming soon",
+                                                style: TextStyle(
+                                                    color: Colors.white),
+                                              ),
+                                            ],
                                           ),
                                         )),
-
-                                    //child: ElevatedButton(
-                                    //   onPressed: () {
-                                    //     Navigator.push(
-                                    //       context,
-                                    //       MaterialPageRoute(
-                                    //           builder: (context) =>
-                                    //               const Soon()),
-                                    //     );
-                                    //   },
-                                    //   style: ElevatedButton.styleFrom(
-                                    //       foregroundColor: Colors.white,
-                                    //       backgroundColor: Colors.red,
-                                    //       fixedSize: const Size(100, 40),
-                                    //       shape: RoundedRectangleBorder(
-                                    //         borderRadius:
-                                    //             BorderRadius.circular(15),
-                                    //       )),
-                                    //   child: Column(
-                                    //     mainAxisAlignment:
-                                    //         MainAxisAlignment.center,
-                                    //     children: const [
-                                    //       Text(book),
-                                    //     ],
-                                    //   ),
-                                    // ),
                                   ),
                                 ],
                               ),

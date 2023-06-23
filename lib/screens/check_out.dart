@@ -17,9 +17,9 @@ class CheckOut extends StatefulWidget {
 }
 
 class _CheckOutState extends State<CheckOut> {
-  int index = 0;
   bool isFavorite = false;
   dynamic sale = 0;
+  int index = 0;
 
   List pages = [const Facuilities(), const Reviews(), const Info()];
   int currentIndex = 0;
@@ -250,13 +250,6 @@ class _CheckOutState extends State<CheckOut> {
                     ),
                     child: const Row(
                       children: [
-                        // Text(
-                        //   item.toString(),
-                        //   style: TextStyle(
-                        //     fontSize: 15,
-                        //     color: mBackgroundColor,
-                        //   ),
-                        // ),
                         Padding(
                           padding: EdgeInsets.fromLTRB(75, 0, 0, 0),
                           child: Text(
@@ -267,19 +260,6 @@ class _CheckOutState extends State<CheckOut> {
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
-                        // Padding(
-                        //   padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
-                        //   child: Text(
-                        //     (snapshot.data!.docs[i]['price'] +
-                        //             waterPrice +
-                        //             gatoradePrice)
-                        //         .toString(),
-                        //     style: TextStyle(
-                        //       fontSize: 15,
-                        //       color: mBackgroundColor,
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     ),
                   );

@@ -1,9 +1,12 @@
 import 'package:derbyjo/screens/activity.dart';
 import 'package:derbyjo/screens/home/home.dart';
+import 'package:derbyjo/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import '../utils/constants.dart';
+
+AuthService _auth = AuthService();
 
 class Rating extends StatefulWidget {
   const Rating({super.key});
@@ -21,9 +24,9 @@ class _RatingState extends State<Rating> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Row(
+        title: const Row(
           children: <Widget>[
-            const Padding(
+            Padding(
               padding: EdgeInsets.fromLTRB(85, 0, 0, 0),
               child: Text(
                 "Rating",
@@ -68,7 +71,7 @@ class _RatingState extends State<Rating> {
                   allowHalfRating: false,
                   itemCount: 5,
                   itemSize: 40.0,
-                  itemBuilder: (context, _) => Icon(
+                  itemBuilder: (context, _) => const Icon(
                     Icons.star,
                     color: Colors.amber,
                   ),
@@ -79,8 +82,8 @@ class _RatingState extends State<Rating> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 120, right: 200),
+              const Padding(
+                padding: EdgeInsets.only(top: 120, right: 200),
                 child: Text("Add your comment here :",
                     style:
                         TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
@@ -138,32 +141,26 @@ class _RatingState extends State<Rating> {
                             MaterialPageRoute(
                                 builder: (context) => const Home()),
                           );
-                          final snackBar = SnackBar(
+                          _auth.addComment(comment: _Commentcontroller.text);
+                          const snackBar = SnackBar(
                             content: Text('Comment add !'),
                           );
                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         }
                       },
-                      // onPressed: () {
-                      //   Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => const SignupPage2()),
-                      //   );
-                      // },
                       child: const Text(
                         "Submit",
                         style: TextStyle(fontSize: 20),
                       ),
                     )),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 100, right: 0, left: 15),
+              const Padding(
+                padding: EdgeInsets.only(top: 100, right: 0, left: 15),
                 child: Row(
                   children: [
                     Icon(Icons.info_outline_rounded),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10, top: 5),
+                      padding: EdgeInsets.only(left: 10, top: 5),
                       child: Text(
                           "Your evaluation is very important to us!\n We will always work to improve"),
                     )

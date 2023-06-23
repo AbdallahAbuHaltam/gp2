@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:derbyjo/models/checkout.dart';
+import 'package:derbyjo/models/comment.dart';
 import 'package:derbyjo/models/game.dart';
 import 'package:derbyjo/models/player.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,6 +42,7 @@ class AuthService {
         .then((value) {
       print(value.user!.uid);
       print(value.user!.email);
+
       Players model = Players(
           email: email,
           username: username,
@@ -84,13 +86,12 @@ class AuthService {
           .then((value) {
         final uid = players.uId;
 
-        /*players.uId = uid;
         players.username = value.data()?['username'];
         players.email = value.data()?['email'];
         players.password = value.data()?['password'];
         players.phoneNo = value.data()?['phoneNo'];
         players.gender = value.data()?['gender'];
-        players.fullName = value.data()?['fullName'];*/
+        players.fullName = value.data()?['fullName'];
         print(uid);
         if (uid != null) {
           print("Success Login");
@@ -203,6 +204,15 @@ class AuthService {
       );
       print("Booked ");
     });
+  }
+
+  Future addComment({
+    String? comment,
+  }) async {
+    FirebaseFirestore.instance
+        .collection('Comment')
+        .add(Review(comment: comment).toMap())
+        .then((value) => print("comment added "));
   }
 
   Future addCheckout({
