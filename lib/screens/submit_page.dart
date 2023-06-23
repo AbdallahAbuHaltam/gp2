@@ -330,6 +330,7 @@ class _SubmitPageState extends State<SubmitPage> {
                       playgroundName: book.playgroundName,
                       size: book.size,
                       status: book.size,
+                      time: book.time,
                       player: Players(
                         username: book.player?.username,
                         phoneNo: book.player?.phoneNo,

@@ -24,6 +24,7 @@ class Checkout {
       'status': book?.status,
       'NoPlayers': book?.noPlayers,
       'date': book?.date,
+      'time': book?.time,
     };
   }
 }

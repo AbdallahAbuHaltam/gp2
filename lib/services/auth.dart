@@ -164,25 +164,23 @@ class AuthService {
     });
   }
 
-  Future addBook({
-    String? playgroundName,
-    String? size,
-    String? status,
-    Players? player,
-    int? noPlayers,
-    double? price,
-    DateTime? date,
-    TimeOfDay? time,
-    String? bookId,
-  }) async {
+  Future addBook(
+      {String? playgroundName,
+      String? size,
+      String? status,
+      Players? player,
+      int? noPlayers,
+      double? price,
+      String? date,
+      String? time}) async {
     Book model = Book(
-        bookId: bookId,
         noPlayers: noPlayers,
         price: price,
         date: date,
         playgroundName: playgroundName,
         size: size,
         status: status,
+        time: time,
         player: Players(
             username: players.username,
             phoneNo: players.phoneNo,
@@ -196,6 +194,7 @@ class AuthService {
       book.price = model.price;
       book.playgroundName = model.playgroundName;
       book.size = model.size;
+      book.time = model.time;
       book.status = model.status;
       book.player = Players(
         username: model.player?.username,
@@ -230,6 +229,7 @@ class AuthService {
                 phoneNo: players.phoneNo),
             book: Book(
                 date: book?.date,
+                time: book?.time,
                 noPlayers: book!.noPlayers,
                 price: book.price,
                 playgroundName: book.playgroundName,

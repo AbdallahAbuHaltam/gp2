@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:derbyjo/models/search.dart';
 import 'package:derbyjo/screens/book.dart';
 import 'package:flutter/material.dart';
 
@@ -14,62 +13,6 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  /* List<String> itemList = [];
-  void fetchItemList() async {
-    final CollectionReference collectionRef =
-        FirebaseFirestore.instance.collection('playgroundInfo');
-    QuerySnapshot querySnapshot = await collectionRef.get();
-    List<QueryDocumentSnapshot> documents = querySnapshot.docs;
-    if (itemList.isEmpty) {
-      for (var doc in documents) {
-        String item = doc.get(
-            'playgroundName'); // Replace 'item_field' with the actual field name in your document
-        itemList.add(item);
-        print(itemList);
-      }
-    } else {
-      itemList.clear();
-      for (var doc in documents) {
-        String item = doc.get(
-            'playgroundName'); // Replace 'item_field' with the actual field name in your document
-        itemList.add(item);
-        print(itemList);
-      }
-    }
-  }
-
-  List<String> searchResults = [];
-
-  List<String> searchItems(String query) {
-    if (itemList.isNotEmpty) {
-      for (String item in itemList) {
-        if (item.toLowerCase().contains(query.toLowerCase())) {
-          searchResults.add(item);
-        }
-      }
-    } else {
-      itemList.clear();
-    }
-
-    return searchResults;
-  }
-*/
-  /*static List stadium = [];
-  static List<SearchModel> stadiumList = [
-    SearchModel("oxford school stadium", 1),
-    SearchModel("Al khader school stadium", 2),
-    SearchModel("Al Jazeera Schools Stadium", 3),
-    SearchModel("Alquaat Almusalahat stadium", 4),
-  ];*/
-  /*List display_list = List.from(stadium);
-  void updateList(String value) {
-    setState(() {
-      display_list = stadium
-          .where((element) =>
-              element.stadiumName!.toLowerCase().contains(value.toLowerCase()))
-          .toList();
-    });
-  }*/
   String searchText = '';
   List itemList = [];
   List itemPrice = [];

@@ -11,6 +11,11 @@ import '../utils/constants.dart';
 import '../widgets/list_data.dart';
 import 'date_picker.dart';
 
+int selectedDay = -1;
+String Days = '';
+int selectedTime = -1;
+String time = '';
+
 final AuthService _auth = AuthService();
 int numberOfPlayer = 0;
 int numberOfPlayer2 = 0;
@@ -72,7 +77,6 @@ class _BookingState extends State<Booking> {
           ),
           onPressed: () {
             setState(() {
-              i = numberOfPlayer;
               _updateFillCount(i + 1);
             });
           },
@@ -286,30 +290,7 @@ class _BookingState extends State<Booking> {
                           ),
                         ]),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            const Text(
-                              "Pick Date",
-                              style: TextStyle(
-                                shadows: [
-                                  Shadow(
-                                    color: Color.fromARGB(255, 208, 208, 208),
-                                    offset: Offset(1, 1),
-                                    blurRadius: 10,
-                                  ),
-                                ],
-                                color: Colors.red,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25,
-                              ),
-                            ),
-                            DateTimePickerDialog(),
-                          ],
-                        ),
-                      ),
+
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -373,6 +354,24 @@ class _BookingState extends State<Booking> {
                           ],
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 200, top: 30),
+                        child: Text(
+                          "Booking Day :",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(height: 150, width: 400, child: Date()),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 200, top: 30),
+                        child: Text(
+                          "Booking Time :",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Container(height: 150, width: 400, child: Time()),
                       // Checkdate(),
                       StreamBuilder(
                           stream: FirebaseFirestore.instance
@@ -395,7 +394,8 @@ class _BookingState extends State<Booking> {
                                     minWidth: 0,
                                     onPressed: () async {
                                       _auth.addBook(
-                                          date: date,
+                                          date: Days,
+                                          time: time,
                                           playgroundName: snapshot.data!.docs[i]
                                               ['playgroundName'],
                                           player: Players(
@@ -448,37 +448,118 @@ class _BookingState extends State<Booking> {
   }
 }
 
-class Checkdate extends StatefulWidget {
-  const Checkdate({super.key});
+class Date extends StatefulWidget {
+  const Date({super.key});
 
   @override
-  State<Checkdate> createState() => _CheckdateState();
+  _DateState createState() => _DateState();
 }
 
-class _CheckdateState extends State<Checkdate> {
+class _DateState extends State<Date> {
+  final List<String> days = ['sun', 'mon', 'tue', 'wed', 'thr', 'fri', 'sat'];
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('Checkout').snapshots(),
-        builder: (context, snapshot) {
-          Timestamp timestamp = snapshot.data!.docs[i]['date'];
-          DateTime datee = timestamp.toDate();
-          return ElevatedButton(
-            child: Text('GG'),
-            onPressed: () {
-              if (datee == date) {
-                setState(() {
-                  numberOfPlayer = snapshot.data!.docs[i]['NoPlayers'];
-                  print('DONE');
-                });
-              } else {
-                setState(() {
-                  numberOfPlayer = 0;
-                });
-                print('GG');
-              }
-            },
-          );
-        });
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            height: 100,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: days.length,
+              itemBuilder: (BuildContext context, int position) {
+                return InkWell(
+                  onTap: () {
+                    setState(() => selectedDay = position);
+                    Days = days[selectedDay];
+                    print(Days);
+                  },
+                  child: Container(
+                    width: 150,
+                    child: Card(
+                      shape: (selectedDay == position)
+                          ? RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.red))
+                          : null,
+                      elevation: 10,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Text('${days[position]}'),
+                          // Icon(iconList[position].titleIcon)
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class Time extends StatefulWidget {
+  const Time({super.key});
+
+  @override
+  State<Time> createState() => _TimeState();
+}
+
+class _TimeState extends State<Time> {
+  final List<String> times = [
+    '2-4 pm',
+    '4-6 pm',
+    '6-8 pm',
+    '8-10 pm',
+    '10-12 pm',
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Container(
+            height: 100,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: times.length,
+              itemBuilder: (BuildContext context, int position) {
+                return InkWell(
+                  onTap: () {
+                    setState(() => selectedDay = position);
+                    time = times[selectedDay];
+                    print(time);
+                  },
+                  child: Container(
+                    width: 150,
+                    child: Card(
+                      shape: (selectedDay == position)
+                          ? RoundedRectangleBorder(
+                              side: BorderSide(color: Colors.red))
+                          : null,
+                      elevation: 10,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          Text('${times[position]}'),
+                          // Icon(iconList[position].titleIcon)
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

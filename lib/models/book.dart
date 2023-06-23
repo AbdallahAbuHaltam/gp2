@@ -7,23 +7,21 @@ class Book {
   String? size;
   String? status;
   Players? player;
-
+  String? time;
   int? noPlayers;
   double? price;
-  DateTime? date;
-  TimeOfDay? time;
-  String? bookId;
+  String? date;
 
-  Book(
-      {this.playgroundName,
-      this.size,
-      this.status,
-      this.noPlayers,
-      this.player,
-      this.price,
-      this.date,
-      this.time,
-      this.bookId});
+  Book({
+    this.playgroundName,
+    this.size,
+    this.status,
+    this.noPlayers,
+    this.player,
+    this.price,
+    this.date,
+    this.time,
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -35,7 +33,6 @@ class Book {
       'Player Name': player?.username,
       'Phone number': player?.phoneNo,
       'PlayerId': player?.uId,
-      'bookId': bookId,
     };
   }
 }

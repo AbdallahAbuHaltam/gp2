@@ -33,18 +33,29 @@ class _ActivityState extends State<Activity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Padding(
-            padding: const EdgeInsets.only(right: 150.0),
-            child: const Icon(
-              Icons.arrow_back_ios,
-              size: 20,
-              color: mBlackColor,
+        title: Row(
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Padding(
+                padding: const EdgeInsets.only(right: .0),
+                child: const Icon(
+                  Icons.arrow_back_ios_new_sharp,
+                  size: 20,
+                  color: mBlackColor,
+                ),
+              ),
             ),
-          ),
+            Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Text(
+                "Activity",
+                style: TextStyle(color: Colors.black),
+              ),
+            ),
+          ],
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -53,31 +64,34 @@ class _ActivityState extends State<Activity> {
         children: [
           NavigationBar(
             elevation: 0,
-            height: 60,
+            height: 70,
             selectedIndex: index,
             onDestinationSelected: (index) =>
                 setState(() => this.index = index),
             destinations: [
               NavigationDestination(
-                  icon: Image.asset(
-                    "images/fac1.png",
-                    width: 80,
-                    fit: BoxFit.fill,
-                  ),
-                  label: ""),
+                label: "Upcoming Activity",
+                icon: Icon(Icons.source_outlined),
+              ),
               NavigationDestination(
-                  icon: Image.asset(
-                    "images/rev9.png",
-                    width: 80,
-                    fit: BoxFit.fill,
-                  ),
-                  label: ""),
+                label: "Past Activity",
+                icon: Icon(Icons.paste_outlined),
+              )
             ],
           ),
-          Container(
-            child: Center(
-              child: SingleChildScrollView(
-                child: pages[index],
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+              child: Scaffold(
+                backgroundColor: const Color.fromARGB(255, 229, 229, 229),
+                body: Center(
+                  child: SingleChildScrollView(
+                    child: Column(children: [
+                      pages[index],
+                    ]),
+                  ),
+                ),
               ),
             ),
           ),
@@ -187,9 +201,9 @@ class _UpcomingState extends State<Upcoming> {
                                                     const EdgeInsets.fromLTRB(
                                                         10, 0, 0, 0),
                                                 child: Row(
-                                                  children: const [
+                                                  children: [
                                                     Text(
-                                                      "Today from \n 8pm - 10pm",
+                                                      "${snapshot.data!.docs[index]['date']} from \n ${snapshot.data!.docs[index]['time']}",
                                                       style: TextStyle(
                                                         fontSize: 15,
                                                         color: Colors.white,
